@@ -273,7 +273,7 @@ exports.Map = _Map2.default; // import Nav from './Nav'
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -284,6 +284,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(339);
 
+var _containers = __webpack_require__(359);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -293,82 +295,68 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Home = function (_Component) {
-	_inherits(Home, _Component);
+    _inherits(Home, _Component);
 
-	function Home() {
-		_classCallCheck(this, Home);
+    function Home() {
+        _classCallCheck(this, Home);
 
-		var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+        var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
 
-		_this.state = {
-			map: null
-		};
-		return _this;
-	}
+        _this.state = {
+            map: null
+        };
+        return _this;
+    }
 
-	_createClass(Home, [{
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
+    _createClass(Home, [{
+        key: 'render',
+        value: function render() {
+            var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7024017, lng: -73.9896719 } }];
 
-			var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7024017, lng: -73.9896719 } }];
+            return _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-4' },
+                        _react2.default.createElement(_containers.Search, null)
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-5' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'row' },
+                            _react2.default.createElement(
+                                'ul',
+                                { id: 'reservations' },
+                                _react2.default.createElement(
+                                    'li',
+                                    { 'class': 'reservation' },
+                                    'Invite1'
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    { 'class': 'reservation' },
+                                    'Invite2'
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-3' },
+                        'ACCOUNT'
+                    )
+                )
+            );
+        }
+    }]);
 
-			return _react2.default.createElement(
-				'div',
-				{ className: 'container' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'row' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-4' },
-						_react2.default.createElement(
-							'div',
-							{ style: { height: 960 } },
-							_react2.default.createElement(_presentation.Map, {
-								onMapReady: function onMapReady(map) {
-									if (_this2.state.map != null) return;
-
-									console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
-									_this2.setState({
-										map: map
-									});
-								},
-
-								markers: markers,
-								zoom: 14,
-								center: { lat: 40.7224017, lng: -73.9896719 },
-								containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
-								mapElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }) })
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-5' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'row' },
-							'Item ',
-							_react2.default.createElement('br', null),
-							'Item ',
-							_react2.default.createElement('br', null),
-							'Item ',
-							_react2.default.createElement('br', null),
-							'Item ',
-							_react2.default.createElement('br', null)
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
-						'ACCOUNT'
-					)
-				)
-			);
-		}
-	}]);
-
-	return Home;
+    return Home;
 }(_react.Component);
 
 exports.default = Home;
@@ -573,6 +561,110 @@ var app = _react2.default.createElement(
 
 
 _reactDom2.default.render(app, document.getElementById('root'));
+
+/***/ }),
+
+/***/ 358:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _presentation = __webpack_require__(339);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Search = function (_Component) {
+	_inherits(Search, _Component);
+
+	function Search() {
+		_classCallCheck(this, Search);
+
+		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+
+		_this.state = {
+			map: null
+		};
+		return _this;
+	}
+
+	_createClass(Search, [{
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7024017, lng: -73.9896719 } }];
+
+			return _react2.default.createElement(
+				'div',
+				{ style: { height: 960 } },
+				_react2.default.createElement(_presentation.Map, {
+					onMapReady: function onMapReady(map) {
+						if (_this2.state.map != null) return;
+
+						console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
+						_this2.setState({
+							map: map
+						});
+					},
+
+					markers: markers,
+					zoom: 14,
+					center: { lat: 40.7224017, lng: -73.9896719 },
+					containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
+					mapElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }) })
+			);
+		}
+	}]);
+
+	return Search;
+}(_react.Component);
+
+exports.default = Search;
+
+/***/ }),
+
+/***/ 359:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.Search = undefined;
+
+var _Search = __webpack_require__(358);
+
+var _Search2 = _interopRequireDefault(_Search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.Search = _Search2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                   	Export your container components here. The Users
+                                   	container is just an example and you will likely
+                                   	remove it in favor of your own containers. 
+                                   * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                   */
+
+// import Users from './Users'
 
 /***/ })
 

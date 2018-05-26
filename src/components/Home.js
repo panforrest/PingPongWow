@@ -26,10 +26,14 @@ class Home extends Component {
 
         	        <div className="col-md-5">
         	            <div className="row">
-		                    Item <br/> 
-		                    Item <br/> 
-		                    Item <br/> 
-		                    Item <br/> 
+		                    <ul id="reservations">                                
+                                <li class="reservation">
+                                    Invite1 
+                                </li> 
+                                <li class="reservation">
+                                    Invite2
+                                </li>                                       
+                            </ul>
 		                </div>
         	        </div> 
 

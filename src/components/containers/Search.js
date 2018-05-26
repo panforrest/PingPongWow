@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Map } from './presentation'
+import { Map } from '../presentation'
 
 class Search extends Component {
 
