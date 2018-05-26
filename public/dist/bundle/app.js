@@ -311,6 +311,8 @@ var Home = function (_Component) {
 		value: function render() {
 			var _this2 = this;
 
+			var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7024017, lng: -73.9896719 } }];
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'container' },
@@ -333,6 +335,7 @@ var Home = function (_Component) {
 									});
 								},
 
+								markers: markers,
 								zoom: 14,
 								center: { lat: 40.7224017, lng: -73.9896719 },
 								containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
