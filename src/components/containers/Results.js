@@ -8,7 +8,7 @@ class Results extends Component {
     	super()
     	this.state = {
             invite: {
-                position:{lat:40.70224017, lng:-73.9796719}
+                // position:{lat:40.70224017, lng:-73.9796719}
             }
     	}
     }
@@ -29,6 +29,7 @@ class Results extends Component {
         newInvite['id'] = 100
         newInvite['key'] = '100'
         newInvite['defaultAnimation'] = 2
+        newInvite['position'] = this.props.map.currentLocation
         this.props.addInvite(newInvite)
     }
     

@@ -27,7 +27,7 @@ class Search extends Component {
 
     	return(
 
-            <div style={{height:960}}>
+            <div>
 			    
 			    <Map 
 				    onMapReady={ (map) => {
@@ -45,7 +45,7 @@ class Search extends Component {
 				    zoom={14}
 				    center={{lat:40.7224017, lng:-73.9896719}}
 				    containerElement={<div style={{height:100+'%'}} />} 
-				    mapElement={<div style={{height:100+'%'}} />} />
+				    mapElement={<div style={{height:100+'vh'}} />} />
 
 			</div> 
 
