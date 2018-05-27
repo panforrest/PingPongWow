@@ -8,9 +8,15 @@ export default (props) => {
     <div className="row">
       <div id="reservations">
         <div class="reservation">
-            <h3>{invite.label}</h3> 
-            <img style={localStyle.icon} src={invite.host.image} />
+
+            <div style={localStyle.inviteImage}>
+                <img style={localStyle.inviteImage} src={invite.image} />
+            </div>
+            <h2>{invite.label}</h2> 
             <span class="reservation-date">{invite.date} </span>
+            <img style={localStyle.icon} src={invite.host.image} />
+            
+
         </div>    
       </div>
     </div>
@@ -18,5 +24,15 @@ export default (props) => {
 }
 
 const localStyle = {
-    icon: {width:28, borderRadius:14, float:'right'}
+    icon: {
+        width:28, 
+        borderRadius:14, 
+        float:'right'
+    },
+    inviteImage: {
+        width:100+'%',
+        padding:3,
+        // border:'1px solid #ddd',
+        background:'#ffffa' 
+    }
 }
