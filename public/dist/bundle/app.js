@@ -445,18 +445,25 @@ exports.default = function () {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.userReducer = undefined;
+exports.inviteReducer = exports.userReducer = undefined;
 
 var _userReducer = __webpack_require__(344);
 
 var _userReducer2 = _interopRequireDefault(_userReducer);
 
+var _inviteReducer = __webpack_require__(362);
+
+var _inviteReducer2 = _interopRequireDefault(_inviteReducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.userReducer = _userReducer2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                             	Export your reducers here
-                                             * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                             */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Export your reducers here
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+exports.userReducer = _userReducer2.default;
+exports.inviteReducer = _inviteReducer2.default;
 
 /***/ }),
 
@@ -494,7 +501,8 @@ exports.default = {
 		// initialState can be null
 
 		var reducers = (0, _redux.combineReducers)({ // insert reducers here
-			user: _reducers.userReducer
+			user: _reducers.userReducer,
+			invite: _reducers.inviteReducer
 		});
 
 		if (initialState) {
@@ -681,6 +689,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(339);
 
+var _reactRedux = __webpack_require__(142);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -705,7 +715,11 @@ var Results = function (_Component) {
         key: 'render',
         value: function render() {
 
-            var invites = [{ id: 1, key: '1', date: 'Sat, May 26, 2018', defaultAnimation: 2, label: 'Match 1', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', date: 'Sun, May 27, 2018', defaultAnimation: 2, label: 'Ping Pong 2', position: { lat: 40.7124017, lng: -73.9896719 } }];
+            // const invites = [
+            //     {id:1, key:'1', date:'Sat, May 26, 2018', defaultAnimation:2, label:'Match 1', position:{lat:40.7224017, lng:-73.9896719}},
+            //     {id:2, key:'2', date:'Sun, May 27, 2018', defaultAnimation:2, label:'Ping Pong 2', position:{lat:40.7124017, lng:-73.9896719}}
+            // ]
+            var invites = this.props.invite.all || [];
 
             return _react2.default.createElement(
                 'div',
@@ -724,7 +738,13 @@ var Results = function (_Component) {
     return Results;
 }(_react.Component);
 
-exports.default = Results;
+var stateToProps = function stateToProps(state) {
+    return {
+        invite: state.invite
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps)(Results);
 
 /***/ }),
 
@@ -772,6 +792,41 @@ exports.default = function (props) {
       )
     )
   );
+};
+
+/***/ }),
+
+/***/ 362:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(343);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+	all: [{ id: 1, key: '1', date: 'Sat, May 26, 2018', defaultAnimation: 2, label: 'Match 1', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', date: 'Sun, May 27, 2018', defaultAnimation: 2, label: 'Ping Pong 2', position: { lat: 40.7124017, lng: -73.9896719 } }, { id: 3, key: '3', date: 'Sat, May 26, 2018', defaultAnimation: 2, label: 'Match 3', position: { lat: 40.7174017, lng: -73.9896719 } }, { id: 4, key: '4', date: 'Sun, May 27, 2018', defaultAnimation: 2, label: 'Ping Pong 4', position: { lat: 40.7274017, lng: -73.9896719 } }]
+
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var newState = Object.assign({}, state);
+
+	switch (action.type) {
+		default:
+			return state;
+	}
 };
 
 /***/ })

@@ -5,9 +5,11 @@
 
 
 import userReducer from './userReducer'
+import inviteReducer from './inviteReducer'
 
 export {
 	
-	userReducer
+	userReducer,
+	inviteReducer
 	
 }
