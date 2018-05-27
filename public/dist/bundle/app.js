@@ -466,9 +466,11 @@ var Results = function (_Component) {
         value: function addInvite() {
             // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
             var newInvite = Object.assign({}, this.state.invite);
-            newInvite['id'] = 100;
-            newInvite['key'] = '100';
-            newInvite['defaultAnimation'] = 2;
+            var len = this.props.invite.all.length + 1;
+            newInvite['id'] = len.toString();
+            // newInvite['id'] = 100
+            // newInvite['key'] = '100'
+            // newInvite['defaultAnimation'] = 2
             newInvite['position'] = this.props.map.currentLocation;
             this.props.addInvite(newInvite);
         }
@@ -598,6 +600,18 @@ var Search = function (_Component) {
 			//    ] 
 			var invites = this.props.invite.all || [];
 
+			var markers = [];
+			invites.forEach(function (invite, i) {
+				var marker = {
+					key: invite.id,
+					label: invite.name,
+					position: invite.position,
+					defaultAnimation: 2
+				};
+
+				markers.push(marker);
+			});
+
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -612,8 +626,8 @@ var Search = function (_Component) {
 					},
 
 					locationChanged: this.centerChanged.bind(this),
-					markers: invites,
-					zoom: 14,
+					markers: markers,
+					zoom: 12,
 					center: { lat: 40.7224017, lng: -73.9896719 },
 					containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
 					mapElement: _react2.default.createElement('div', { style: { height: 100 + 'vh' } }) })
@@ -710,6 +724,7 @@ exports.default = function (props) {
           null,
           invite.label
         ),
+        _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image }),
         _react2.default.createElement(
           "span",
           { "class": "reservation-date" },
@@ -719,6 +734,10 @@ exports.default = function (props) {
       )
     )
   );
+};
+
+var localStyle = {
+  icon: { width: 28, borderRadius: 14, float: 'right' }
 };
 
 /***/ }),
@@ -926,7 +945,7 @@ var _constants2 = _interopRequireDefault(_constants);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-  all: [{ id: 1, key: '1', date: 'Sat, May 26, 2018', defaultAnimation: 2, label: 'Match 1', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', date: 'Sun, May 27, 2018', defaultAnimation: 2, label: 'Ping Pong 2', position: { lat: 40.7124017, lng: -73.9896719 } }, { id: 3, key: '3', date: 'Sat, May 26, 2018', defaultAnimation: 2, label: 'Match 3', position: { lat: 40.7174017, lng: -73.9896719 } }, { id: 4, key: '4', date: 'Sun, May 27, 2018', defaultAnimation: 2, label: 'Ping Pong 4', position: { lat: 40.7274017, lng: -73.9896719 } }]
+  all: [{ id: '1', date: 'Sat, May 26, 2018', label: 'Match 1', position: { lat: 40.7224017, lng: -73.9896719 }, host: { username: 'lebron_james', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }, { id: '2', date: 'Sun, May 27, 2018', label: 'Ping Pong 2', position: { lat: 40.7124017, lng: -73.9996719 }, host: { username: 'eli_manning', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }, { id: '3', date: 'Sat, May 26, 2018', label: 'Match 3', position: { lat: 40.7174017, lng: -73.9896719 }, host: { username: 'tom_brady', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }, { id: '4', date: 'Sun, May 27, 2018', label: 'Ping Pong 4', position: { lat: 40.7274017, lng: -73.9896719 }, host: { username: 'tom_brady', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }]
 
 };
 

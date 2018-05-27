@@ -25,6 +25,19 @@ class Search extends Component {
      //    ] 
         const invites = this.props.invite.all || []
 
+
+        let markers = []
+        invites.forEach((invite, i) => {
+            const marker = {
+                key: invite.id,
+                label: invite.name,
+                position: invite.position,
+                defaultAnimation: 2
+            }
+
+            markers.push(marker)
+        })
+
     	return(
 
             <div>
@@ -41,8 +54,8 @@ class Search extends Component {
 				    }}
 
                     locationChanged={this.centerChanged.bind(this)}
-                    markers={invites}
-				    zoom={14}
+                    markers={markers}
+				    zoom={12}
 				    center={{lat:40.7224017, lng:-73.9896719}}
 				    containerElement={<div style={{height:100+'%'}} />} 
 				    mapElement={<div style={{height:100+'vh'}} />} />

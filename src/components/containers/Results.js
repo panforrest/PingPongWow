@@ -26,9 +26,11 @@ class Results extends Component {
     addInvite(){
         // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
         let newInvite = Object.assign({}, this.state.invite)
-        newInvite['id'] = 100
-        newInvite['key'] = '100'
-        newInvite['defaultAnimation'] = 2
+        const len = this.props.invite.all.length+1
+        newInvite['id'] = len.toString()
+        // newInvite['id'] = 100
+        // newInvite['key'] = '100'
+        // newInvite['defaultAnimation'] = 2
         newInvite['position'] = this.props.map.currentLocation
         this.props.addInvite(newInvite)
     }
