@@ -579,6 +579,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(339);
 
+var _reactRedux = __webpack_require__(142);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -606,7 +608,11 @@ var Search = function (_Component) {
 		value: function render() {
 			var _this2 = this;
 
-			var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: "Nike Jordan", position: { lat: 40.7024017, lng: -73.9896719 } }];
+			// const markers = [
+			//        {id:1,key:'1', defaultAnimation:2,label:"Nike Jordan", position:{lat:40.7224017, lng:-73.9896719}},
+			//        {id:2,key:'2', defaultAnimation:2,label:"Nike Jordan", position:{lat:40.7024017, lng:-73.9896719}}
+			//    ] 
+			var invites = this.props.invite.all || [];
 
 			return _react2.default.createElement(
 				'div',
@@ -621,7 +627,7 @@ var Search = function (_Component) {
 						});
 					},
 
-					markers: markers,
+					markers: invites,
 					zoom: 14,
 					center: { lat: 40.7224017, lng: -73.9896719 },
 					containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
@@ -633,7 +639,13 @@ var Search = function (_Component) {
 	return Search;
 }(_react.Component);
 
-exports.default = Search;
+var stateToProps = function stateToProps(state) {
+	return {
+		invite: state.invite
+	};
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps)(Search);
 
 /***/ }),
 
