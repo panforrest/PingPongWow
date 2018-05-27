@@ -130,21 +130,155 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push([388,0]);
+/******/ 	deferredModules.push([389,0]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 151:
+/***/ 152:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _presentation = __webpack_require__(84);
+
+var _reactRedux = __webpack_require__(60);
+
+var _actions = __webpack_require__(94);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Results = function (_Component) {
+    _inherits(Results, _Component);
+
+    function Results() {
+        _classCallCheck(this, Results);
+
+        var _this = _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).call(this));
+
+        _this.state = {
+            invite: {
+                // position:{lat:40.70224017, lng:-73.9796719}
+            }
+        };
+        return _this;
+    }
+
+    _createClass(Results, [{
+        key: 'updateInvite',
+        value: function updateInvite(attr, event) {
+            event.preventDefault();
+            console.log(attr + ' == ' + event.target.value);
+            var updated = Object.assign({}, this.state.invite);
+            updated[attr] = event.target.value;
+            this.setState({
+                invite: updated
+            });
+        }
+    }, {
+        key: 'addInvite',
+        value: function addInvite() {
+            // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
+            var newInvite = Object.assign({}, this.state.invite);
+            var len = this.props.invite.all.length + 1;
+            newInvite['id'] = len.toString();
+            // newInvite['id'] = 100
+            // newInvite['key'] = '100'
+            // newInvite['defaultAnimation'] = 2
+            newInvite['position'] = this.props.map.currentLocation;
+            this.props.addInvite(newInvite);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+
+            // const invites = [
+            //     {id:1, key:'1', date:'Sat, May 26, 2018', defaultAnimation:2, label:'Match 1', position:{lat:40.7224017, lng:-73.9896719}},
+            //     {id:2, key:'2', date:'Sun, May 27, 2018', defaultAnimation:2, label:'Ping Pong 2', position:{lat:40.7124017, lng:-73.9896719}}
+            // ]
+            var invites = this.props.invite.all || [];
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'container-fluid' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    invites.map(function (invite, i) {
+                        return _react2.default.createElement(_presentation.Invite, { key: invite.id, invite: invite });
+                    })
+                ),
+                _react2.default.createElement('hr', null),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Invite' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
+                        'Add Invite'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Results;
+}(_react.Component);
+
+var stateToProps = function stateToProps(state) {
+    return {
+        invite: state.invite,
+        map: state.map
+    };
+};
+
+var dispatchToProps = function dispatchToProps(dispatch) {
+    return {
+        addInvite: function addInvite(invite) {
+            return dispatch(_actions2.default.addInvite(invite));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Results);
+
+/***/ }),
+
+/***/ 153:
 /***/ (function(module) {
 
 module.exports = {"name":"PingPongWow","version":"0.0.0","server":false,"private":true,"scripts":{"dev":"webpack --mode development -w","build":"npm run clean && NODE_ENV=production webpack -p && gulp prod","clean":"rm -rf ./public/dist","postinstall":"npm run build"},"dependencies":{"accepts":"^1.3.5","array-flatten":"1.1.1","bluebird":"^3.5.1","body-parser":"1.18.2","content-disposition":"0.5.2","content-type":"^1.0.4","cookie":"0.3.1","cookie-signature":"1.0.6","debug":"2.6.9","depd":"^1.1.2","dotenv":"^5.0.1","encodeurl":"^1.0.2","escape-html":"^1.0.3","etag":"^1.8.1","finalhandler":"1.1.1","fresh":"0.5.2","merge-descriptors":"1.0.1","methods":"^1.1.2","moment":"^2.20.1","nodemon":"^1.17.1","on-finished":"^2.3.0","parseurl":"^1.3.2","path-to-regexp":"0.1.7","proxy-addr":"^2.0.3","qs":"6.5.1","range-parser":"^1.2.0","react":"^16.2.0","react-bootstrap":"^0.32.1","react-dom":"^16.2.0","react-dropzone":"^4.2.8","react-google-maps":"^9.4.5","react-redux":"^5.0.7","react-time":"^4.3.0","redux":"^3.7.2","redux-thunk":"^2.2.0","safe-buffer":"5.1.1","send":"0.16.2","serve-static":"1.13.2","setprototypeof":"1.1.0","statuses":"^1.4.0","superagent":"^3.8.2","turbo360":"latest","type-is":"^1.6.16","utils-merge":"1.0.1","vary":"^1.1.2","vertex360":"latest"},"devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.3","babel-preset-env":"^1.6.1","babel-preset-react":"^6.24.1","chai":"^4.1.2","chai-http":"^3.0.0","cross-env":"^5.1.4","gulp":"^3.9.1","gulp-6to5":"^3.0.0","gulp-autoprefixer":"^5.0.0","gulp-clean-css":"^3.9.2","gulp-concat":"^2.6.1","gulp-less":"^4.0.0","gulp-rename":"^1.2.2","gulp-sass":"^3.1.0","gulp-uglify":"^3.0.0","json-loader":"^0.5.7","mocha":"^5.0.1","mocha-jscs":"^5.0.1","mocha-jshint":"^2.3.1","rimraf":"^2.6.2","uglifyjs-webpack-plugin":"^1.2.2","webpack":"^4.1.1","webpack-cli":"^2.0.10"},"deploy":["."],"format":"vertex","app":""};
 
 /***/ }),
 
-/***/ 169:
+/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -154,11 +288,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _turbo = __webpack_require__(168);
+var _turbo = __webpack_require__(170);
 
 var _turbo2 = _interopRequireDefault(_turbo);
 
-var _package = __webpack_require__(151);
+var _package = __webpack_require__(153);
 
 var _package2 = _interopRequireDefault(_package);
 
@@ -305,7 +439,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 170:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -316,223 +450,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TurboClient = undefined;
 
-var _TurboClient = __webpack_require__(169);
+var _TurboClient = __webpack_require__(171);
 
 var _TurboClient2 = _interopRequireDefault(_TurboClient);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.TurboClient = _TurboClient2.default;
-
-/***/ }),
-
-/***/ 171:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _constants = __webpack_require__(84);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-var _utils = __webpack_require__(170);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Here are a few sample actions for User managment.
-	Feel free to remove and replace with your own actions
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
-
-exports.default = {
-
-	addInvite: function addInvite(invite) {
-		return {
-			type: 'INVITE_ADDED',
-			data: invite
-		};
-	},
-
-	locationChanged: function locationChanged(location) {
-		return {
-			type: 'LOCATION_CHANGED',
-			data: location
-		};
-	}
-
-	// fetchUsers: (params) => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.getRequest('user', params, constants.USERS_RECEIVED))
-	// 	}
-	// },
-
-	// addUser: (params) => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.postRequest('user', params, constants.USER_CREATED))
-	// 	}
-	// },
-
-	// Unlike addUser, register() also maintains a session for login state. After calling 
-	// TurboClient.createUser(), the new user is logged in as well:
-	// register: (params) => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.createUser(params, constants.USER_CREATED))
-	// 	}
-	// },
-
-	// loginUser: (credentials) => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.login(credentials, constants.CURRENT_USER_RECEIVED))
-	// 	}
-	// },
-
-	// currentUser: () => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.currentUser(constants.CURRENT_USER_RECEIVED))
-	// 	}
-	// }
-
-};
-
-/***/ }),
-
-/***/ 172:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _presentation = __webpack_require__(83);
-
-var _reactRedux = __webpack_require__(59);
-
-var _actions = __webpack_require__(171);
-
-var _actions2 = _interopRequireDefault(_actions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Results = function (_Component) {
-    _inherits(Results, _Component);
-
-    function Results() {
-        _classCallCheck(this, Results);
-
-        var _this = _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).call(this));
-
-        _this.state = {
-            invite: {
-                // position:{lat:40.70224017, lng:-73.9796719}
-            }
-        };
-        return _this;
-    }
-
-    _createClass(Results, [{
-        key: 'updateInvite',
-        value: function updateInvite(attr, event) {
-            event.preventDefault();
-            console.log(attr + ' == ' + event.target.value);
-            var updated = Object.assign({}, this.state.invite);
-            updated[attr] = event.target.value;
-            this.setState({
-                invite: updated
-            });
-        }
-    }, {
-        key: 'addInvite',
-        value: function addInvite() {
-            // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
-            var newInvite = Object.assign({}, this.state.invite);
-            var len = this.props.invite.all.length + 1;
-            newInvite['id'] = len.toString();
-            // newInvite['id'] = 100
-            // newInvite['key'] = '100'
-            // newInvite['defaultAnimation'] = 2
-            newInvite['position'] = this.props.map.currentLocation;
-            this.props.addInvite(newInvite);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-
-            // const invites = [
-            //     {id:1, key:'1', date:'Sat, May 26, 2018', defaultAnimation:2, label:'Match 1', position:{lat:40.7224017, lng:-73.9896719}},
-            //     {id:2, key:'2', date:'Sun, May 27, 2018', defaultAnimation:2, label:'Ping Pong 2', position:{lat:40.7124017, lng:-73.9896719}}
-            // ]
-            var invites = this.props.invite.all || [];
-
-            return _react2.default.createElement(
-                'div',
-                { className: 'container-fluid' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'row' },
-                    invites.map(function (invite, i) {
-                        return _react2.default.createElement(_presentation.Invite, { key: invite.id, invite: invite });
-                    })
-                ),
-                _react2.default.createElement('hr', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Invite' }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date' }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
-                        'Add Invite'
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Results;
-}(_react.Component);
-
-var stateToProps = function stateToProps(state) {
-    return {
-        invite: state.invite,
-        map: state.map
-    };
-};
-
-var dispatchToProps = function dispatchToProps(dispatch) {
-    return {
-        addInvite: function addInvite(invite) {
-            return dispatch(_actions2.default.addInvite(invite));
-        }
-    };
-};
-
-exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Results);
 
 /***/ }),
 
@@ -552,11 +476,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _presentation = __webpack_require__(83);
+var _presentation = __webpack_require__(84);
 
-var _reactRedux = __webpack_require__(59);
+var _reactRedux = __webpack_require__(60);
 
-var _actions = __webpack_require__(171);
+var _actions = __webpack_require__(94);
 
 var _actions2 = _interopRequireDefault(_actions);
 
@@ -671,7 +595,7 @@ var _Search = __webpack_require__(173);
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _Results = __webpack_require__(172);
+var _Results = __webpack_require__(152);
 
 var _Results2 = _interopRequireDefault(_Results);
 
@@ -879,7 +803,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _presentation = __webpack_require__(83);
+var _presentation = __webpack_require__(84);
 
 var _containers = __webpack_require__(174);
 
@@ -950,10 +874,49 @@ exports.default = Home;
 
 
 Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(58);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+	currentLocation: { lat: 40.72, lng: -73.98 }
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var updated = Object.assign({}, state);
+	switch (action.type) {
+
+		case _constants2.default.LOCATION_CHANGED:
+			console.log('LOCATION_CHANGED: ' + JSON.stringify(action.data));
+			updated['currentLocation'] = action.data;
+			return updated;
+
+		default:
+			return updated;
+	}
+};
+
+/***/ }),
+
+/***/ 376:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _constants = __webpack_require__(84);
+var _constants = __webpack_require__(58);
 
 var _constants2 = _interopRequireDefault(_constants);
 
@@ -985,7 +948,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 376:
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -995,7 +958,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _constants = __webpack_require__(84);
+var _constants = __webpack_require__(58);
 
 var _constants2 = _interopRequireDefault(_constants);
 
@@ -1042,7 +1005,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 377:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1053,15 +1016,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mapReducer = exports.inviteReducer = exports.userReducer = undefined;
 
-var _userReducer = __webpack_require__(376);
+var _userReducer = __webpack_require__(377);
 
 var _userReducer2 = _interopRequireDefault(_userReducer);
 
-var _inviteReducer = __webpack_require__(375);
+var _inviteReducer = __webpack_require__(376);
 
 var _inviteReducer2 = _interopRequireDefault(_inviteReducer);
 
-var _mapReducer = __webpack_require__(390);
+var _mapReducer = __webpack_require__(375);
 
 var _mapReducer2 = _interopRequireDefault(_mapReducer);
 
@@ -1076,7 +1039,7 @@ exports.mapReducer = _mapReducer2.default; /* * * * * * * * * * * * * * * * * * 
 
 /***/ }),
 
-/***/ 380:
+/***/ 381:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1088,11 +1051,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(88);
 
-var _reduxThunk = __webpack_require__(378);
+var _reduxThunk = __webpack_require__(379);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducers = __webpack_require__(377);
+var _reducers = __webpack_require__(378);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1133,7 +1096,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 388:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1147,11 +1110,11 @@ var _reactDom = __webpack_require__(85);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _stores = __webpack_require__(380);
+var _stores = __webpack_require__(381);
 
 var _stores2 = _interopRequireDefault(_stores);
 
-var _reactRedux = __webpack_require__(59);
+var _reactRedux = __webpack_require__(60);
 
 var _Home = __webpack_require__(372);
 
@@ -1171,7 +1134,7 @@ _reactDom2.default.render(app, document.getElementById('root'));
 
 /***/ }),
 
-/***/ 390:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1180,37 +1143,27 @@ _reactDom2.default.render(app, document.getElementById('root'));
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Here are a few sample constants for typical actions.
+	You may want to extends these to the other data
+	types for your project (e.g. BLOG_POST_CREATED, BLOG_POST_UPDATED, etc)
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
 
-var _constants = __webpack_require__(84);
+exports.default = {
+	INVITE_ADDED: 'INVITE_ADDED',
+	LOCATION_CHANGED: 'LOCATION_CHANGED'
 
-var _constants2 = _interopRequireDefault(_constants);
+	// USERS_RECEIVED: 		'USERS_RECEIVED',
+	// USER_CREATED: 			'USER_CREATED',
+	// USER_LOGGED_IN: 		'USER_LOGGED_IN',
+	// CURRENT_USER_RECEIVED: 	'CURRENT_USER_RECEIVED'
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var initialState = {
-	currentLocation: { lat: 40.72, lng: -73.98 }
-};
-
-exports.default = function () {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	var action = arguments[1];
-
-	var updated = Object.assign({}, state);
-	switch (action.type) {
-
-		case _constants2.default.LOCATION_CHANGED:
-			console.log('LOCATION_CHANGED: ' + JSON.stringify(action.data));
-			updated['currentLocation'] = action.data;
-			return updated;
-
-		default:
-			return updated;
-	}
 };
 
 /***/ }),
 
-/***/ 83:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1239,7 +1192,7 @@ exports.Map = _Map2.default;
 
 /***/ }),
 
-/***/ 84:
+/***/ 94:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1248,21 +1201,68 @@ exports.Map = _Map2.default;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _constants = __webpack_require__(58);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+var _utils = __webpack_require__(172);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Here are a few sample constants for typical actions.
-	You may want to extends these to the other data
-	types for your project (e.g. BLOG_POST_CREATED, BLOG_POST_UPDATED, etc)
+	Here are a few sample actions for User managment.
+	Feel free to remove and replace with your own actions
 * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 */
 
 exports.default = {
-	INVITE_ADDED: 'INVITE_ADDED',
-	LOCATION_CHANGED: 'LOCATION_CHANGED'
 
-	// USERS_RECEIVED: 		'USERS_RECEIVED',
-	// USER_CREATED: 			'USER_CREATED',
-	// USER_LOGGED_IN: 		'USER_LOGGED_IN',
-	// CURRENT_USER_RECEIVED: 	'CURRENT_USER_RECEIVED'
+	addInvite: function addInvite(invite) {
+		return {
+			type: 'INVITE_ADDED',
+			data: invite
+		};
+	},
+
+	locationChanged: function locationChanged(location) {
+		return {
+			type: 'LOCATION_CHANGED',
+			data: location
+		};
+	}
+
+	// fetchUsers: (params) => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.getRequest('user', params, constants.USERS_RECEIVED))
+	// 	}
+	// },
+
+	// addUser: (params) => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.postRequest('user', params, constants.USER_CREATED))
+	// 	}
+	// },
+
+	// Unlike addUser, register() also maintains a session for login state. After calling 
+	// TurboClient.createUser(), the new user is logged in as well:
+	// register: (params) => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.createUser(params, constants.USER_CREATED))
+	// 	}
+	// },
+
+	// loginUser: (credentials) => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.login(credentials, constants.CURRENT_USER_RECEIVED))
+	// 	}
+	// },
+
+	// currentUser: () => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.currentUser(constants.CURRENT_USER_RECEIVED))
+	// 	}
+	// }
 
 };
 
