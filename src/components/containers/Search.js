@@ -11,6 +11,10 @@ class Search extends Component {
 		}
 	}
 
+	centerChanged(center){
+		console.log('centerChanged: '+JSON.stringify(center))
+	}
+
     render(){
     	// const markers = [
      //        {id:1,key:'1', defaultAnimation:2,label:"Nike Jordan", position:{lat:40.7224017, lng:-73.9896719}},
@@ -33,6 +37,7 @@ class Search extends Component {
 				        })
 				    }}
 
+                    locationChanged={this.centerChanged.bind(this)}
                     markers={invites}
 				    zoom={14}
 				    center={{lat:40.7224017, lng:-73.9896719}}

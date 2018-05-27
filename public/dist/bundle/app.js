@@ -568,6 +568,11 @@ var Search = function (_Component) {
 	}
 
 	_createClass(Search, [{
+		key: 'centerChanged',
+		value: function centerChanged(center) {
+			console.log('centerChanged: ' + JSON.stringify(center));
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
@@ -591,6 +596,7 @@ var Search = function (_Component) {
 						});
 					},
 
+					locationChanged: this.centerChanged.bind(this),
 					markers: invites,
 					zoom: 14,
 					center: { lat: 40.7224017, lng: -73.9896719 },
