@@ -14,6 +14,13 @@ export default {
 			type: 'INVITE_ADDED',
 			data: invite
 		}
+	},
+
+	locationChanged: (location) => {
+		return {
+			type: 'LOCATION_CHANGED',
+			data: location
+		}
 	}
 
 	// fetchUsers: (params) => {

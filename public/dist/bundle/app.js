@@ -357,6 +357,13 @@ exports.default = {
 			type: 'INVITE_ADDED',
 			data: invite
 		};
+	},
+
+	locationChanged: function locationChanged(location) {
+		return {
+			type: 'LOCATION_CHANGED',
+			data: location
+		};
 	}
 
 	// fetchUsers: (params) => {
@@ -509,7 +516,8 @@ var Results = function (_Component) {
 
 var stateToProps = function stateToProps(state) {
     return {
-        invite: state.invite
+        invite: state.invite,
+        map: state.map
     };
 };
 
@@ -545,6 +553,10 @@ var _presentation = __webpack_require__(83);
 
 var _reactRedux = __webpack_require__(59);
 
+var _actions = __webpack_require__(171);
+
+var _actions2 = _interopRequireDefault(_actions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -562,7 +574,8 @@ var Search = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
 		_this.state = {
-			map: null
+			map: null,
+			center: null
 		};
 		return _this;
 	}
@@ -571,6 +584,7 @@ var Search = function (_Component) {
 		key: 'centerChanged',
 		value: function centerChanged(center) {
 			console.log('centerChanged: ' + JSON.stringify(center));
+			this.props.locationChanged(center);
 		}
 	}, {
 		key: 'render',
@@ -615,7 +629,15 @@ var stateToProps = function stateToProps(state) {
 	};
 };
 
-exports.default = (0, _reactRedux.connect)(stateToProps)(Search);
+var dispatchToProps = function dispatchToProps(dispatch) {
+	return {
+		locationChanged: function locationChanged(location) {
+			return dispatch(_actions2.default.locationChanged(location));
+		}
+	};
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search);
 
 /***/ }),
 
@@ -993,7 +1015,7 @@ exports.default = function () {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.inviteReducer = exports.userReducer = undefined;
+exports.mapReducer = exports.inviteReducer = exports.userReducer = undefined;
 
 var _userReducer = __webpack_require__(376);
 
@@ -1003,15 +1025,18 @@ var _inviteReducer = __webpack_require__(375);
 
 var _inviteReducer2 = _interopRequireDefault(_inviteReducer);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _mapReducer = __webpack_require__(390);
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Export your reducers here
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
+var _mapReducer2 = _interopRequireDefault(_mapReducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.userReducer = _userReducer2.default;
 exports.inviteReducer = _inviteReducer2.default;
+exports.mapReducer = _mapReducer2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                           	Export your reducers here
+                                           * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                           */
 
 /***/ }),
 
@@ -1050,7 +1075,8 @@ exports.default = {
 
 		var reducers = (0, _redux.combineReducers)({ // insert reducers here
 			user: _reducers.userReducer,
-			invite: _reducers.inviteReducer
+			invite: _reducers.inviteReducer,
+			map: _reducers.mapReducer
 		});
 
 		if (initialState) {
@@ -1106,6 +1132,45 @@ var app = _react2.default.createElement(
 
 
 _reactDom2.default.render(app, document.getElementById('root'));
+
+/***/ }),
+
+/***/ 390:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(84);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+	currentLocation: { lat: 40.72, lng: -73.98 }
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var updated = Object.assign({}, state);
+	switch (action.type) {
+
+		case 'LOCATION_CHANGED':
+			console.log('LOCATION_CHANGED: ' + JSON.stringify(action.data));
+			updated['currentLocation'] = action.data;
+			return updated;
+
+		default:
+			return state;
+	}
+};
 
 /***/ }),
 

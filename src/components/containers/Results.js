@@ -65,7 +65,8 @@ class Results extends Component {
 
 const stateToProps = (state) => {
     return {
-        invite: state.invite
+        invite: state.invite,
+        map: state.map
     }
 }
 
