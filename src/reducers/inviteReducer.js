@@ -11,9 +11,15 @@ var initialState = {
 }
 
 export default (state = initialState, action) => {
-	let newState = Object.assign({}, state)
+	let updatedState = Object.assign({}, state)
 
 	switch (action.type) {
+        case 'INVITE_ADDED':
+          let all = (updatedState.all) ? Object.assign([], updatedState.all) : []
+          all.push(action.data)
+          updatedState['all'] = all
+          return updatedState
+
 		default:
 			return state
 	}

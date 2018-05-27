@@ -10,7 +10,7 @@ export default (props) => {
         <div class="reservation">
             <h3>{invite.label}</h3> 
             
-            <span class="reservation-date">${invite.date} </span>
+            <span class="reservation-date">{invite.date} </span>
         </div>    
       </div>
     </div>
