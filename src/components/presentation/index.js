@@ -3,12 +3,14 @@
 // import Item from './Item'
 import Map from './Map'
 import Invite from './Invite'
+import Register from './Register'
 
 export {
 
     // Nav,
     // Footer,
     Invite,
-    Map
+    Map,
+    Register
 
 }

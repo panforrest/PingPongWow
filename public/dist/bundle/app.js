@@ -146,7 +146,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Map = exports.Invite = undefined;
+exports.Register = exports.Map = exports.Invite = undefined;
 
 var _Map = __webpack_require__(447);
 
@@ -156,13 +156,17 @@ var _Invite = __webpack_require__(254);
 
 var _Invite2 = _interopRequireDefault(_Invite);
 
+var _Register = __webpack_require__(469);
+
+var _Register2 = _interopRequireDefault(_Register);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import Nav from './Nav'
-// import Footer from './Footer'
-// import Item from './Item'
 exports.Invite = _Invite2.default;
 exports.Map = _Map2.default;
+exports.Register = _Register2.default; // import Nav from './Nav'
+// import Footer from './Footer'
+// import Item from './Item'
 
 /***/ }),
 
@@ -212,6 +216,18 @@ exports.default = {
 		return {
 			type: _constants2.default.LOCATION_CHANGED,
 			data: location
+		};
+	},
+
+	signup: function signup(params) {
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.post('/auth/register', params, _constants2.default.CURRENT_USER_RECEIVED));
+		};
+	},
+
+	login: function login(params) {
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.post('/auth/login', params, _constants2.default.CURRENT_USER_RECEIVED));
 		};
 	},
 
@@ -309,13 +325,12 @@ var Nav = function (_Component) {
 				),
 				_react2.default.createElement(
 					'a',
-					{ 'class': 'nav-tab', href: '#' },
+					{ 'class': 'nav-tab', href: '/auth/logout' },
 					' ',
 					currentUser == null ? null : _react2.default.createElement(
 						'p',
 						null,
-						'Welcome, ',
-						currentUser.username
+						'Log out'
 					),
 					' '
 				)
@@ -499,7 +514,7 @@ var Results = function (_Component) {
                     })
                 ),
                 _react2.default.createElement('hr', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Invite' }),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Match Invite' }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date' }),
@@ -993,7 +1008,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.Nav = exports.Results = exports.Search = undefined;
+exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
 
 var _Search = __webpack_require__(252);
 
@@ -1007,18 +1022,24 @@ var _Nav = __webpack_require__(196);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
+var _Account = __webpack_require__(468);
+
+var _Account2 = _interopRequireDefault(_Account);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.Search = _Search2.default;
-exports.Results = _Results2.default;
-exports.Nav = _Nav2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-                             	Export your container components here. The Users
-                             	container is just an example and you will likely
-                             	remove it in favor of your own containers. 
-                             * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-                             */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Export your container components here. The Users
+	container is just an example and you will likely
+	remove it in favor of your own containers. 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
 
 // import Users from './Users'
+exports.Search = _Search2.default;
+exports.Results = _Results2.default;
+exports.Nav = _Nav2.default;
+exports.Account = _Account2.default;
 
 /***/ }),
 
@@ -1231,8 +1252,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import { Results } from './containers'
-
 var Home = function (_Component) {
   _inherits(Home, _Component);
 
@@ -1275,7 +1294,7 @@ var Home = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'col-md-3' },
-            'ACCOUNT'
+            _react2.default.createElement(_containers.Account, null)
           )
         )
       );
@@ -1623,6 +1642,244 @@ var app = _react2.default.createElement(
 
 
 _reactDom2.default.render(app, document.getElementById('root'));
+
+/***/ }),
+
+/***/ 468:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _presentation = __webpack_require__(113);
+
+var _reactRedux = __webpack_require__(62);
+
+var _actions = __webpack_require__(137);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Account = function (_Component) {
+    _inherits(Account, _Component);
+
+    function Account() {
+        _classCallCheck(this, Account);
+
+        return _possibleConstructorReturn(this, (Account.__proto__ || Object.getPrototypeOf(Account)).apply(this, arguments));
+    }
+
+    _createClass(Account, [{
+        key: 'register',
+
+
+        // componentDidMount(){
+        //     this.props.checkCurrentUser()
+        // }
+
+        value: function register(registration) {
+            this.props.signup(registration);
+        }
+    }, {
+        key: 'login',
+        value: function login(credentials) {
+            this.props.login(credentials);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var currentUser = this.props.account.currentUser;
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                currentUser == null ? _react2.default.createElement(_presentation.Register, { onRegister: this.register.bind(this), onLogin: this.login.bind(this) }) : _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Welcome!'
+                    ),
+                    _react2.default.createElement(
+                        'h2',
+                        null,
+                        currentUser.username
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Account;
+}(_react.Component);
+
+var stateToProps = function stateToProps(state) {
+    return {
+        account: state.account
+    };
+};
+
+var dispatchToProps = function dispatchToProps(dispatch) {
+    return {
+        signup: function signup(params) {
+            return dispatch(_actions2.default.signup(params));
+        },
+        login: function login(params) {
+            return dispatch(_actions2.default.login(params));
+        }
+        // checkCurrentUser: () => dispatch(actions.checkCurrentUser())
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Account);
+
+/***/ }),
+
+/***/ 469:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Register = function (_Component) {
+    _inherits(Register, _Component);
+
+    function Register() {
+        _classCallCheck(this, Register);
+
+        var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this));
+
+        _this.state = {
+            registration: {
+                username: '',
+                password: ''
+            }
+        };
+        return _this;
+    }
+
+    _createClass(Register, [{
+        key: 'updateRegistration',
+        value: function updateRegistration(event) {
+            var updated = Object.assign({}, this.state.registration);
+            updated[event.target.id] = event.target.value;
+            this.setState({
+                registration: updated
+            });
+        }
+    }, {
+        key: 'submitRegistration',
+        value: function submitRegistration(event) {
+            event.preventDefault();
+
+            if (this.state.registration.username.length == 0) {
+                alert('Please add your username.');
+                return;
+            }
+
+            if (this.state.registration.password.length == 0) {
+                alert('Please set your password.');
+                return;
+            }
+
+            this.props.onRegister(this.state.registration);
+        }
+    }, {
+        key: 'submitLoginCredentials',
+        value: function submitLoginCredentials(event) {
+            event.preventDefault();
+            if (this.state.registration.username.length == 0) {
+                alert('Please add your username.');
+                return;
+            }
+
+            if (this.state.registration.password.length == 0) {
+                alert('Please set your password.');
+                return;
+            }
+
+            this.props.onLogin(this.state.registration);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'h2',
+                    null,
+                    'Sign Up'
+                ),
+                _react2.default.createElement('input', { onChange: this.updateRegistration.bind(this), id: 'username', className: 'formControl', type: 'text', placeholder: 'Username' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('input', { onChange: this.updateRegistration.bind(this), id: 'password', className: 'formControl', type: 'password', placeholder: 'Password' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement(
+                    'button',
+                    { onClick: this.submitRegistration.bind(this), className: 'btn btn-info btn-fill', style: { marginRight: 16 } },
+                    'Join'
+                ),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement(
+                    'button',
+                    { onClick: this.submitLoginCredentials.bind(this), className: 'btn btn-success' },
+                    'Sign In'
+                )
+            );
+        }
+    }]);
+
+    return Register;
+}(_react.Component);
+
+var localStyle = {
+    input: {
+        border: '1px solid #ddd',
+        marginBottom: 12
+    }
+};
+
+exports.default = Register;
 
 /***/ }),
 

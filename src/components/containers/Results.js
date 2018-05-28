@@ -116,7 +116,7 @@ class Results extends Component {
 			                    
                 </div>	
                 <hr />
-                <input onChange={this.updateInvite.bind(this, 'label')} className="formControl" type="text" placeholder="Invite" /><br /><br /> 
+                <input onChange={this.updateInvite.bind(this, 'label')} className="formControl" type="text" placeholder="Match Invite" /><br /><br /> 
                 <input onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" placeholder="Date" /><br /><br />    
                 { (this.state.invite.image == null) ? null: <img src={this.state.invite.image+'=s120-c'} />
 

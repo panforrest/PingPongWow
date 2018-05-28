@@ -32,6 +32,18 @@ export default {
 		}
 	},
 
+	signup: (params) => {
+		return dispatch => {
+			return dispatch(HTTPAsync.post('/auth/register', params, constants.CURRENT_USER_RECEIVED))
+		}
+	},
+
+	login: (params) => {
+		return dispatch => {
+			return dispatch(HTTPAsync.post('/auth/login', params, constants.CURRENT_USER_RECEIVED))
+		}
+	},
+
     currentUser: () => {
 		console.log('GET CURRENT USER')
 		return dispatch => {
