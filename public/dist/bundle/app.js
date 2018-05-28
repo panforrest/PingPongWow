@@ -693,7 +693,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.Results = exports.Search = undefined;
+exports.Nav = exports.Results = exports.Search = undefined;
 
 var _Search = __webpack_require__(174);
 
@@ -703,18 +703,22 @@ var _Results = __webpack_require__(152);
 
 var _Results2 = _interopRequireDefault(_Results);
 
+var _Nav = __webpack_require__(393);
+
+var _Nav2 = _interopRequireDefault(_Nav);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Export your container components here. The Users
-	container is just an example and you will likely
-	remove it in favor of your own containers. 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
-
-// import Users from './Users'
 exports.Search = _Search2.default;
 exports.Results = _Results2.default;
+exports.Nav = _Nav2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             	Export your container components here. The Users
+                             	container is just an example and you will likely
+                             	remove it in favor of your own containers. 
+                             * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             */
+
+// import Users from './Users'
 
 /***/ }),
 
@@ -919,6 +923,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import { Results } from './containers'
+
 var Home = function (_Component) {
   _inherits(Home, _Component);
 
@@ -936,7 +942,10 @@ var Home = function (_Component) {
   _createClass(Home, [{
     key: 'render',
     value: function render() {
-      var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: "Match 1", position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: "Ping Pong 2", position: { lat: 40.7024017, lng: -73.9896719 } }];
+      // const markers = [
+      //        {id:1,key:'1', defaultAnimation:2,label:"Match 1", position:{lat:40.7224017, lng:-73.9896719}},
+      //        {id:2,key:'2', defaultAnimation:2,label:"Ping Pong 2", position:{lat:40.7024017, lng:-73.9896719}}
+      //    ] 
 
       return _react2.default.createElement(
         'div',
@@ -952,6 +961,7 @@ var Home = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'col-md-5' },
+            _react2.default.createElement(_containers.Nav, null),
             _react2.default.createElement(_containers.Results, null)
           ),
           _react2.default.createElement(
@@ -1002,7 +1012,7 @@ exports.default = function () {
 
 		case _constants2.default.CURRENT_USER_RECEIVED:
 			console.log('CURRENT_USER_RECEIVED: ' + JSON.stringify(action.data));
-			// newState['currentUser'] = action.data
+			updated['currentUser'] = action.data.user;
 			return updated;
 
 		// case constants.USERS_RECEIVED:
@@ -1323,6 +1333,84 @@ var app = _react2.default.createElement(
 
 
 _reactDom2.default.render(app, document.getElementById('root'));
+
+/***/ }),
+
+/***/ 393:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(60);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_Component) {
+	_inherits(Nav, _Component);
+
+	function Nav() {
+		_classCallCheck(this, Nav);
+
+		return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+	}
+
+	_createClass(Nav, [{
+		key: 'render',
+		value: function render() {
+			// const currentUser = (this.props.user.currentUser==null) ? null: <p>Welcome, {this.props.user.currentUser}</p>
+			var currentUser = this.props.user.currentUser;
+
+			return _react2.default.createElement(
+				'nav',
+				null,
+				_react2.default.createElement(
+					'span',
+					{ 'class': 'navbar-brand mb-0 h1' },
+					'PingPongWow'
+				),
+				_react2.default.createElement(
+					'a',
+					{ 'class': 'nav-tab', href: '#' },
+					' ',
+					currentUser == null ? null : _react2.default.createElement(
+						'p',
+						null,
+						'Welcome, ',
+						currentUser.username
+					),
+					' '
+				)
+			);
+		}
+	}]);
+
+	return Nav;
+}(_react.Component);
+
+var stateToProps = function stateToProps(state) {
+	return {
+		user: state.account
+	};
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps)(Nav);
 
 /***/ }),
 
