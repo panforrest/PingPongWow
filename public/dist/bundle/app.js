@@ -165,6 +165,10 @@ var _reactDropzone = __webpack_require__(395);
 
 var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 
+var _turbo = __webpack_require__(171);
+
+var _turbo2 = _interopRequireDefault(_turbo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -203,21 +207,52 @@ var Results = function (_Component) {
     }, {
         key: 'addInvite',
         value: function addInvite() {
-            // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
-            var newInvite = Object.assign({}, this.state.invite);
-            var len = this.props.invite.all.length + 1;
-            newInvite['id'] = len.toString();
-            // newInvite['id'] = 100
-            // newInvite['key'] = '100'
-            // newInvite['defaultAnimation'] = 2
-            newInvite['position'] = this.props.map.currentLocation;
-            this.props.addInvite(newInvite);
+            // // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
+            // let newInvite = Object.assign({}, this.state.invite)
+            // const len = this.props.invite.all.length+1
+            // newInvite['id'] = len.toString()
+            // // newInvite['id'] = 100
+            // // newInvite['key'] = '100'
+            // // newInvite['defaultAnimation'] = 2
+            // newInvite['position'] = this.props.map.currentLocation
+            // this.props.addInvite(newInvite)
+            if (this.props.account.currentUser == null) {
+                alert('Please log in or register to send invite');
+                return;
+            }
+
+            var currentUser = this.props.account.currentUser;
+            var updated = Object.assign({}, this.state.invite);
+            updated['host'] = {
+                id: currentUser.id,
+                username: currentUser.username,
+                image: currentUser.image || ''
+            };
+
+            console.log('ADD ITEM: ' + JSON.stringify(updated));
         }
     }, {
         key: 'uploadImage',
         value: function uploadImage(files) {
+            var _this2 = this;
+
             var image = files[0];
             console.log('uploadImage: ' + image.name);
+            var turboClient = (0, _turbo2.default)({
+                site_id: '5b0983c0de0dea0014f1ad5a'
+            });
+
+            turboClient.uploadFile(image).then(function (data) {
+                // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+                // console.log('FILE UPLOADED: ' + data.result.url)
+                var updated = Object.assign({}, _this2.state.invite);
+                updated['image'] = data.result.url;
+                _this2.setState({
+                    invite: updated
+                });
+            }).catch(function (err) {
+                console.log('UPLOAD ERROR: ' + err.message);
+            });
         }
     }, {
         key: 'render',
@@ -270,8 +305,8 @@ var Results = function (_Component) {
 var stateToProps = function stateToProps(state) {
     return {
         invite: state.invite,
-        map: state.map
-        // account: state.account
+        map: state.map,
+        account: state.account
     };
 };
 

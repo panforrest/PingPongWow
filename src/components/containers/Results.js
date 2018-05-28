@@ -3,6 +3,7 @@ import { Invite } from '../presentation'
 import { connect } from 'react-redux'
 import actions from '../../actions'
 import Dropzone from 'react-dropzone'
+import turbo from 'turbo360'
 
 class Results extends Component {
     constructor(){
@@ -25,20 +26,51 @@ class Results extends Component {
     }
 
     addInvite(){
-        // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
-        let newInvite = Object.assign({}, this.state.invite)
-        const len = this.props.invite.all.length+1
-        newInvite['id'] = len.toString()
-        // newInvite['id'] = 100
-        // newInvite['key'] = '100'
-        // newInvite['defaultAnimation'] = 2
-        newInvite['position'] = this.props.map.currentLocation
-        this.props.addInvite(newInvite)
+        // // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
+        // let newInvite = Object.assign({}, this.state.invite)
+        // const len = this.props.invite.all.length+1
+        // newInvite['id'] = len.toString()
+        // // newInvite['id'] = 100
+        // // newInvite['key'] = '100'
+        // // newInvite['defaultAnimation'] = 2
+        // newInvite['position'] = this.props.map.currentLocation
+        // this.props.addInvite(newInvite)
+        if (this.props.account.currentUser == null) {
+            alert('Please log in or register to send invite')
+            return
+        }
+
+        const currentUser = this.props.account.currentUser
+        let updated = Object.assign({}, this.state.invite)
+        updated['host'] = {
+            id: currentUser.id,
+            username: currentUser.username,
+            image: currentUser.image || ''
+        }
+
+        console.log('ADD ITEM: ' + JSON.stringify(updated))
     }
 
     uploadImage(files){
         const image = files[0]
         console.log('uploadImage: ' + image.name)
+        const turboClient = turbo({
+            site_id: '5b0983c0de0dea0014f1ad5a'
+        })
+
+        turboClient.uploadFile(image)
+        .then(data => {
+            // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+            // console.log('FILE UPLOADED: ' + data.result.url)
+            let updated = Object.assign({}, this.state.invite)
+            updated['image'] = data.result.url
+            this.setState({
+                invite: updated
+            })
+        })
+        .catch(err => {
+            console.log('UPLOAD ERROR: ' + err.message)
+        })
     }
     
     render(){
@@ -77,7 +109,7 @@ const stateToProps = (state) => {
     return {
         invite: state.invite,
         map: state.map,
-        // account: state.account
+        account: state.account
     }
 }
 
