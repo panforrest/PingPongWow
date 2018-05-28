@@ -1,3 +1,4 @@
+// <img style={localStyle.icon} src={invite.host.image} />
 import React, { Component } from 'react'
 
 export default (props) => {
@@ -11,7 +12,7 @@ export default (props) => {
 
             <div style={localStyle.inviteImage}>
                 <a onClick={props.onPurchase.bind(this)} herf="#">  
-                    <img style={localStyle.inviteImage} src={invite.image+'=s400-c'} />
+                    <img style={localStyle.inviteImage} src={invite.image+'=s200-c'} />
                 </a>
             </div>
             <h2>{invite.label}</h2> 
@@ -19,7 +20,7 @@ export default (props) => {
             
             <div>
 
-                    <img style={localStyle.icon} src={invite.host.image} />
+                    
 
                 
             </div>

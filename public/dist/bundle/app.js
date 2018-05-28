@@ -1037,7 +1037,7 @@ exports.default = function (props) {
                     _react2.default.createElement(
                         "a",
                         { onClick: props.onPurchase.bind(undefined), herf: "#" },
-                        _react2.default.createElement("img", { style: localStyle.inviteImage, src: invite.image + '=s400-c' })
+                        _react2.default.createElement("img", { style: localStyle.inviteImage, src: invite.image + '=s200-c' })
                     )
                 ),
                 _react2.default.createElement(
@@ -1051,15 +1051,12 @@ exports.default = function (props) {
                     invite.date,
                     " "
                 ),
-                _react2.default.createElement(
-                    "div",
-                    null,
-                    _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image })
-                )
+                _react2.default.createElement("div", null)
             )
         )
     );
-};
+}; // <img style={localStyle.icon} src={invite.host.image} />
+
 
 var localStyle = {
     icon: {
@@ -1209,7 +1206,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <div className="col-md-3">
+//     <Account />
+// </div>
+
 
 var Home = function (_Component) {
   _inherits(Home, _Component);
@@ -1246,14 +1246,10 @@ var Home = function (_Component) {
           ),
           _react2.default.createElement(
             'div',
-            { className: 'col-md-5' },
+            { className: 'col-md-8' },
             _react2.default.createElement(_containers.Nav, null),
+            _react2.default.createElement(_containers.Account, null),
             _react2.default.createElement(_containers.Results, null)
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-3' },
-            _react2.default.createElement(_containers.Account, null)
           )
         )
       );
@@ -1820,8 +1816,6 @@ var Register = function (_Component) {
                     { onClick: this.submitRegistration.bind(this), className: 'btn btn-info btn-fill', style: { marginRight: 16 } },
                     'Join'
                 ),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
                 _react2.default.createElement(
                     'button',
                     { onClick: this.submitLoginCredentials.bind(this), className: 'btn btn-success' },

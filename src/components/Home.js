@@ -1,3 +1,6 @@
+                    // <div className="col-md-3">
+                    //     <Account />
+                    // </div>
 import React, { Component } from 'react'
 import { Map } from './presentation'
 import { Search, Results, Nav } from './containers'
@@ -25,14 +28,13 @@ class Home extends Component {
         	            <Search/> 
         	        </div>
 
-        	        <div className="col-md-5">
+        	        <div className="col-md-8">
                         <Nav />
+                        <Account />
         	            <Results />
         	        </div> 
 
-        	        <div className="col-md-3">
-        	            <Account />
-        	        </div>
+        	        
 
         	    </div>
         	</div>  
