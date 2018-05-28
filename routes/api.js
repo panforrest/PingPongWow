@@ -41,13 +41,13 @@ router.get('/:resource', function(req, res){
 
 /*  This is a sample API route. */
 
-router.get('/:resource', function(req, res){
-	res.json({
-		confirmation: 'success',
-		resource: req.params.resource,
-		query: req.query // from the url query string
-	})
-})
+// router.get('/:resource', function(req, res){
+// 	res.json({
+// 		confirmation: 'success',
+// 		resource: req.params.resource,
+// 		query: req.query // from the url query string
+// 	})
+// })
 
 router.get('/:resource/:id', function(req, res){
 	res.json({
