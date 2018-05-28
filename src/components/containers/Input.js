@@ -39,7 +39,7 @@ class Input extends Component {
         const currentUser = this.props.account.currentUser
         let updated = Object.assign({}, this.state.invite)
         updated['position'] = this.props.map.currentLocation
-        updated['seller'] = {
+        updated['host'] = {
             id: currentUser.id,
             username: currentUser.username,
             image: currentUser.image || ''
@@ -83,8 +83,8 @@ class Input extends Component {
             <div className="container-fluid">
                 
                 <hr />
-                <input onChange={this.updateInvite.bind(this, 'name')} className="formControl" type="text" placeholder="Match Invite" /><br /><br />	
-                <input onChange={this.updateInvite.bind(this, 'price')} className="formControl" type="text" placeholder="Price" /><br /><br />    
+                <input onChange={this.updateInvite.bind(this, 'label')} className="formControl" type="text" placeholder="Match Invite Detail" /><br /><br />	
+                <input onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" placeholder="Date/Time" /><br /><br />    
                 { (this.state.invite.image == null) ? null: <img src={this.state.invite.image+'=s120-c'} />
 
                 }

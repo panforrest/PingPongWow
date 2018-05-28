@@ -1051,12 +1051,19 @@ exports.default = function (props) {
                     invite.date,
                     " "
                 ),
+                _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image }),
+                _react2.default.createElement(
+                    "p",
+                    null,
+                    "by: ",
+                    invite.host.username,
+                    " "
+                ),
                 _react2.default.createElement("div", null)
             )
         )
     );
-}; // <img style={localStyle.icon} src={invite.host.image} />
-
+};
 
 var localStyle = {
     icon: {
@@ -1951,7 +1958,7 @@ var Input = function (_Component) {
             var currentUser = this.props.account.currentUser;
             var updated = Object.assign({}, this.state.invite);
             updated['position'] = this.props.map.currentLocation;
-            updated['seller'] = {
+            updated['host'] = {
                 id: currentUser.id,
                 username: currentUser.username,
                 image: currentUser.image || ''
@@ -1995,10 +2002,10 @@ var Input = function (_Component) {
                 'div',
                 { className: 'container-fluid' },
                 _react2.default.createElement('hr', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'name'), className: 'formControl', type: 'text', placeholder: 'Match Invite' }),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Match Invite Detail' }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'price'), className: 'formControl', type: 'text', placeholder: 'Price' }),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date/Time' }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null),
                 this.state.invite.image == null ? null : _react2.default.createElement('img', { src: this.state.invite.image + '=s120-c' }),

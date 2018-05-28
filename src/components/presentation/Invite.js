@@ -1,4 +1,3 @@
-// <img style={localStyle.icon} src={invite.host.image} />
 import React, { Component } from 'react'
 
 export default (props) => {
@@ -10,15 +9,17 @@ export default (props) => {
       <div id="reservations">
         <div class="reservation">
 
-            <div style={localStyle.inviteImage}>
-                <a onClick={props.onPurchase.bind(this)} herf="#">  
-                    <img style={localStyle.inviteImage} src={invite.image+'=s200-c'} />
-                </a>
-            </div>
-            <h2>{invite.label}</h2> 
-            <span class="reservation-date">{invite.date} </span>
-            
-            <div>
+                <div style={localStyle.inviteImage}>
+                    <a onClick={props.onPurchase.bind(this)} herf="#">  
+                        <img style={localStyle.inviteImage} src={invite.image+'=s200-c'} />
+                    </a>
+                </div>
+                <h2>{invite.label}</h2> 
+                
+                <span class="reservation-date">{invite.date} </span>
+                <img style={localStyle.icon} src={invite.host.image} />
+                <p>by: {invite.host.username} </p>
+                <div>
 
                     
 

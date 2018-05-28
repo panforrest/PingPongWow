@@ -34,7 +34,7 @@ class Home extends Component {
         	            <Results />
         	        </div> 
 
-        	        
+                         	        
 
         	    </div>
         	</div>  
