@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Invite } from '../presentation'
 import { connect } from 'react-redux'
 import actions from '../../actions'
+import Dropzone from 'react-dropzone'
 
 class Results extends Component {
     constructor(){
@@ -34,6 +35,11 @@ class Results extends Component {
         newInvite['position'] = this.props.map.currentLocation
         this.props.addInvite(newInvite)
     }
+
+    uploadImage(files){
+        const image = files[0]
+        console.log('uploadImage: ' + image.name)
+    }
     
     render(){
 
@@ -59,6 +65,7 @@ class Results extends Component {
                 <input onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" placeholder="Date" /><br /><br />    
                 
                 <div>
+                    <Dropzone onDrop={this.uploadImage.bind(this)} className="btn btn-info btn-fill" style={{marginRight:16}}>Add Image</Dropzone>
                     <button onClick={this.addInvite.bind(this)} className="btn btn-success">Add Invite</button> 
                 </div>  		                
             </div>
@@ -70,7 +77,7 @@ const stateToProps = (state) => {
     return {
         invite: state.invite,
         map: state.map,
-        account: state.account
+        // account: state.account
     }
 }
 

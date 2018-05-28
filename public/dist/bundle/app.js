@@ -161,6 +161,10 @@ var _actions = __webpack_require__(94);
 
 var _actions2 = _interopRequireDefault(_actions);
 
+var _reactDropzone = __webpack_require__(395);
+
+var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -210,6 +214,12 @@ var Results = function (_Component) {
             this.props.addInvite(newInvite);
         }
     }, {
+        key: 'uploadImage',
+        value: function uploadImage(files) {
+            var image = files[0];
+            console.log('uploadImage: ' + image.name);
+        }
+    }, {
         key: 'render',
         value: function render() {
 
@@ -240,6 +250,11 @@ var Results = function (_Component) {
                     'div',
                     null,
                     _react2.default.createElement(
+                        _reactDropzone2.default,
+                        { onDrop: this.uploadImage.bind(this), className: 'btn btn-info btn-fill', style: { marginRight: 16 } },
+                        'Add Image'
+                    ),
+                    _react2.default.createElement(
                         'button',
                         { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
                         'Add Invite'
@@ -255,8 +270,8 @@ var Results = function (_Component) {
 var stateToProps = function stateToProps(state) {
     return {
         invite: state.invite,
-        map: state.map,
-        account: state.account
+        map: state.map
+        // account: state.account
     };
 };
 
