@@ -169,6 +169,8 @@ var _turbo = __webpack_require__(171);
 
 var _turbo2 = _interopRequireDefault(_turbo);
 
+var _reactBootstrap = __webpack_require__(433);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -186,6 +188,7 @@ var Results = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).call(this));
 
         _this.state = {
+            showModal: false,
             invite: {
                 // position:{lat:40.70224017, lng:-73.9796719}
             }
@@ -194,6 +197,12 @@ var Results = function (_Component) {
     }
 
     _createClass(Results, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log('componentDidMount: ');
+            this.props.fetchInvites();
+        }
+    }, {
         key: 'updateInvite',
         value: function updateInvite(attr, event) {
             event.preventDefault();
@@ -223,6 +232,7 @@ var Results = function (_Component) {
 
             var currentUser = this.props.account.currentUser;
             var updated = Object.assign({}, this.state.invite);
+            updated['position'] = this.props.map.currentLocation;
             updated['host'] = {
                 id: currentUser.id,
                 username: currentUser.username,
@@ -248,8 +258,8 @@ var Results = function (_Component) {
             });
 
             turboClient.uploadFile(image).then(function (data) {
-                console.log('FILE UPLOADED: ' + JSON.stringify(data));
-                console.log('FILE UPLOADED: ' + data.result.url);
+                // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+                // console.log('FILE UPLOADED: ' + data.result.url)
                 var updated = Object.assign({}, _this2.state.invite);
                 updated['image'] = data.result.url;
                 _this2.setState({
@@ -260,8 +270,18 @@ var Results = function (_Component) {
             });
         }
     }, {
+        key: 'onPurchase',
+        value: function onPurchase(invite, event) {
+            event.preventDefault();
+            this.setState({
+                showModal: true
+            });
+            console.log('onPurchase: ' + JSON.stringify(invite));
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this3 = this;
 
             // const invites = [
             //     {id:1, key:'1', date:'Sat, May 26, 2018', defaultAnimation:2, label:'Match 1', position:{lat:40.7224017, lng:-73.9896719}},
@@ -276,7 +296,7 @@ var Results = function (_Component) {
                     'div',
                     { className: 'row' },
                     invites.map(function (invite, i) {
-                        return _react2.default.createElement(_presentation.Invite, { key: invite.id, invite: invite });
+                        return _react2.default.createElement(_presentation.Invite, { key: invite.id, onPurchase: _this3.onPurchase.bind(_this3, invite), invite: invite });
                     })
                 ),
                 _react2.default.createElement('hr', null),
@@ -286,6 +306,7 @@ var Results = function (_Component) {
                 _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date' }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null),
+                this.state.invite.image == null ? null : _react2.default.createElement('img', { src: this.state.invite.image + '=s120-c' }),
                 _react2.default.createElement(
                     'div',
                     null,
@@ -299,6 +320,21 @@ var Results = function (_Component) {
                         { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
                         'Add Invite'
                     )
+                ),
+                _react2.default.createElement(
+                    _reactBootstrap.Modal,
+                    { bsSize: 'sm', show: this.state.showModal, onHide: function onHide() {
+                            _this3.setState({ showModal: false });
+                        } },
+                    _react2.default.createElement(
+                        _reactBootstrap.Modal.Body,
+                        { style: localStyle.modal },
+                        _react2.default.createElement(
+                            'h2',
+                            null,
+                            'This is a modal'
+                        )
+                    )
                 )
             );
         }
@@ -306,6 +342,13 @@ var Results = function (_Component) {
 
     return Results;
 }(_react.Component);
+
+var localStyle = {
+    input: {
+        border: '1px solid #ddd',
+        marginBottom: 12
+    }
+};
 
 var stateToProps = function stateToProps(state) {
     return {
@@ -319,6 +362,9 @@ var dispatchToProps = function dispatchToProps(dispatch) {
     return {
         addInvite: function addInvite(invite) {
             return dispatch(_actions2.default.addInvite(invite));
+        },
+        fetchInvites: function fetchInvites(params) {
+            return dispatch(_actions2.default.fetchInvites(params));
         }
     };
 };
@@ -809,7 +855,11 @@ exports.default = function (props) {
                 _react2.default.createElement(
                     "div",
                     { style: localStyle.inviteImage },
-                    _react2.default.createElement("img", { style: localStyle.inviteImage, src: invite.image })
+                    _react2.default.createElement(
+                        "a",
+                        { onClick: props.onPurchase.bind(undefined), herf: "#" },
+                        _react2.default.createElement("img", { style: localStyle.inviteImage, src: invite.image + '=s400-c' })
+                    )
                 ),
                 _react2.default.createElement(
                     "h2",
@@ -822,7 +872,11 @@ exports.default = function (props) {
                     invite.date,
                     " "
                 ),
-                _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image })
+                _react2.default.createElement(
+                    "div",
+                    null,
+                    _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image })
+                )
             )
         )
     );
@@ -1156,19 +1210,24 @@ exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments[1];
 
-  var updatedState = Object.assign({}, state);
+  var updated = Object.assign({}, state);
 
   switch (action.type) {
     case _constants2.default.INVITE_ADDED:
       var payload = action.data;
       console.log('INVITE_ADDED: ' + JSON.stringify(action.data));
-      var all = updatedState.all ? Object.assign([], updatedState.all) : [];
+      // let all = (updated.all) ? Object.assign([], updated.all) : []
+      var all = Object.assign([], updated.all);
       all.push(payload.data);
-      updatedState['all'] = all;
-      return updatedState;
+      updated['all'] = all;
+      return updated;
+
+    case _constants2.default.INVITES_RECEIVED:
+      updated['all'] = action.data.data;
+      return updated;
 
     default:
-      return updatedState;
+      return updated;
   }
 };
 
@@ -1250,7 +1309,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
 	INVITE_ADDED: 'INVITE_ADDED',
 	LOCATION_CHANGED: 'LOCATION_CHANGED',
-	CURRENT_USER_RECEIVED: 'CURRENT_USER_RECEIVED'
+	CURRENT_USER_RECEIVED: 'CURRENT_USER_RECEIVED',
+	INVITES_RECEIVED: 'INVITES_RECEIVED'
 	// USERS_RECEIVED: 		'USERS_RECEIVED',
 	// USER_CREATED: 			'USER_CREATED',
 	// USER_LOGGED_IN: 		'USER_LOGGED_IN',
@@ -1537,6 +1597,12 @@ exports.default = {
 		// }
 		return function (dispatch) {
 			return dispatch(_utils.HTTPAsync.post('/api/invite', invite, _constants2.default.INVITE_ADDED));
+		};
+	},
+
+	fetchInvites: function fetchInvites(params) {
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.get('/api/invite', params, _constants2.default.INVITES_RECEIVED));
 		};
 	},
 

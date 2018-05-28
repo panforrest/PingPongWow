@@ -10,11 +10,19 @@ export default (props) => {
         <div class="reservation">
 
             <div style={localStyle.inviteImage}>
-                <img style={localStyle.inviteImage} src={invite.image} />
+                <a onClick={props.onPurchase.bind(this)} herf="#">  
+                    <img style={localStyle.inviteImage} src={invite.image+'=s400-c'} />
+                </a>
             </div>
             <h2>{invite.label}</h2> 
             <span class="reservation-date">{invite.date} </span>
-            <img style={localStyle.icon} src={invite.host.image} />
+            
+            <div>
+
+                    <img style={localStyle.icon} src={invite.host.image} />
+
+                
+            </div>
             
 
         </div>    

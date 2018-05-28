@@ -4,15 +4,22 @@ import { connect } from 'react-redux'
 import actions from '../../actions'
 import Dropzone from 'react-dropzone'
 import turbo from 'turbo360'
+import { Modal } from 'react-bootstrap'
 
 class Results extends Component {
     constructor(){
     	super()
     	this.state = {
+            showModal: false,
             invite: {
                 // position:{lat:40.70224017, lng:-73.9796719}
             }
     	}
+    }
+
+    componentDidMount(){
+        console.log('componentDidMount: ')
+        this.props.fetchInvites()
     }
 
     updateInvite(attr, event){
@@ -42,6 +49,7 @@ class Results extends Component {
 
         const currentUser = this.props.account.currentUser
         let updated = Object.assign({}, this.state.invite)
+        updated['position'] = this.props.map.currentLocation
         updated['host'] = {
             id: currentUser.id,
             username: currentUser.username,
@@ -67,8 +75,8 @@ class Results extends Component {
 
         turboClient.uploadFile(image)
         .then(data => {
-            console.log('FILE UPLOADED: ' + JSON.stringify(data))
-            console.log('FILE UPLOADED: ' + data.result.url)
+            // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+            // console.log('FILE UPLOADED: ' + data.result.url)
             let updated = Object.assign({}, this.state.invite)
             updated['image'] = data.result.url
             this.setState({
@@ -78,6 +86,14 @@ class Results extends Component {
         .catch(err => {
             console.log('UPLOAD ERROR: ' + err.message)
         })
+    }
+
+    onPurchase(invite, event){
+        event.preventDefault()
+        this.setState({
+            showModal:true
+        })
+        console.log('onPurchase: ' + JSON.stringify(invite))
     }
     
     render(){
@@ -93,7 +109,7 @@ class Results extends Component {
                 <div className="row">
 
                     { invites.map((invite, i) => {
-                    	return <Invite key={invite.id} invite={invite} />
+                    	return <Invite key={invite.id} onPurchase={this.onPurchase.bind(this, invite)} invite={invite} />
                       })
 
                     }
@@ -102,13 +118,27 @@ class Results extends Component {
                 <hr />
                 <input onChange={this.updateInvite.bind(this, 'label')} className="formControl" type="text" placeholder="Invite" /><br /><br /> 
                 <input onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" placeholder="Date" /><br /><br />    
-                
+                { (this.state.invite.image == null) ? null: <img src={this.state.invite.image+'=s120-c'} />
+
+                }
                 <div>
                     <Dropzone onDrop={this.uploadImage.bind(this)} className="btn btn-info btn-fill" style={{marginRight:16}}>Add Image</Dropzone>
                     <button onClick={this.addInvite.bind(this)} className="btn btn-success">Add Invite</button> 
-                </div>  		                
+                </div> 
+                <Modal bsSize="sm" show={this.state.showModal} onHide={ () => {this.setState({showModal:false})}}>
+                    <Modal.Body style={localStyle.modal}>
+                        <h2>This is a modal</h2>
+                    </Modal.Body>
+                </Modal>		                
             </div>
     	)
+    }
+}
+
+const localStyle = {
+    input: {
+        border: '1px solid #ddd',
+        marginBottom: 12
     }
 }
 
@@ -122,7 +152,8 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
     return {
-        addInvite: (invite) => dispatch(actions.addInvite(invite))
+        addInvite: (invite) => dispatch(actions.addInvite(invite)),
+        fetchInvites: (params) => dispatch(actions.fetchInvites(params))
     }
 }
 

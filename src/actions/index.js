@@ -19,6 +19,12 @@ export default {
 		}
 	},
 
+	fetchInvites: (params) => {
+		return dispatch => {
+			return dispatch(HTTPAsync.get('/api/invite', params, constants.INVITES_RECEIVED))
+		}
+	},
+
 	locationChanged: (location) => {
 		return {
 			type: constants.LOCATION_CHANGED,

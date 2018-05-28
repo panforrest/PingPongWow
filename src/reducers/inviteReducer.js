@@ -11,18 +11,23 @@ var initialState = {
 }
 
 export default (state = initialState, action) => {
-	let updatedState = Object.assign({}, state)
+	let updated = Object.assign({}, state)
 
 	switch (action.type) {
         case constants.INVITE_ADDED:
           const payload = action.data
           console.log('INVITE_ADDED: '+JSON.stringify(action.data))
-          let all = (updatedState.all) ? Object.assign([], updatedState.all) : []
+          // let all = (updated.all) ? Object.assign([], updated.all) : []
+          let all = Object.assign([], updated.all)
           all.push(payload.data)
-          updatedState['all'] = all
-          return updatedState
+          updated['all'] = all
+          return updated
+
+        case constants.INVITES_RECEIVED:
+          updated['all'] = action.data.data
+          return updated
 
 		default:
-			return updatedState
+			return updated
 	}
 }
