@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import { userReducer, inviteReducer, mapReducer } from '../reducers'
+import { userReducer, inviteReducer, mapReducer, accountReducer } from '../reducers'
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * *
 	This is a store with one reducer: userReducer. When 
@@ -17,7 +17,8 @@ export default {
 		const reducers = combineReducers({ // insert reducers here
 			user: userReducer,
 			invite: inviteReducer,
-			map: mapReducer
+			map: mapReducer,
+			account: accountReducer
 		})
 
 		if (initialState){

@@ -130,7 +130,7 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push([389,0]);
+/******/ 	deferredModules.push([391,0]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
@@ -255,7 +255,8 @@ var Results = function (_Component) {
 var stateToProps = function stateToProps(state) {
     return {
         invite: state.invite,
-        map: state.map
+        map: state.map,
+        account: state.account
     };
 };
 
@@ -272,13 +273,6 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Result
 /***/ }),
 
 /***/ 153:
-/***/ (function(module) {
-
-module.exports = {"name":"PingPongWow","version":"0.0.0","server":false,"private":true,"scripts":{"dev":"webpack --mode development -w","build":"npm run clean && NODE_ENV=production webpack -p && gulp prod","clean":"rm -rf ./public/dist","postinstall":"npm run build"},"dependencies":{"accepts":"^1.3.5","array-flatten":"1.1.1","bluebird":"^3.5.1","body-parser":"1.18.2","content-disposition":"0.5.2","content-type":"^1.0.4","cookie":"0.3.1","cookie-signature":"1.0.6","debug":"2.6.9","depd":"^1.1.2","dotenv":"^5.0.1","encodeurl":"^1.0.2","escape-html":"^1.0.3","etag":"^1.8.1","finalhandler":"1.1.1","fresh":"0.5.2","merge-descriptors":"1.0.1","methods":"^1.1.2","moment":"^2.20.1","nodemon":"^1.17.1","on-finished":"^2.3.0","parseurl":"^1.3.2","path-to-regexp":"0.1.7","proxy-addr":"^2.0.3","qs":"6.5.1","range-parser":"^1.2.0","react":"^16.2.0","react-bootstrap":"^0.32.1","react-dom":"^16.2.0","react-dropzone":"^4.2.8","react-google-maps":"^9.4.5","react-redux":"^5.0.7","react-time":"^4.3.0","redux":"^3.7.2","redux-thunk":"^2.2.0","safe-buffer":"5.1.1","send":"0.16.2","serve-static":"1.13.2","setprototypeof":"1.1.0","statuses":"^1.4.0","superagent":"^3.8.2","turbo360":"latest","type-is":"^1.6.16","utils-merge":"1.0.1","vary":"^1.1.2","vertex360":"latest"},"devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.3","babel-preset-env":"^1.6.1","babel-preset-react":"^6.24.1","chai":"^4.1.2","chai-http":"^3.0.0","cross-env":"^5.1.4","gulp":"^3.9.1","gulp-6to5":"^3.0.0","gulp-autoprefixer":"^5.0.0","gulp-clean-css":"^3.9.2","gulp-concat":"^2.6.1","gulp-less":"^4.0.0","gulp-rename":"^1.2.2","gulp-sass":"^3.1.0","gulp-uglify":"^3.0.0","json-loader":"^0.5.7","mocha":"^5.0.1","mocha-jscs":"^5.0.1","mocha-jshint":"^2.3.1","rimraf":"^2.6.2","uglifyjs-webpack-plugin":"^1.2.2","webpack":"^4.1.1","webpack-cli":"^2.0.10"},"deploy":["."],"format":"vertex","app":""};
-
-/***/ }),
-
-/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -288,11 +282,108 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _turbo = __webpack_require__(170);
+var _superagent = __webpack_require__(12);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+var _bluebird = __webpack_require__(10);
+
+var _bluebird2 = _interopRequireDefault(_bluebird);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// standard superagent get request:
+var getRequst = function getRequst(url, params) {
+	return new _bluebird2.default(function (resolve, reject) {
+		_superagent2.default.get(url).query(params).set('Accept', 'application/json').end(function (err, response) {
+			if (err) {
+				reject(err);
+				return;
+			}
+
+			var payload = response.body || response.text;
+			resolve(payload);
+		});
+	});
+};
+
+var postRequst = function postRequst(url, body) {
+	return new _bluebird2.default(function (resolve, reject) {
+		_superagent2.default.post(url).send(body).set('Accept', 'application/json').end(function (err, response) {
+			if (err) {
+				reject(err);
+				return;
+			}
+
+			var payload = response.body || response.text;
+			resolve(payload);
+		});
+	});
+};
+
+exports.default = {
+	post: function post(url, body, actionType) {
+		return function (dispatch) {
+			return postRequst(url, body).then(function (data) {
+				// console.log('DATA: ' + JSON.stringify(data))
+				if (actionType != null) {
+					dispatch({
+						type: actionType,
+						data: data
+					});
+				}
+
+				return data;
+			}).catch(function (err) {
+				throw err;
+			});
+		};
+	},
+
+	get: function get(url, params, actionType) {
+		return function (dispatch) {
+			return getRequst(url, params).then(function (data) {
+				// console.log('DATA: ' + JSON.stringify(data))
+				if (actionType != null) {
+					dispatch({
+						type: actionType,
+						data: data
+					});
+				}
+
+				return data;
+			}).catch(function (err) {
+				throw err;
+			});
+		};
+	}
+
+};
+
+/***/ }),
+
+/***/ 154:
+/***/ (function(module) {
+
+module.exports = {"name":"PingPongWow","version":"0.0.0","server":false,"private":true,"scripts":{"dev":"webpack --mode development -w","build":"npm run clean && NODE_ENV=production webpack -p && gulp prod","clean":"rm -rf ./public/dist","postinstall":"npm run build"},"dependencies":{"accepts":"^1.3.5","array-flatten":"1.1.1","bluebird":"^3.5.1","body-parser":"1.18.2","content-disposition":"0.5.2","content-type":"^1.0.4","cookie":"0.3.1","cookie-signature":"1.0.6","debug":"2.6.9","depd":"^1.1.2","dotenv":"^5.0.1","encodeurl":"^1.0.2","escape-html":"^1.0.3","etag":"^1.8.1","finalhandler":"1.1.1","fresh":"0.5.2","merge-descriptors":"1.0.1","methods":"^1.1.2","moment":"^2.20.1","nodemon":"^1.17.1","on-finished":"^2.3.0","parseurl":"^1.3.2","path-to-regexp":"0.1.7","proxy-addr":"^2.0.3","qs":"6.5.1","range-parser":"^1.2.0","react":"^16.2.0","react-bootstrap":"^0.32.1","react-dom":"^16.2.0","react-dropzone":"^4.2.8","react-google-maps":"^9.4.5","react-redux":"^5.0.7","react-time":"^4.3.0","redux":"^3.7.2","redux-thunk":"^2.2.0","safe-buffer":"5.1.1","send":"0.16.2","serve-static":"1.13.2","setprototypeof":"1.1.0","statuses":"^1.4.0","superagent":"^3.8.2","turbo360":"latest","type-is":"^1.6.16","utils-merge":"1.0.1","vary":"^1.1.2","vertex360":"latest"},"devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.3","babel-preset-env":"^1.6.1","babel-preset-react":"^6.24.1","chai":"^4.1.2","chai-http":"^3.0.0","cross-env":"^5.1.4","gulp":"^3.9.1","gulp-6to5":"^3.0.0","gulp-autoprefixer":"^5.0.0","gulp-clean-css":"^3.9.2","gulp-concat":"^2.6.1","gulp-less":"^4.0.0","gulp-rename":"^1.2.2","gulp-sass":"^3.1.0","gulp-uglify":"^3.0.0","json-loader":"^0.5.7","mocha":"^5.0.1","mocha-jscs":"^5.0.1","mocha-jshint":"^2.3.1","rimraf":"^2.6.2","uglifyjs-webpack-plugin":"^1.2.2","webpack":"^4.1.1","webpack-cli":"^2.0.10"},"deploy":["."],"format":"vertex","app":""};
+
+/***/ }),
+
+/***/ 172:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _turbo = __webpack_require__(171);
 
 var _turbo2 = _interopRequireDefault(_turbo);
 
-var _package = __webpack_require__(153);
+var _package = __webpack_require__(154);
 
 var _package2 = _interopRequireDefault(_package);
 
@@ -439,7 +530,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 172:
+/***/ 173:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -448,19 +539,24 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.TurboClient = undefined;
+exports.HTTPAsync = exports.TurboClient = undefined;
 
-var _TurboClient = __webpack_require__(171);
+var _TurboClient = __webpack_require__(172);
 
 var _TurboClient2 = _interopRequireDefault(_TurboClient);
+
+var _HTTPAsync = __webpack_require__(153);
+
+var _HTTPAsync2 = _interopRequireDefault(_HTTPAsync);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.TurboClient = _TurboClient2.default;
+exports.HTTPAsync = _HTTPAsync2.default;
 
 /***/ }),
 
-/***/ 173:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -508,6 +604,11 @@ var Search = function (_Component) {
 	}
 
 	_createClass(Search, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.props.currentUser(); //MISSING () CAN CAUSE THE accountReducer NOT CONSOLE LOG
+		}
+	}, {
 		key: 'centerChanged',
 		value: function centerChanged(center) {
 			console.log('centerChanged: ' + JSON.stringify(center));
@@ -572,6 +673,9 @@ var dispatchToProps = function dispatchToProps(dispatch) {
 	return {
 		locationChanged: function locationChanged(location) {
 			return dispatch(_actions2.default.locationChanged(location));
+		},
+		currentUser: function currentUser() {
+			return dispatch(_actions2.default.currentUser());
 		}
 	};
 };
@@ -580,7 +684,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search
 
 /***/ }),
 
-/***/ 174:
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -591,7 +695,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Results = exports.Search = undefined;
 
-var _Search = __webpack_require__(173);
+var _Search = __webpack_require__(174);
 
 var _Search2 = _interopRequireDefault(_Search);
 
@@ -614,7 +718,7 @@ exports.Results = _Results2.default;
 
 /***/ }),
 
-/***/ 175:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -681,7 +785,7 @@ var localStyle = {
 
 /***/ }),
 
-/***/ 371:
+/***/ 372:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -699,7 +803,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactGoogleMaps = __webpack_require__(370);
+var _reactGoogleMaps = __webpack_require__(371);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -787,7 +891,7 @@ exports.default = (0, _reactGoogleMaps.withGoogleMap)(Map);
 
 /***/ }),
 
-/***/ 372:
+/***/ 373:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -805,7 +909,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(84);
 
-var _containers = __webpack_require__(174);
+var _containers = __webpack_require__(175);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -867,7 +971,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 375:
+/***/ 376:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -877,7 +981,58 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _constants = __webpack_require__(58);
+var _constants = __webpack_require__(38);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+	// all: null,
+	currentUser: null // signed in user
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var updated = Object.assign({}, state);
+
+	switch (action.type) {
+
+		case _constants2.default.CURRENT_USER_RECEIVED:
+			console.log('CURRENT_USER_RECEIVED: ' + JSON.stringify(action.data));
+			// newState['currentUser'] = action.data
+			return updated;
+
+		// case constants.USERS_RECEIVED:
+		// 	newState['all'] = action.data
+		// 	return newState
+
+		// case constants.USER_CREATED:
+		// 	let array = (newState.all) ? Object.assign([], newState.all) : []
+		// 	array.unshift(action.data)
+		// 	newState['all'] = array
+		// 	return newState
+
+		default:
+			return state;
+	}
+};
+
+/***/ }),
+
+/***/ 377:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(38);
 
 var _constants2 = _interopRequireDefault(_constants);
 
@@ -906,7 +1061,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 376:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -916,7 +1071,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _constants = __webpack_require__(58);
+var _constants = __webpack_require__(38);
 
 var _constants2 = _interopRequireDefault(_constants);
 
@@ -948,7 +1103,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 377:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -958,7 +1113,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _constants = __webpack_require__(58);
+var _constants = __webpack_require__(38);
 
 var _constants2 = _interopRequireDefault(_constants);
 
@@ -1005,7 +1160,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 378:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1014,32 +1169,68 @@ exports.default = function () {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.mapReducer = exports.inviteReducer = exports.userReducer = undefined;
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Here are a few sample constants for typical actions.
+	You may want to extends these to the other data
+	types for your project (e.g. BLOG_POST_CREATED, BLOG_POST_UPDATED, etc)
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
 
-var _userReducer = __webpack_require__(377);
+exports.default = {
+	INVITE_ADDED: 'INVITE_ADDED',
+	LOCATION_CHANGED: 'LOCATION_CHANGED',
+	CURRENT_USER_RECEIVED: 'CURRENT_USER_RECEIVED'
+	// USERS_RECEIVED: 		'USERS_RECEIVED',
+	// USER_CREATED: 			'USER_CREATED',
+	// USER_LOGGED_IN: 		'USER_LOGGED_IN',
+	// CURRENT_USER_RECEIVED: 	'CURRENT_USER_RECEIVED'
 
-var _userReducer2 = _interopRequireDefault(_userReducer);
-
-var _inviteReducer = __webpack_require__(376);
-
-var _inviteReducer2 = _interopRequireDefault(_inviteReducer);
-
-var _mapReducer = __webpack_require__(375);
-
-var _mapReducer2 = _interopRequireDefault(_mapReducer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.userReducer = _userReducer2.default;
-exports.inviteReducer = _inviteReducer2.default;
-exports.mapReducer = _mapReducer2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                           	Export your reducers here
-                                           * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                           */
+};
 
 /***/ }),
 
-/***/ 381:
+/***/ 380:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.accountReducer = exports.mapReducer = exports.inviteReducer = exports.userReducer = undefined;
+
+var _userReducer = __webpack_require__(379);
+
+var _userReducer2 = _interopRequireDefault(_userReducer);
+
+var _inviteReducer = __webpack_require__(378);
+
+var _inviteReducer2 = _interopRequireDefault(_inviteReducer);
+
+var _mapReducer = __webpack_require__(377);
+
+var _mapReducer2 = _interopRequireDefault(_mapReducer);
+
+var _accountReducer = __webpack_require__(376);
+
+var _accountReducer2 = _interopRequireDefault(_accountReducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Export your reducers here
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+exports.userReducer = _userReducer2.default;
+exports.inviteReducer = _inviteReducer2.default;
+exports.mapReducer = _mapReducer2.default;
+exports.accountReducer = _accountReducer2.default;
+
+/***/ }),
+
+/***/ 383:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1051,11 +1242,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(88);
 
-var _reduxThunk = __webpack_require__(379);
+var _reduxThunk = __webpack_require__(381);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducers = __webpack_require__(378);
+var _reducers = __webpack_require__(380);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1075,7 +1266,8 @@ exports.default = {
 		var reducers = (0, _redux.combineReducers)({ // insert reducers here
 			user: _reducers.userReducer,
 			invite: _reducers.inviteReducer,
-			map: _reducers.mapReducer
+			map: _reducers.mapReducer,
+			account: _reducers.accountReducer
 		});
 
 		if (initialState) {
@@ -1096,7 +1288,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 389:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1110,13 +1302,13 @@ var _reactDom = __webpack_require__(85);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _stores = __webpack_require__(381);
+var _stores = __webpack_require__(383);
 
 var _stores2 = _interopRequireDefault(_stores);
 
 var _reactRedux = __webpack_require__(60);
 
-var _Home = __webpack_require__(372);
+var _Home = __webpack_require__(373);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -1134,35 +1326,6 @@ _reactDom2.default.render(app, document.getElementById('root'));
 
 /***/ }),
 
-/***/ 58:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Here are a few sample constants for typical actions.
-	You may want to extends these to the other data
-	types for your project (e.g. BLOG_POST_CREATED, BLOG_POST_UPDATED, etc)
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
-
-exports.default = {
-	INVITE_ADDED: 'INVITE_ADDED',
-	LOCATION_CHANGED: 'LOCATION_CHANGED'
-
-	// USERS_RECEIVED: 		'USERS_RECEIVED',
-	// USER_CREATED: 			'USER_CREATED',
-	// USER_LOGGED_IN: 		'USER_LOGGED_IN',
-	// CURRENT_USER_RECEIVED: 	'CURRENT_USER_RECEIVED'
-
-};
-
-/***/ }),
-
 /***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1174,11 +1337,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Map = exports.Invite = undefined;
 
-var _Map = __webpack_require__(371);
+var _Map = __webpack_require__(372);
 
 var _Map2 = _interopRequireDefault(_Map);
 
-var _Invite = __webpack_require__(175);
+var _Invite = __webpack_require__(176);
 
 var _Invite2 = _interopRequireDefault(_Invite);
 
@@ -1202,11 +1365,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _constants = __webpack_require__(58);
+var _constants = __webpack_require__(38);
 
 var _constants2 = _interopRequireDefault(_constants);
 
-var _utils = __webpack_require__(172);
+var _utils = __webpack_require__(173);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1229,6 +1392,13 @@ exports.default = {
 		return {
 			type: 'LOCATION_CHANGED',
 			data: location
+		};
+	},
+
+	currentUser: function currentUser() {
+		console.log('GET CURRENT USER');
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.get('/auth/currentuser', null, _constants2.default.CURRENT_USER_RECEIVED));
 		};
 	}
 
