@@ -15,7 +15,7 @@ class Results extends Component {
     	}
     }
 
-        updateInvite(attr, event){
+    updateInvite(attr, event){
         event.preventDefault()
         console.log(attr + ' == ' + event.target.value)
         let updated = Object.assign({}, this.state.invite)
@@ -48,7 +48,14 @@ class Results extends Component {
             image: currentUser.image || ''
         }
 
-        console.log('ADD ITEM: ' + JSON.stringify(updated))
+        console.log('ADD INVITE: ' + JSON.stringify(updated))
+        this.props.addInvite(updated)
+        .then(data => {
+            console.log('INVITE ADDED: ' + JSON.stringify(data))
+        })
+        .catch(err => {
+            console.log('ERR: ' + err.message)
+        })
     }
 
     uploadImage(files){
@@ -60,8 +67,8 @@ class Results extends Component {
 
         turboClient.uploadFile(image)
         .then(data => {
-            // console.log('FILE UPLOADED: ' + JSON.stringify(data))
-            // console.log('FILE UPLOADED: ' + data.result.url)
+            console.log('FILE UPLOADED: ' + JSON.stringify(data))
+            console.log('FILE UPLOADED: ' + data.result.url)
             let updated = Object.assign({}, this.state.invite)
             updated['image'] = data.result.url
             this.setState({

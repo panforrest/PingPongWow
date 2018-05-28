@@ -229,7 +229,12 @@ var Results = function (_Component) {
                 image: currentUser.image || ''
             };
 
-            console.log('ADD ITEM: ' + JSON.stringify(updated));
+            console.log('ADD INVITE: ' + JSON.stringify(updated));
+            this.props.addInvite(updated).then(function (data) {
+                console.log('INVITE ADDED: ' + JSON.stringify(data));
+            }).catch(function (err) {
+                console.log('ERR: ' + err.message);
+            });
         }
     }, {
         key: 'uploadImage',
@@ -243,8 +248,8 @@ var Results = function (_Component) {
             });
 
             turboClient.uploadFile(image).then(function (data) {
-                // console.log('FILE UPLOADED: ' + JSON.stringify(data))
-                // console.log('FILE UPLOADED: ' + data.result.url)
+                console.log('FILE UPLOADED: ' + JSON.stringify(data));
+                console.log('FILE UPLOADED: ' + data.result.url);
                 var updated = Object.assign({}, _this2.state.invite);
                 updated['image'] = data.result.url;
                 _this2.setState({
@@ -1138,8 +1143,13 @@ var _constants2 = _interopRequireDefault(_constants);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-  all: [{ id: '1', date: 'Sat, May 26, 2018', label: 'Match 1', image: 'https://hoodrhetoric.com/wp-content/uploads/2016/08/Air-Jordan-1-Retro-High-OG-Banned-Black-White-555088-001.jpg', position: { lat: 40.7224017, lng: -73.9896719 }, host: { username: 'lebron_james', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }, { id: '2', date: 'Sun, May 27, 2018', label: 'Ping Pong 2', image: 'https://smhttp-ssl-18667.nexcesscdn.net/media/catalog/product/cache/1/image/400x400/9df78eab33525d08d6e5fb8d27136e95/s/i/sig-7970018-sofa-chise-3.jpg', position: { lat: 40.7124017, lng: -73.9996719 }, host: { username: 'eli_manning', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }, { id: '3', date: 'Sat, May 26, 2018', label: 'Match 3', image: 'https://d2uk7vc0yceq94.cloudfront.net/uploads/2017/08/25/s/0/1/12707801/PV2H-5.jpeg', position: { lat: 40.7174017, lng: -73.9896719 }, host: { username: 'tom_brady', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }, { id: '4', date: 'Sun, May 27, 2018', label: 'Ping Pong 4', image: 'https://d2uk7vc0yceq94.cloudfront.net/uploads/2017/08/25/s/0/1/12707801/PV2H-5.jpeg', position: { lat: 40.7274017, lng: -73.9896719 }, host: { username: 'tom_brady', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }]
-
+  // all: [
+  //     {id:'1', date:'Sat, May 26, 2018', label:'Match 1', image: 'https://hoodrhetoric.com/wp-content/uploads/2016/08/Air-Jordan-1-Retro-High-OG-Banned-Black-White-555088-001.jpg', position:{lat:40.7224017, lng:-73.9896719}, host:{username:'lebron_james',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
+  //      {id:'2', date:'Sun, May 27, 2018', label:'Ping Pong 2', image: 'https://smhttp-ssl-18667.nexcesscdn.net/media/catalog/product/cache/1/image/400x400/9df78eab33525d08d6e5fb8d27136e95/s/i/sig-7970018-sofa-chise-3.jpg', position:{lat:40.7124017, lng:-73.9996719}, host:{username:'eli_manning',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
+  //      {id:'3', date:'Sat, May 26, 2018', label:'Match 3', image: 'https://d2uk7vc0yceq94.cloudfront.net/uploads/2017/08/25/s/0/1/12707801/PV2H-5.jpeg', position:{lat:40.7174017, lng:-73.9896719}, host:{username:'tom_brady',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
+  //      {id:'4', date:'Sun, May 27, 2018', label:'Ping Pong 4', image: 'https://d2uk7vc0yceq94.cloudfront.net/uploads/2017/08/25/s/0/1/12707801/PV2H-5.jpeg', position:{lat:40.7274017, lng:-73.9896719}, host:{username:'tom_brady',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}}
+  // ]
+  all: null
 };
 
 exports.default = function () {
@@ -1150,14 +1160,15 @@ exports.default = function () {
 
   switch (action.type) {
     case _constants2.default.INVITE_ADDED:
-      console.log('ITEM_ADDED: ' + JSON.stringify(action.data));
+      var payload = action.data;
+      console.log('INVITE_ADDED: ' + JSON.stringify(action.data));
       var all = updatedState.all ? Object.assign([], updatedState.all) : [];
-      all.push(action.data);
+      all.push(payload.data);
       updatedState['all'] = all;
       return updatedState;
 
     default:
-      return state;
+      return updatedState;
   }
 };
 
@@ -1520,15 +1531,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
 
 	addInvite: function addInvite(invite) {
-		return {
-			type: 'INVITE_ADDED',
-			data: invite
+		//    return {
+		// 	type: 'INVITE_ADDED',
+		// 	data: invite
+		// }
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.post('/api/invite', invite, _constants2.default.INVITE_ADDED));
 		};
 	},
 
 	locationChanged: function locationChanged(location) {
 		return {
-			type: 'LOCATION_CHANGED',
+			type: _constants2.default.LOCATION_CHANGED,
 			data: location
 		};
 	},

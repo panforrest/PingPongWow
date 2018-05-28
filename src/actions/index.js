@@ -10,15 +10,18 @@ import { TurboClient, HTTPAsync } from '../utils'
 export default {
 
 	addInvite: (invite) => {
-	    return {
-			type: 'INVITE_ADDED',
-			data: invite
+	 //    return {
+		// 	type: 'INVITE_ADDED',
+		// 	data: invite
+		// }
+		return dispatch => {
+			return dispatch(HTTPAsync.post('/api/invite', invite, constants.INVITE_ADDED))
 		}
 	},
 
 	locationChanged: (location) => {
 		return {
-			type: 'LOCATION_CHANGED',
+			type: constants.LOCATION_CHANGED,
 			data: location
 		}
 	},
