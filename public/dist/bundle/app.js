@@ -375,16 +375,6 @@ var _actions = __webpack_require__(137);
 
 var _actions2 = _interopRequireDefault(_actions);
 
-var _reactDropzone = __webpack_require__(194);
-
-var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
-
-var _turbo = __webpack_require__(136);
-
-var _turbo2 = _interopRequireDefault(_turbo);
-
-var _reactBootstrap = __webpack_require__(195);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -392,6 +382,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import Dropzone from 'react-dropzone'
+// import turbo from 'turbo360'
+// import { Modal } from 'react-bootstrap'
 
 var Results = function (_Component) {
     _inherits(Results, _Component);
@@ -416,73 +410,73 @@ var Results = function (_Component) {
             console.log('componentDidMount: ');
             this.props.fetchInvites();
         }
-    }, {
-        key: 'updateInvite',
-        value: function updateInvite(attr, event) {
-            event.preventDefault();
-            console.log(attr + ' == ' + event.target.value);
-            var updated = Object.assign({}, this.state.invite);
-            updated[attr] = event.target.value;
-            this.setState({
-                invite: updated
-            });
-        }
-    }, {
-        key: 'addInvite',
-        value: function addInvite() {
-            // // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
-            // let newInvite = Object.assign({}, this.state.invite)
-            // const len = this.props.invite.all.length+1
-            // newInvite['id'] = len.toString()
-            // // newInvite['id'] = 100
-            // // newInvite['key'] = '100'
-            // // newInvite['defaultAnimation'] = 2
-            // newInvite['position'] = this.props.map.currentLocation
-            // this.props.addInvite(newInvite)
-            if (this.props.account.currentUser == null) {
-                alert('Please log in or register to send invite');
-                return;
-            }
 
-            var currentUser = this.props.account.currentUser;
-            var updated = Object.assign({}, this.state.invite);
-            updated['position'] = this.props.map.currentLocation;
-            updated['host'] = {
-                id: currentUser.id,
-                username: currentUser.username,
-                image: currentUser.image || ''
-            };
+        // updateInvite(attr, event){
+        //     event.preventDefault()
+        //     console.log(attr + ' == ' + event.target.value)
+        //     let updated = Object.assign({}, this.state.invite)
+        //     updated[attr] = event.target.value
+        //     this.setState({
+        //         invite: updated
+        //     })
+        // }
 
-            console.log('ADD INVITE: ' + JSON.stringify(updated));
-            this.props.addInvite(updated).then(function (data) {
-                console.log('INVITE ADDED: ' + JSON.stringify(data));
-            }).catch(function (err) {
-                console.log('ERR: ' + err.message);
-            });
-        }
-    }, {
-        key: 'uploadImage',
-        value: function uploadImage(files) {
-            var _this2 = this;
+        // addInvite(){
+        //     // // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
+        //     // let newInvite = Object.assign({}, this.state.invite)
+        //     // const len = this.props.invite.all.length+1
+        //     // newInvite['id'] = len.toString()
+        //     // // newInvite['id'] = 100
+        //     // // newInvite['key'] = '100'
+        //     // // newInvite['defaultAnimation'] = 2
+        //     // newInvite['position'] = this.props.map.currentLocation
+        //     // this.props.addInvite(newInvite)
+        //     if (this.props.account.currentUser == null) {
+        //         alert('Please log in or register to send invite')
+        //         return
+        //     }
 
-            var image = files[0];
-            console.log('uploadImage: ' + image.name);
-            var turboClient = (0, _turbo2.default)({
-                site_id: '5b0983c0de0dea0014f1ad5a'
-            });
+        //     const currentUser = this.props.account.currentUser
+        //     let updated = Object.assign({}, this.state.invite)
+        //     updated['position'] = this.props.map.currentLocation
+        //     updated['host'] = {
+        //         id: currentUser.id,
+        //         username: currentUser.username,
+        //         image: currentUser.image || ''
+        //     }
 
-            turboClient.uploadFile(image).then(function (data) {
-                // console.log('FILE UPLOADED: ' + JSON.stringify(data))
-                // console.log('FILE UPLOADED: ' + data.result.url)
-                var updated = Object.assign({}, _this2.state.invite);
-                updated['image'] = data.result.url;
-                _this2.setState({
-                    invite: updated
-                });
-            }).catch(function (err) {
-                console.log('UPLOAD ERROR: ' + err.message);
-            });
-        }
+        //     console.log('ADD INVITE: ' + JSON.stringify(updated))
+        //     this.props.addInvite(updated)
+        //     .then(data => {
+        //         console.log('INVITE ADDED: ' + JSON.stringify(data))
+        //     })
+        //     .catch(err => {
+        //         console.log('ERR: ' + err.message)
+        //     })
+        // }
+
+        // uploadImage(files){
+        //     const image = files[0]
+        //     console.log('uploadImage: ' + image.name)
+        //     const turboClient = turbo({
+        //         site_id: '5b0983c0de0dea0014f1ad5a'
+        //     })
+
+        //     turboClient.uploadFile(image)
+        //     .then(data => {
+        //         // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+        //         // console.log('FILE UPLOADED: ' + data.result.url)
+        //         let updated = Object.assign({}, this.state.invite)
+        //         updated['image'] = data.result.url
+        //         this.setState({
+        //             invite: updated
+        //         })
+        //     })
+        //     .catch(err => {
+        //         console.log('UPLOAD ERROR: ' + err.message)
+        //     })
+        // }
+
     }, {
         key: 'onPurchase',
         value: function onPurchase(invite, event) {
@@ -495,7 +489,7 @@ var Results = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this2 = this;
 
             // const invites = [
             //     {id:1, key:'1', date:'Sat, May 26, 2018', defaultAnimation:2, label:'Match 1', position:{lat:40.7224017, lng:-73.9896719}},
@@ -510,45 +504,8 @@ var Results = function (_Component) {
                     'div',
                     { className: 'row' },
                     invites.map(function (invite, i) {
-                        return _react2.default.createElement(_presentation.Invite, { key: invite.id, onPurchase: _this3.onPurchase.bind(_this3, invite), invite: invite });
+                        return _react2.default.createElement(_presentation.Invite, { key: invite.id, onPurchase: _this2.onPurchase.bind(_this2, invite), invite: invite });
                     })
-                ),
-                _react2.default.createElement('hr', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Match Invite' }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date' }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                this.state.invite.image == null ? null : _react2.default.createElement('img', { src: this.state.invite.image + '=s120-c' }),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        _reactDropzone2.default,
-                        { onDrop: this.uploadImage.bind(this), className: 'btn btn-info btn-fill', style: { marginRight: 16 } },
-                        'Add Image'
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
-                        'Add Invite'
-                    )
-                ),
-                _react2.default.createElement(
-                    _reactBootstrap.Modal,
-                    { bsSize: 'sm', show: this.state.showModal, onHide: function onHide() {
-                            _this3.setState({ showModal: false });
-                        } },
-                    _react2.default.createElement(
-                        _reactBootstrap.Modal.Body,
-                        { style: localStyle.modal },
-                        _react2.default.createElement(
-                            'h2',
-                            null,
-                            'This is a modal'
-                        )
-                    )
                 )
             );
         }
@@ -567,16 +524,14 @@ var localStyle = {
 var stateToProps = function stateToProps(state) {
     return {
         invite: state.invite,
-        map: state.map,
-        account: state.account
+        map: state.map
+        // account: state.account
     };
 };
 
 var dispatchToProps = function dispatchToProps(dispatch) {
     return {
-        addInvite: function addInvite(invite) {
-            return dispatch(_actions2.default.addInvite(invite));
-        },
+        // addInvite: (invite) => dispatch(actions.addInvite(invite)),
         fetchInvites: function fetchInvites(params) {
             return dispatch(_actions2.default.fetchInvites(params));
         }
@@ -1008,7 +963,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
+exports.Input = exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
 
 var _Search = __webpack_require__(252);
 
@@ -1026,20 +981,24 @@ var _Account = __webpack_require__(468);
 
 var _Account2 = _interopRequireDefault(_Account);
 
+var _Input = __webpack_require__(7);
+
+var _Input2 = _interopRequireDefault(_Input);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Export your container components here. The Users
-	container is just an example and you will likely
-	remove it in favor of your own containers. 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
-
-// import Users from './Users'
 exports.Search = _Search2.default;
 exports.Results = _Results2.default;
 exports.Nav = _Nav2.default;
 exports.Account = _Account2.default;
+exports.Input = _Input2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                 	Export your container components here. The Users
+                                 	container is just an example and you will likely
+                                 	remove it in favor of your own containers. 
+                                 * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                 */
+
+// import Users from './Users'
 
 /***/ }),
 
@@ -1669,6 +1628,8 @@ var _actions = __webpack_require__(137);
 
 var _actions2 = _interopRequireDefault(_actions);
 
+var _containers = __webpack_require__(253);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1722,7 +1683,8 @@ var Account = function (_Component) {
                         'h2',
                         null,
                         currentUser.username
-                    )
+                    ),
+                    _react2.default.createElement(_containers.Input, null)
                 )
             );
         }
@@ -1910,6 +1872,191 @@ exports.default = {
 	// CURRENT_USER_RECEIVED: 	'CURRENT_USER_RECEIVED'
 
 };
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(62);
+
+var _actions = __webpack_require__(137);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+var _reactDropzone = __webpack_require__(194);
+
+var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+
+var _turbo = __webpack_require__(136);
+
+var _turbo2 = _interopRequireDefault(_turbo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Input = function (_Component) {
+    _inherits(Input, _Component);
+
+    function Input() {
+        _classCallCheck(this, Input);
+
+        var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this));
+
+        _this.state = {
+            invite: {
+                // position:{lat:40.70224017, lng:-73.9796719}
+            }
+        };
+        return _this;
+    }
+
+    // componentDidMount(){
+
+    //     console.log('componentDidMount: ')
+    //     this.props.fetchInvites()
+    // }
+
+    _createClass(Input, [{
+        key: 'updateInvite',
+        value: function updateInvite(attr, event) {
+            event.preventDefault();
+            console.log(attr + ' == ' + event.target.value);
+            var updated = Object.assign({}, this.state.invite);
+            updated[attr] = event.target.value;
+            this.setState({
+                invite: updated
+            });
+        }
+    }, {
+        key: 'addInvite',
+        value: function addInvite() {
+            if (this.props.account.currentUser == null) {
+                alert('Please log in or register to send invites');
+                return;
+            }
+
+            var currentUser = this.props.account.currentUser;
+            var updated = Object.assign({}, this.state.invite);
+            updated['position'] = this.props.map.currentLocation;
+            updated['seller'] = {
+                id: currentUser.id,
+                username: currentUser.username,
+                image: currentUser.image || ''
+            };
+
+            console.log('ADD INVITE: ' + JSON.stringify(updated));
+            this.props.addInvite(updated).then(function (data) {
+                console.log('INVITE ADDED: ' + JSON.stringify(data));
+            }).catch(function (err) {
+                console.log('ERR: ' + err.message);
+            });
+        }
+    }, {
+        key: 'uploadImage',
+        value: function uploadImage(files) {
+            var _this2 = this;
+
+            var image = files[0];
+            console.log('uploadImage: ' + image.name);
+            var turboClient = (0, _turbo2.default)({
+                site_id: '5ae5315e0d44f900146683d0'
+            });
+
+            turboClient.uploadFile(image).then(function (data) {
+                // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+                // console.log('FILE UPLOADED: ' + data.result.url)
+                var updated = Object.assign({}, _this2.state.invite);
+                updated['image'] = data.result.url;
+                _this2.setState({
+                    invite: updated
+                });
+            }).catch(function (err) {
+                console.log('UPLOAD ERROR: ' + err.message);
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'container-fluid' },
+                _react2.default.createElement('hr', null),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'name'), className: 'formControl', type: 'text', placeholder: 'Match Invite' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'price'), className: 'formControl', type: 'text', placeholder: 'Price' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                this.state.invite.image == null ? null : _react2.default.createElement('img', { src: this.state.invite.image + '=s120-c' }),
+                _react2.default.createElement('hr', null),
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                        _reactDropzone2.default,
+                        { onDrop: this.uploadImage.bind(this), className: 'btn btn-info btn-fill', style: { marginRight: 16 } },
+                        'Add Image'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
+                        'Add Invite'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Input;
+}(_react.Component);
+
+var localStyle = {
+    input: {
+        border: '1px solid #ddd',
+        marginBottom: 12
+    }
+};
+
+var stateToProps = function stateToProps(state) {
+    return {
+        invite: state.invite,
+        map: state.map,
+        account: state.account
+    };
+};
+
+var dispatchToProps = function dispatchToProps(dispatch) {
+    return {
+        addInvite: function addInvite(invite) {
+            return dispatch(_actions2.default.addInvite(invite));
+        },
+        fetchInvites: function fetchInvites(params) {
+            return dispatch(_actions2.default.fetchInvites(params));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Input);
 
 /***/ })
 
