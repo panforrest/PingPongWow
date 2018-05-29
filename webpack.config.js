@@ -2,6 +2,7 @@ var webpack = require('webpack')
 var path = require('path')
 var UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin')
 var config = require('./package.json')
+// var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	entry: {
@@ -88,7 +89,24 @@ module.exports = {
 					publicPath: (config.server) ? '/' : 'public/dist/',
 					useRelativePath: false
 				}
-			}
+			},
+			// {
+		 //      test: /(\.css|\.scss)$/,
+		 //      include: path.join(__dirname, 'src'),
+		 //      loaders: ['style', 'css?sourceMap', 'sass?sourcMap']
+		 //    },
+			// {
+		 //        test: /\.css/,
+		 //        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+		 //    }
+	        {
+	            test: /\.css$/,
+	            // exclude: /node_modules/,
+	            loaders: [
+	                "style-loader?sourceMap",
+	                "css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]"
+	            ]
+	        },
 		]
 	}
 }

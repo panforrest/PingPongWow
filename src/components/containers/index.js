@@ -11,6 +11,8 @@ import Results from './Results'
 import Nav from './Nav'
 import Account from './Account'
 import Input from './Input'
+// import MyApp from './MyApp'
+import Example from './Example'
 
 export {
 
@@ -19,5 +21,7 @@ export {
 	Results,
 	Nav,
 	Account,
-	Input
+	Input,
+	// MyApp
+	Example
 }

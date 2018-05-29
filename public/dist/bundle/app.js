@@ -130,47 +130,14 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push([466,0]);
+/******/ 	deferredModules.push([604,0]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 113:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Register = exports.Map = exports.Invite = undefined;
-
-var _Map = __webpack_require__(447);
-
-var _Map2 = _interopRequireDefault(_Map);
-
-var _Invite = __webpack_require__(254);
-
-var _Invite2 = _interopRequireDefault(_Invite);
-
-var _Register = __webpack_require__(469);
-
-var _Register2 = _interopRequireDefault(_Register);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Invite = _Invite2.default;
-exports.Map = _Map2.default;
-exports.Register = _Register2.default; // import Nav from './Nav'
-// import Footer from './Footer'
-// import Item from './Item'
-
-/***/ }),
-
-/***/ 137:
+/***/ 266:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -179,102 +146,710 @@ exports.Register = _Register2.default; // import Nav from './Nav'
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.Example = exports.Input = exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
 
-var _constants = __webpack_require__(60);
+var _Search = __webpack_require__(390);
 
-var _constants2 = _interopRequireDefault(_constants);
+var _Search2 = _interopRequireDefault(_Search);
 
-var _utils = __webpack_require__(251);
+var _Results = __webpack_require__(369);
+
+var _Results2 = _interopRequireDefault(_Results);
+
+var _Nav = __webpack_require__(334);
+
+var _Nav2 = _interopRequireDefault(_Nav);
+
+var _Account = __webpack_require__(333);
+
+var _Account2 = _interopRequireDefault(_Account);
+
+var _Input = __webpack_require__(332);
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _Example = __webpack_require__(331);
+
+var _Example2 = _interopRequireDefault(_Example);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Here are a few sample actions for User managment.
-	Feel free to remove and replace with your own actions
+	Export your container components here. The Users
+	container is just an example and you will likely
+	remove it in favor of your own containers. 
 * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 */
 
-exports.default = {
-
-	addInvite: function addInvite(invite) {
-		//    return {
-		// 	type: 'INVITE_ADDED',
-		// 	data: invite
-		// }
-		return function (dispatch) {
-			return dispatch(_utils.HTTPAsync.post('/api/invite', invite, _constants2.default.INVITE_ADDED));
-		};
-	},
-
-	fetchInvites: function fetchInvites(params) {
-		return function (dispatch) {
-			return dispatch(_utils.HTTPAsync.get('/api/invite', params, _constants2.default.INVITES_RECEIVED));
-		};
-	},
-
-	locationChanged: function locationChanged(location) {
-		return {
-			type: _constants2.default.LOCATION_CHANGED,
-			data: location
-		};
-	},
-
-	signup: function signup(params) {
-		return function (dispatch) {
-			return dispatch(_utils.HTTPAsync.post('/auth/register', params, _constants2.default.CURRENT_USER_RECEIVED));
-		};
-	},
-
-	login: function login(params) {
-		return function (dispatch) {
-			return dispatch(_utils.HTTPAsync.post('/auth/login', params, _constants2.default.CURRENT_USER_RECEIVED));
-		};
-	},
-
-	currentUser: function currentUser() {
-		console.log('GET CURRENT USER');
-		return function (dispatch) {
-			return dispatch(_utils.HTTPAsync.get('/auth/currentuser', null, _constants2.default.CURRENT_USER_RECEIVED));
-		};
-	}
-
-	// fetchUsers: (params) => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.getRequest('user', params, constants.USERS_RECEIVED))
-	// 	}
-	// },
-
-	// addUser: (params) => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.postRequest('user', params, constants.USER_CREATED))
-	// 	}
-	// },
-
-	// Unlike addUser, register() also maintains a session for login state. After calling 
-	// TurboClient.createUser(), the new user is logged in as well:
-	// register: (params) => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.createUser(params, constants.USER_CREATED))
-	// 	}
-	// },
-
-	// loginUser: (credentials) => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.login(credentials, constants.CURRENT_USER_RECEIVED))
-	// 	}
-	// },
-
-	// currentUser: () => {
-	// 	return dispatch => {
-	// 		return dispatch(TurboClient.currentUser(constants.CURRENT_USER_RECEIVED))
-	// 	}
-	// }
-
-};
+// import Users from './Users'
+exports.Search = _Search2.default;
+exports.Results = _Results2.default;
+exports.Nav = _Nav2.default;
+exports.Account = _Account2.default;
+exports.Input = _Input2.default;
+exports.Example = _Example2.default;
+// import MyApp from './MyApp'
 
 /***/ }),
 
-/***/ 196:
+/***/ 330:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": 254,
+	"./af.js": 254,
+	"./ar": 253,
+	"./ar-dz": 252,
+	"./ar-dz.js": 252,
+	"./ar-kw": 251,
+	"./ar-kw.js": 251,
+	"./ar-ly": 250,
+	"./ar-ly.js": 250,
+	"./ar-ma": 249,
+	"./ar-ma.js": 249,
+	"./ar-sa": 248,
+	"./ar-sa.js": 248,
+	"./ar-tn": 247,
+	"./ar-tn.js": 247,
+	"./ar.js": 253,
+	"./az": 246,
+	"./az.js": 246,
+	"./be": 245,
+	"./be.js": 245,
+	"./bg": 244,
+	"./bg.js": 244,
+	"./bm": 243,
+	"./bm.js": 243,
+	"./bn": 242,
+	"./bn.js": 242,
+	"./bo": 241,
+	"./bo.js": 241,
+	"./br": 240,
+	"./br.js": 240,
+	"./bs": 239,
+	"./bs.js": 239,
+	"./ca": 238,
+	"./ca.js": 238,
+	"./cs": 237,
+	"./cs.js": 237,
+	"./cv": 236,
+	"./cv.js": 236,
+	"./cy": 235,
+	"./cy.js": 235,
+	"./da": 234,
+	"./da.js": 234,
+	"./de": 233,
+	"./de-at": 232,
+	"./de-at.js": 232,
+	"./de-ch": 231,
+	"./de-ch.js": 231,
+	"./de.js": 233,
+	"./dv": 230,
+	"./dv.js": 230,
+	"./el": 229,
+	"./el.js": 229,
+	"./en-au": 228,
+	"./en-au.js": 228,
+	"./en-ca": 227,
+	"./en-ca.js": 227,
+	"./en-gb": 226,
+	"./en-gb.js": 226,
+	"./en-ie": 225,
+	"./en-ie.js": 225,
+	"./en-il": 224,
+	"./en-il.js": 224,
+	"./en-nz": 223,
+	"./en-nz.js": 223,
+	"./eo": 222,
+	"./eo.js": 222,
+	"./es": 221,
+	"./es-do": 220,
+	"./es-do.js": 220,
+	"./es-us": 219,
+	"./es-us.js": 219,
+	"./es.js": 221,
+	"./et": 218,
+	"./et.js": 218,
+	"./eu": 217,
+	"./eu.js": 217,
+	"./fa": 216,
+	"./fa.js": 216,
+	"./fi": 215,
+	"./fi.js": 215,
+	"./fo": 214,
+	"./fo.js": 214,
+	"./fr": 213,
+	"./fr-ca": 212,
+	"./fr-ca.js": 212,
+	"./fr-ch": 211,
+	"./fr-ch.js": 211,
+	"./fr.js": 213,
+	"./fy": 210,
+	"./fy.js": 210,
+	"./gd": 209,
+	"./gd.js": 209,
+	"./gl": 208,
+	"./gl.js": 208,
+	"./gom-latn": 207,
+	"./gom-latn.js": 207,
+	"./gu": 206,
+	"./gu.js": 206,
+	"./he": 205,
+	"./he.js": 205,
+	"./hi": 204,
+	"./hi.js": 204,
+	"./hr": 203,
+	"./hr.js": 203,
+	"./hu": 202,
+	"./hu.js": 202,
+	"./hy-am": 201,
+	"./hy-am.js": 201,
+	"./id": 200,
+	"./id.js": 200,
+	"./is": 199,
+	"./is.js": 199,
+	"./it": 198,
+	"./it.js": 198,
+	"./ja": 197,
+	"./ja.js": 197,
+	"./jv": 196,
+	"./jv.js": 196,
+	"./ka": 195,
+	"./ka.js": 195,
+	"./kk": 194,
+	"./kk.js": 194,
+	"./km": 193,
+	"./km.js": 193,
+	"./kn": 192,
+	"./kn.js": 192,
+	"./ko": 191,
+	"./ko.js": 191,
+	"./ky": 190,
+	"./ky.js": 190,
+	"./lb": 189,
+	"./lb.js": 189,
+	"./lo": 188,
+	"./lo.js": 188,
+	"./lt": 187,
+	"./lt.js": 187,
+	"./lv": 186,
+	"./lv.js": 186,
+	"./me": 185,
+	"./me.js": 185,
+	"./mi": 184,
+	"./mi.js": 184,
+	"./mk": 183,
+	"./mk.js": 183,
+	"./ml": 182,
+	"./ml.js": 182,
+	"./mn": 181,
+	"./mn.js": 181,
+	"./mr": 180,
+	"./mr.js": 180,
+	"./ms": 179,
+	"./ms-my": 178,
+	"./ms-my.js": 178,
+	"./ms.js": 179,
+	"./mt": 177,
+	"./mt.js": 177,
+	"./my": 176,
+	"./my.js": 176,
+	"./nb": 175,
+	"./nb.js": 175,
+	"./ne": 174,
+	"./ne.js": 174,
+	"./nl": 173,
+	"./nl-be": 172,
+	"./nl-be.js": 172,
+	"./nl.js": 173,
+	"./nn": 171,
+	"./nn.js": 171,
+	"./pa-in": 170,
+	"./pa-in.js": 170,
+	"./pl": 169,
+	"./pl.js": 169,
+	"./pt": 168,
+	"./pt-br": 167,
+	"./pt-br.js": 167,
+	"./pt.js": 168,
+	"./ro": 166,
+	"./ro.js": 166,
+	"./ru": 165,
+	"./ru.js": 165,
+	"./sd": 164,
+	"./sd.js": 164,
+	"./se": 163,
+	"./se.js": 163,
+	"./si": 162,
+	"./si.js": 162,
+	"./sk": 161,
+	"./sk.js": 161,
+	"./sl": 160,
+	"./sl.js": 160,
+	"./sq": 159,
+	"./sq.js": 159,
+	"./sr": 158,
+	"./sr-cyrl": 157,
+	"./sr-cyrl.js": 157,
+	"./sr.js": 158,
+	"./ss": 156,
+	"./ss.js": 156,
+	"./sv": 155,
+	"./sv.js": 155,
+	"./sw": 154,
+	"./sw.js": 154,
+	"./ta": 153,
+	"./ta.js": 153,
+	"./te": 152,
+	"./te.js": 152,
+	"./tet": 151,
+	"./tet.js": 151,
+	"./tg": 150,
+	"./tg.js": 150,
+	"./th": 149,
+	"./th.js": 149,
+	"./tl-ph": 148,
+	"./tl-ph.js": 148,
+	"./tlh": 147,
+	"./tlh.js": 147,
+	"./tr": 146,
+	"./tr.js": 146,
+	"./tzl": 145,
+	"./tzl.js": 145,
+	"./tzm": 144,
+	"./tzm-latn": 143,
+	"./tzm-latn.js": 143,
+	"./tzm.js": 144,
+	"./ug-cn": 142,
+	"./ug-cn.js": 142,
+	"./uk": 141,
+	"./uk.js": 141,
+	"./ur": 140,
+	"./ur.js": 140,
+	"./uz": 139,
+	"./uz-latn": 138,
+	"./uz-latn.js": 138,
+	"./uz.js": 139,
+	"./vi": 137,
+	"./vi.js": 137,
+	"./x-pseudo": 136,
+	"./x-pseudo.js": 136,
+	"./yo": 135,
+	"./yo.js": 135,
+	"./zh-cn": 134,
+	"./zh-cn.js": 134,
+	"./zh-hk": 133,
+	"./zh-hk.js": 133,
+	"./zh-tw": 132,
+	"./zh-tw.js": 132
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	var module = __webpack_require__(id);
+	return module;
+}
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) { // check for number or string
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return id;
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 330;
+
+/***/ }),
+
+/***/ 331:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDatepicker = __webpack_require__(323);
+
+var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
+
+var _moment = __webpack_require__(8);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+__webpack_require__(329);
+
+__webpack_require__(326);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// CSS Modules, react-datepicker-cssmodules.css
+
+
+var Example = function (_React$Component) {
+  _inherits(Example, _React$Component);
+
+  function Example(props) {
+    _classCallCheck(this, Example);
+
+    var _this = _possibleConstructorReturn(this, (Example.__proto__ || Object.getPrototypeOf(Example)).call(this, props));
+
+    _this.state = {
+      startDate: (0, _moment2.default)()
+    };
+    _this.handleChange = _this.handleChange.bind(_this);
+    return _this;
+  }
+
+  _createClass(Example, [{
+    key: 'handleChange',
+    value: function handleChange(date) {
+      this.setState({
+        startDate: date
+      });
+      console.log('handleChange: ' + this.state.startDate);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(_reactDatepicker2.default, {
+        selected: this.state.startDate,
+        onChange: this.handleChange,
+        showTimeSelect: true,
+        timeFormat: 'HH:mm',
+        timeIntervals: 60,
+        dateFormat: 'LLL',
+        timeCaption: 'time'
+
+      });
+    }
+  }]);
+
+  return Example;
+}(_react2.default.Component);
+
+exports.default = Example;
+
+/***/ }),
+
+/***/ 332:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(46);
+
+var _actions = __webpack_require__(67);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+var _reactDropzone = __webpack_require__(322);
+
+var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+
+var _turbo = __webpack_require__(265);
+
+var _turbo2 = _interopRequireDefault(_turbo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Input = function (_Component) {
+    _inherits(Input, _Component);
+
+    function Input() {
+        _classCallCheck(this, Input);
+
+        var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this));
+
+        _this.state = {
+            invite: {
+                // position:{lat:40.70224017, lng:-73.9796719}
+            }
+        };
+        return _this;
+    }
+
+    // componentDidMount(){
+
+    //     console.log('componentDidMount: ')
+    //     this.props.fetchInvites()
+    // }
+
+    _createClass(Input, [{
+        key: 'updateInvite',
+        value: function updateInvite(attr, event) {
+            event.preventDefault();
+            console.log(attr + ' == ' + event.target.value);
+            var updated = Object.assign({}, this.state.invite);
+            updated[attr] = event.target.value;
+            this.setState({
+                invite: updated
+            });
+        }
+    }, {
+        key: 'addInvite',
+        value: function addInvite() {
+            if (this.props.account.currentUser == null) {
+                alert('Please log in or register to send invites');
+                return;
+            }
+
+            var currentUser = this.props.account.currentUser;
+            var updated = Object.assign({}, this.state.invite);
+            updated['position'] = this.props.map.currentLocation;
+            updated['host'] = {
+                id: currentUser.id,
+                username: currentUser.username,
+                image: currentUser.image || ''
+            };
+
+            console.log('ADD INVITE: ' + JSON.stringify(updated));
+            this.props.addInvite(updated).then(function (data) {
+                console.log('INVITE ADDED: ' + JSON.stringify(data));
+            }).catch(function (err) {
+                console.log('ERR: ' + err.message);
+            });
+        }
+    }, {
+        key: 'uploadImage',
+        value: function uploadImage(files) {
+            var _this2 = this;
+
+            var image = files[0];
+            console.log('uploadImage: ' + image.name);
+            var turboClient = (0, _turbo2.default)({
+                site_id: '5ae5315e0d44f900146683d0'
+            });
+
+            turboClient.uploadFile(image).then(function (data) {
+                // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+                // console.log('FILE UPLOADED: ' + data.result.url)
+                var updated = Object.assign({}, _this2.state.invite);
+                updated['image'] = data.result.url;
+                _this2.setState({
+                    invite: updated
+                });
+            }).catch(function (err) {
+                console.log('UPLOAD ERROR: ' + err.message);
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'container-fluid' },
+                _react2.default.createElement('hr', null),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Match Invite Detail' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date/Time' }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                this.state.invite.image == null ? null : _react2.default.createElement('img', { src: this.state.invite.image + '=s120-c' }),
+                _react2.default.createElement('hr', null),
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                        _reactDropzone2.default,
+                        { onDrop: this.uploadImage.bind(this), className: 'btn btn-info btn-fill', style: { marginRight: 16 } },
+                        'Add Image'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
+                        'Add Invite'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Input;
+}(_react.Component);
+
+var localStyle = {
+    input: {
+        border: '1px solid #ddd',
+        marginBottom: 12
+    }
+};
+
+var stateToProps = function stateToProps(state) {
+    return {
+        invite: state.invite,
+        map: state.map,
+        account: state.account
+    };
+};
+
+var dispatchToProps = function dispatchToProps(dispatch) {
+    return {
+        addInvite: function addInvite(invite) {
+            return dispatch(_actions2.default.addInvite(invite));
+        },
+        fetchInvites: function fetchInvites(params) {
+            return dispatch(_actions2.default.fetchInvites(params));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Input);
+
+/***/ }),
+
+/***/ 333:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _presentation = __webpack_require__(86);
+
+var _reactRedux = __webpack_require__(46);
+
+var _actions = __webpack_require__(67);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+var _containers = __webpack_require__(266);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Account = function (_Component) {
+    _inherits(Account, _Component);
+
+    function Account() {
+        _classCallCheck(this, Account);
+
+        return _possibleConstructorReturn(this, (Account.__proto__ || Object.getPrototypeOf(Account)).apply(this, arguments));
+    }
+
+    _createClass(Account, [{
+        key: 'register',
+
+
+        // componentDidMount(){
+        //     this.props.checkCurrentUser()
+        // }
+
+        value: function register(registration) {
+            this.props.signup(registration);
+        }
+    }, {
+        key: 'login',
+        value: function login(credentials) {
+            this.props.login(credentials);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var currentUser = this.props.account.currentUser;
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                currentUser == null ? _react2.default.createElement(_presentation.Register, { onRegister: this.register.bind(this), onLogin: this.login.bind(this) }) : _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Welcome!'
+                    ),
+                    _react2.default.createElement(
+                        'h2',
+                        null,
+                        currentUser.username
+                    ),
+                    _react2.default.createElement(_containers.Input, null)
+                )
+            );
+        }
+    }]);
+
+    return Account;
+}(_react.Component);
+
+var stateToProps = function stateToProps(state) {
+    return {
+        account: state.account
+    };
+};
+
+var dispatchToProps = function dispatchToProps(dispatch) {
+    return {
+        signup: function signup(params) {
+            return dispatch(_actions2.default.signup(params));
+        },
+        login: function login(params) {
+            return dispatch(_actions2.default.login(params));
+        }
+        // checkCurrentUser: () => dispatch(actions.checkCurrentUser())
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Account);
+
+/***/ }),
+
+/***/ 334:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -290,7 +865,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(62);
+var _reactRedux = __webpack_require__(46);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -351,7 +926,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps)(Nav);
 
 /***/ }),
 
-/***/ 231:
+/***/ 369:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -367,15 +942,15 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _presentation = __webpack_require__(113);
+var _presentation = __webpack_require__(86);
 
-var _reactRedux = __webpack_require__(62);
+var _reactRedux = __webpack_require__(46);
 
-var _actions = __webpack_require__(137);
+var _actions = __webpack_require__(67);
 
 var _actions2 = _interopRequireDefault(_actions);
 
-var _reactBootstrap = __webpack_require__(195);
+var _reactBootstrap = __webpack_require__(324);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -558,7 +1133,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Result
 
 /***/ }),
 
-/***/ 232:
+/***/ 370:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -568,11 +1143,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _superagent = __webpack_require__(22);
+var _superagent = __webpack_require__(23);
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
-var _bluebird = __webpack_require__(20);
+var _bluebird = __webpack_require__(21);
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
@@ -648,14 +1223,14 @@ exports.default = {
 
 /***/ }),
 
-/***/ 233:
+/***/ 371:
 /***/ (function(module) {
 
-module.exports = {"name":"PingPongWow","version":"0.0.0","server":false,"private":true,"scripts":{"dev":"webpack --mode development -w","build":"npm run clean && NODE_ENV=production webpack -p && gulp prod","clean":"rm -rf ./public/dist","postinstall":"npm run build"},"dependencies":{"accepts":"^1.3.5","array-flatten":"1.1.1","bluebird":"^3.5.1","body-parser":"1.18.2","content-disposition":"0.5.2","content-type":"^1.0.4","cookie":"0.3.1","cookie-signature":"1.0.6","debug":"2.6.9","depd":"^1.1.2","dotenv":"^5.0.1","encodeurl":"^1.0.2","escape-html":"^1.0.3","etag":"^1.8.1","finalhandler":"1.1.1","fresh":"0.5.2","merge-descriptors":"1.0.1","methods":"^1.1.2","moment":"^2.20.1","nodemon":"^1.17.1","on-finished":"^2.3.0","parseurl":"^1.3.2","path-to-regexp":"0.1.7","proxy-addr":"^2.0.3","qs":"6.5.1","range-parser":"^1.2.0","react":"^16.2.0","react-bootstrap":"^0.32.1","react-dom":"^16.2.0","react-dropzone":"^4.2.8","react-google-maps":"^9.4.5","react-redux":"^5.0.7","react-time":"^4.3.0","redux":"^3.7.2","redux-thunk":"^2.2.0","safe-buffer":"5.1.1","send":"0.16.2","serve-static":"1.13.2","setprototypeof":"1.1.0","statuses":"^1.4.0","superagent":"^3.8.2","turbo360":"latest","type-is":"^1.6.16","utils-merge":"1.0.1","vary":"^1.1.2","vertex360":"latest"},"devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.3","babel-preset-env":"^1.6.1","babel-preset-react":"^6.24.1","chai":"^4.1.2","chai-http":"^3.0.0","cross-env":"^5.1.4","gulp":"^3.9.1","gulp-6to5":"^3.0.0","gulp-autoprefixer":"^5.0.0","gulp-clean-css":"^3.9.2","gulp-concat":"^2.6.1","gulp-less":"^4.0.0","gulp-rename":"^1.2.2","gulp-sass":"^3.1.0","gulp-uglify":"^3.0.0","json-loader":"^0.5.7","mocha":"^5.0.1","mocha-jscs":"^5.0.1","mocha-jshint":"^2.3.1","rimraf":"^2.6.2","uglifyjs-webpack-plugin":"^1.2.2","webpack":"^4.1.1","webpack-cli":"^2.0.10"},"deploy":["."],"format":"vertex","app":""};
+module.exports = {"name":"PingPongWow","version":"0.0.0","server":false,"private":true,"scripts":{"dev":"webpack --mode development -w","build":"npm run clean && NODE_ENV=production webpack -p && gulp prod","clean":"rm -rf ./public/dist","postinstall":"npm run build"},"dependencies":{"accepts":"^1.3.5","array-flatten":"1.1.1","bluebird":"^3.5.1","body-parser":"1.18.2","content-disposition":"0.5.2","content-type":"^1.0.4","cookie":"0.3.1","cookie-signature":"1.0.6","css-loader":"^0.28.11","debug":"2.6.9","depd":"^1.1.2","dotenv":"^5.0.1","encodeurl":"^1.0.2","escape-html":"^1.0.3","etag":"^1.8.1","finalhandler":"1.1.1","fresh":"0.5.2","merge-descriptors":"1.0.1","methods":"^1.1.2","moment":"^2.22.1","nodemon":"^1.17.1","on-finished":"^2.3.0","parseurl":"^1.3.2","path-to-regexp":"0.1.7","proxy-addr":"^2.0.3","qs":"6.5.1","range-parser":"^1.2.0","react":"^16.2.0","react-bootstrap":"^0.32.1","react-date-picker":"^6.10.1","react-datepicker":"^1.5.0","react-dom":"^16.2.0","react-dropzone":"^4.2.8","react-google-maps":"^9.4.5","react-redux":"^5.0.7","react-time":"^4.3.0","redux":"^3.7.2","redux-thunk":"^2.2.0","safe-buffer":"5.1.1","send":"0.16.2","serve-static":"1.13.2","setprototypeof":"1.1.0","statuses":"^1.4.0","style-loader":"^0.21.0","superagent":"^3.8.2","turbo360":"latest","type-is":"^1.6.16","utils-merge":"1.0.1","vary":"^1.1.2","vertex360":"latest"},"devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.3","babel-preset-env":"^1.6.1","babel-preset-react":"^6.24.1","chai":"^4.1.2","chai-http":"^3.0.0","cross-env":"^5.1.4","extract-text-webpack-plugin":"^3.0.2","gulp":"^3.9.1","gulp-6to5":"^3.0.0","gulp-autoprefixer":"^5.0.0","gulp-clean-css":"^3.9.2","gulp-concat":"^2.6.1","gulp-less":"^4.0.0","gulp-rename":"^1.2.2","gulp-sass":"^3.1.0","gulp-uglify":"^3.0.0","json-loader":"^0.5.7","mocha":"^5.0.1","mocha-jscs":"^5.0.1","mocha-jshint":"^2.3.1","rimraf":"^2.6.2","uglifyjs-webpack-plugin":"^1.2.2","webpack":"^4.1.1","webpack-cli":"^2.0.10"},"deploy":["."],"format":"vertex","app":""};
 
 /***/ }),
 
-/***/ 250:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -665,11 +1240,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _turbo = __webpack_require__(136);
+var _turbo = __webpack_require__(265);
 
 var _turbo2 = _interopRequireDefault(_turbo);
 
-var _package = __webpack_require__(233);
+var _package = __webpack_require__(371);
 
 var _package2 = _interopRequireDefault(_package);
 
@@ -816,7 +1391,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 251:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -827,11 +1402,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HTTPAsync = exports.TurboClient = undefined;
 
-var _TurboClient = __webpack_require__(250);
+var _TurboClient = __webpack_require__(388);
 
 var _TurboClient2 = _interopRequireDefault(_TurboClient);
 
-var _HTTPAsync = __webpack_require__(232);
+var _HTTPAsync = __webpack_require__(370);
 
 var _HTTPAsync2 = _interopRequireDefault(_HTTPAsync);
 
@@ -842,7 +1417,7 @@ exports.HTTPAsync = _HTTPAsync2.default;
 
 /***/ }),
 
-/***/ 252:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -858,11 +1433,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _presentation = __webpack_require__(113);
+var _presentation = __webpack_require__(86);
 
-var _reactRedux = __webpack_require__(62);
+var _reactRedux = __webpack_require__(46);
 
-var _actions = __webpack_require__(137);
+var _actions = __webpack_require__(67);
 
 var _actions2 = _interopRequireDefault(_actions);
 
@@ -970,772 +1545,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search
 
 /***/ }),
 
-/***/ 253:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.Input = exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
-
-var _Search = __webpack_require__(252);
-
-var _Search2 = _interopRequireDefault(_Search);
-
-var _Results = __webpack_require__(231);
-
-var _Results2 = _interopRequireDefault(_Results);
-
-var _Nav = __webpack_require__(196);
-
-var _Nav2 = _interopRequireDefault(_Nav);
-
-var _Account = __webpack_require__(468);
-
-var _Account2 = _interopRequireDefault(_Account);
-
-var _Input = __webpack_require__(7);
-
-var _Input2 = _interopRequireDefault(_Input);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Search = _Search2.default;
-exports.Results = _Results2.default;
-exports.Nav = _Nav2.default;
-exports.Account = _Account2.default;
-exports.Input = _Input2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                 	Export your container components here. The Users
-                                 	container is just an example and you will likely
-                                 	remove it in favor of your own containers. 
-                                 * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                 */
-
-// import Users from './Users'
-
-/***/ }),
-
-/***/ 254:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (props) {
-
-    var invite = props.invite;
-
-    return _react2.default.createElement(
-        "div",
-        { className: "row" },
-        _react2.default.createElement(
-            "div",
-            { id: "reservations" },
-            _react2.default.createElement(
-                "div",
-                { "class": "reservation" },
-                _react2.default.createElement(
-                    "div",
-                    { style: localStyle.inviteImage },
-                    _react2.default.createElement(
-                        "a",
-                        { onClick: props.onPurchase.bind(undefined), herf: "#" },
-                        _react2.default.createElement("img", { style: localStyle.inviteImage, src: invite.image + '=s200-c' })
-                    )
-                ),
-                _react2.default.createElement(
-                    "h2",
-                    null,
-                    invite.label
-                ),
-                _react2.default.createElement(
-                    "span",
-                    { "class": "reservation-date" },
-                    invite.date,
-                    " "
-                ),
-                _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image }),
-                _react2.default.createElement(
-                    "p",
-                    null,
-                    "by: ",
-                    invite.host.username,
-                    " "
-                ),
-                _react2.default.createElement("div", null)
-            )
-        )
-    );
-};
-
-var localStyle = {
-    icon: {
-        width: 28,
-        borderRadius: 14,
-        float: 'right'
-    },
-    inviteImage: {
-        // width:100+'%',
-        width: 125,
-        padding: 3,
-        // border:'1px solid #ddd',
-        background: '#ffffa'
-    }
-};
-
-/***/ }),
-
-/***/ 447:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactGoogleMaps = __webpack_require__(446);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // don't forget google maps import:
-// <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC44mPpaMNvENXryYjHBHzjST1UMnYlARk"></script>
-
-var Map = function (_Component) {
-	_inherits(Map, _Component);
-
-	function Map() {
-		_classCallCheck(this, Map);
-
-		var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this));
-
-		_this.state = {
-			map: null
-		};
-		return _this;
-	}
-
-	_createClass(Map, [{
-		key: 'mapMoved',
-		value: function mapMoved() {
-			// console.log('mapMoved: '+JSON.stringify(this.state.map.getCenter()))
-			if (this.props.locationChanged != null) this.props.locationChanged(this.state.map.getCenter());
-		}
-	}, {
-		key: 'zoomChanged',
-		value: function zoomChanged() {
-			// console.log('zoomChanged: '+this.state.map.getZoom())
-
-		}
-	}, {
-		key: 'mapLoaded',
-		value: function mapLoaded(map) {
-			if (this.state.map != null) return;
-
-			this.props.onMapReady(map);
-			this.setState({
-				map: map
-			});
-		}
-	}, {
-		key: 'handleMarkerClick',
-		value: function handleMarkerClick(marker) {
-			if (this.props.markerClicked != null) this.props.markerClicked(marker, this.state.map);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			var markers = this.props.markers || [];
-
-			return _react2.default.createElement(
-				_reactGoogleMaps.GoogleMap,
-				{
-					ref: this.mapLoaded.bind(this),
-					onDragEnd: this.mapMoved.bind(this),
-					onZoomChanged: this.zoomChanged.bind(this),
-					defaultZoom: this.props.zoom,
-					defaultCenter: this.props.center },
-				markers.map(function (marker, index) {
-					return _react2.default.createElement(_reactGoogleMaps.Marker, _extends({
-						key: index,
-						clickable: true,
-						icon: marker.icon,
-						label: marker.label,
-						title: marker.key,
-						onClick: _this2.handleMarkerClick.bind(_this2, marker)
-					}, marker));
-				})
-			);
-		}
-	}]);
-
-	return Map;
-}(_react.Component);
-
-exports.default = (0, _reactGoogleMaps.withGoogleMap)(Map);
-
-/***/ }),
-
-/***/ 448:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _presentation = __webpack_require__(113);
-
-var _containers = __webpack_require__(253);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <div className="col-md-3">
-//     <Account />
-// </div>
-
-
-var Home = function (_Component) {
-  _inherits(Home, _Component);
-
-  function Home() {
-    _classCallCheck(this, Home);
-
-    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
-
-    _this.state = {
-      map: null
-    };
-    return _this;
-  }
-
-  _createClass(Home, [{
-    key: 'render',
-    value: function render() {
-      // const markers = [
-      //        {id:1,key:'1', defaultAnimation:2,label:"Match 1", position:{lat:40.7224017, lng:-73.9896719}},
-      //        {id:2,key:'2', defaultAnimation:2,label:"Ping Pong 2", position:{lat:40.7024017, lng:-73.9896719}}
-      //    ] 
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'container' },
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-4' },
-            _react2.default.createElement(_containers.Search, null)
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-8' },
-            _react2.default.createElement(_containers.Nav, null),
-            _react2.default.createElement(_containers.Account, null),
-            _react2.default.createElement(_containers.Results, null)
-          )
-        )
-      );
-    }
-  }]);
-
-  return Home;
-}(_react.Component);
-
-exports.default = Home;
-
-/***/ }),
-
-/***/ 451:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _constants = __webpack_require__(60);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var initialState = {
-	// all: null,
-	currentUser: null // signed in user
-};
-
-exports.default = function () {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	var action = arguments[1];
-
-	var updated = Object.assign({}, state);
-
-	switch (action.type) {
-
-		case _constants2.default.CURRENT_USER_RECEIVED:
-			console.log('CURRENT_USER_RECEIVED: ' + JSON.stringify(action.data));
-			updated['currentUser'] = action.data.user;
-			return updated;
-
-		// case constants.USERS_RECEIVED:
-		// 	newState['all'] = action.data
-		// 	return newState
-
-		// case constants.USER_CREATED:
-		// 	let array = (newState.all) ? Object.assign([], newState.all) : []
-		// 	array.unshift(action.data)
-		// 	newState['all'] = array
-		// 	return newState
-
-		default:
-			return state;
-	}
-};
-
-/***/ }),
-
-/***/ 452:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _constants = __webpack_require__(60);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var initialState = {
-	currentLocation: { lat: 40.72, lng: -73.98 }
-};
-
-exports.default = function () {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	var action = arguments[1];
-
-	var updated = Object.assign({}, state);
-	switch (action.type) {
-
-		case _constants2.default.LOCATION_CHANGED:
-			console.log('LOCATION_CHANGED: ' + JSON.stringify(action.data));
-			updated['currentLocation'] = action.data;
-			return updated;
-
-		default:
-			return updated;
-	}
-};
-
-/***/ }),
-
-/***/ 453:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _constants = __webpack_require__(60);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var initialState = {
-  // all: [
-  //     {id:'1', date:'Sat, May 26, 2018', label:'Match 1', image: 'https://hoodrhetoric.com/wp-content/uploads/2016/08/Air-Jordan-1-Retro-High-OG-Banned-Black-White-555088-001.jpg', position:{lat:40.7224017, lng:-73.9896719}, host:{username:'lebron_james',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
-  //      {id:'2', date:'Sun, May 27, 2018', label:'Ping Pong 2', image: 'https://smhttp-ssl-18667.nexcesscdn.net/media/catalog/product/cache/1/image/400x400/9df78eab33525d08d6e5fb8d27136e95/s/i/sig-7970018-sofa-chise-3.jpg', position:{lat:40.7124017, lng:-73.9996719}, host:{username:'eli_manning',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
-  //      {id:'3', date:'Sat, May 26, 2018', label:'Match 3', image: 'https://d2uk7vc0yceq94.cloudfront.net/uploads/2017/08/25/s/0/1/12707801/PV2H-5.jpeg', position:{lat:40.7174017, lng:-73.9896719}, host:{username:'tom_brady',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
-  //      {id:'4', date:'Sun, May 27, 2018', label:'Ping Pong 4', image: 'https://d2uk7vc0yceq94.cloudfront.net/uploads/2017/08/25/s/0/1/12707801/PV2H-5.jpeg', position:{lat:40.7274017, lng:-73.9896719}, host:{username:'tom_brady',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}}
-  // ]
-  all: null
-};
-
-exports.default = function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments[1];
-
-  var updated = Object.assign({}, state);
-
-  switch (action.type) {
-    case _constants2.default.INVITE_ADDED:
-      var payload = action.data;
-      console.log('INVITE_ADDED: ' + JSON.stringify(action.data));
-      // let all = (updated.all) ? Object.assign([], updated.all) : []
-      var all = Object.assign([], updated.all);
-      all.push(payload.data);
-      updated['all'] = all;
-      return updated;
-
-    case _constants2.default.INVITES_RECEIVED:
-      updated['all'] = action.data.data;
-      return updated;
-
-    default:
-      return updated;
-  }
-};
-
-/***/ }),
-
-/***/ 454:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _constants = __webpack_require__(60);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	This is a sample reducer or user management. If you remove 
-	and use your own reducers, remember to update the store 
-	file (../stores/index.js) with your reducers.
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
-
-var initialState = {
-	all: null,
-	currentUser: null // signed in user
-};
-
-exports.default = function () {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	var action = arguments[1];
-
-	var newState = Object.assign({}, state);
-
-	switch (action.type) {
-
-		case _constants2.default.CURRENT_USER_RECEIVED:
-			newState['currentUser'] = action.data;
-			return newState;
-
-		case _constants2.default.USERS_RECEIVED:
-			newState['all'] = action.data;
-			return newState;
-
-		case _constants2.default.USER_CREATED:
-			var array = newState.all ? Object.assign([], newState.all) : [];
-			array.unshift(action.data);
-			newState['all'] = array;
-			return newState;
-
-		default:
-			return state;
-	}
-};
-
-/***/ }),
-
-/***/ 455:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.accountReducer = exports.mapReducer = exports.inviteReducer = exports.userReducer = undefined;
-
-var _userReducer = __webpack_require__(454);
-
-var _userReducer2 = _interopRequireDefault(_userReducer);
-
-var _inviteReducer = __webpack_require__(453);
-
-var _inviteReducer2 = _interopRequireDefault(_inviteReducer);
-
-var _mapReducer = __webpack_require__(452);
-
-var _mapReducer2 = _interopRequireDefault(_mapReducer);
-
-var _accountReducer = __webpack_require__(451);
-
-var _accountReducer2 = _interopRequireDefault(_accountReducer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Export your reducers here
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
-
-exports.userReducer = _userReducer2.default;
-exports.inviteReducer = _inviteReducer2.default;
-exports.mapReducer = _mapReducer2.default;
-exports.accountReducer = _accountReducer2.default;
-
-/***/ }),
-
-/***/ 458:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _redux = __webpack_require__(116);
-
-var _reduxThunk = __webpack_require__(456);
-
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-var _reducers = __webpack_require__(455);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	This is a store with one reducer: userReducer. When 
-	adding more reducers, make sure to include them in 
-	line 3 (above) and line 18 (below):
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
-
-var store;
-exports.default = {
-
-	configure: function configure(initialState) {
-		// initialState can be null
-
-		var reducers = (0, _redux.combineReducers)({ // insert reducers here
-			user: _reducers.userReducer,
-			invite: _reducers.inviteReducer,
-			map: _reducers.mapReducer,
-			account: _reducers.accountReducer
-		});
-
-		if (initialState) {
-			store = (0, _redux.createStore)(reducers, initialState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
-
-			return store;
-		}
-
-		store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(_reduxThunk2.default));
-
-		return store;
-	},
-
-	currentStore: function currentStore() {
-		return store;
-	}
-};
-
-/***/ }),
-
-/***/ 466:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(9);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _stores = __webpack_require__(458);
-
-var _stores2 = _interopRequireDefault(_stores);
-
-var _reactRedux = __webpack_require__(62);
-
-var _Home = __webpack_require__(448);
-
-var _Home2 = _interopRequireDefault(_Home);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = _react2.default.createElement(
-	_reactRedux.Provider,
-	{ store: _stores2.default.configure(null) },
-	_react2.default.createElement(_Home2.default, null)
-);
-// import Intro from './components/Intro'
-
-
-_reactDom2.default.render(app, document.getElementById('root'));
-
-/***/ }),
-
-/***/ 468:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _presentation = __webpack_require__(113);
-
-var _reactRedux = __webpack_require__(62);
-
-var _actions = __webpack_require__(137);
-
-var _actions2 = _interopRequireDefault(_actions);
-
-var _containers = __webpack_require__(253);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Account = function (_Component) {
-    _inherits(Account, _Component);
-
-    function Account() {
-        _classCallCheck(this, Account);
-
-        return _possibleConstructorReturn(this, (Account.__proto__ || Object.getPrototypeOf(Account)).apply(this, arguments));
-    }
-
-    _createClass(Account, [{
-        key: 'register',
-
-
-        // componentDidMount(){
-        //     this.props.checkCurrentUser()
-        // }
-
-        value: function register(registration) {
-            this.props.signup(registration);
-        }
-    }, {
-        key: 'login',
-        value: function login(credentials) {
-            this.props.login(credentials);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var currentUser = this.props.account.currentUser;
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                currentUser == null ? _react2.default.createElement(_presentation.Register, { onRegister: this.register.bind(this), onLogin: this.login.bind(this) }) : _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Welcome!'
-                    ),
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        currentUser.username
-                    ),
-                    _react2.default.createElement(_containers.Input, null)
-                )
-            );
-        }
-    }]);
-
-    return Account;
-}(_react.Component);
-
-var stateToProps = function stateToProps(state) {
-    return {
-        account: state.account
-    };
-};
-
-var dispatchToProps = function dispatchToProps(dispatch) {
-    return {
-        signup: function signup(params) {
-            return dispatch(_actions2.default.signup(params));
-        },
-        login: function login(params) {
-            return dispatch(_actions2.default.login(params));
-        }
-        // checkCurrentUser: () => dispatch(actions.checkCurrentUser())
-    };
-};
-
-exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Account);
-
-/***/ }),
-
-/***/ 469:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1863,7 +1673,614 @@ exports.default = Register;
 
 /***/ }),
 
-/***/ 60:
+/***/ 392:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (props) {
+
+    var invite = props.invite;
+
+    return _react2.default.createElement(
+        "div",
+        { className: "row" },
+        _react2.default.createElement(
+            "div",
+            { id: "reservations" },
+            _react2.default.createElement(
+                "div",
+                { "class": "reservation" },
+                _react2.default.createElement(
+                    "div",
+                    { style: localStyle.inviteImage },
+                    _react2.default.createElement(
+                        "a",
+                        { onClick: props.onPurchase.bind(undefined), herf: "#" },
+                        _react2.default.createElement("img", { style: localStyle.inviteImage, src: invite.image + '=s200-c' })
+                    )
+                ),
+                _react2.default.createElement(
+                    "h2",
+                    null,
+                    invite.label
+                ),
+                _react2.default.createElement(
+                    "span",
+                    { "class": "reservation-date" },
+                    invite.date,
+                    " "
+                ),
+                _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image }),
+                _react2.default.createElement(
+                    "p",
+                    null,
+                    "by: ",
+                    invite.host.username,
+                    " "
+                ),
+                _react2.default.createElement("div", null)
+            )
+        )
+    );
+};
+
+var localStyle = {
+    icon: {
+        width: 28,
+        borderRadius: 14,
+        float: 'right'
+    },
+    inviteImage: {
+        // width:100+'%',
+        width: 125,
+        padding: 3,
+        // border:'1px solid #ddd',
+        background: '#ffffa'
+    }
+};
+
+/***/ }),
+
+/***/ 585:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactGoogleMaps = __webpack_require__(584);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // don't forget google maps import:
+// <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC44mPpaMNvENXryYjHBHzjST1UMnYlARk"></script>
+
+var Map = function (_Component) {
+	_inherits(Map, _Component);
+
+	function Map() {
+		_classCallCheck(this, Map);
+
+		var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this));
+
+		_this.state = {
+			map: null
+		};
+		return _this;
+	}
+
+	_createClass(Map, [{
+		key: 'mapMoved',
+		value: function mapMoved() {
+			// console.log('mapMoved: '+JSON.stringify(this.state.map.getCenter()))
+			if (this.props.locationChanged != null) this.props.locationChanged(this.state.map.getCenter());
+		}
+	}, {
+		key: 'zoomChanged',
+		value: function zoomChanged() {
+			// console.log('zoomChanged: '+this.state.map.getZoom())
+
+		}
+	}, {
+		key: 'mapLoaded',
+		value: function mapLoaded(map) {
+			if (this.state.map != null) return;
+
+			this.props.onMapReady(map);
+			this.setState({
+				map: map
+			});
+		}
+	}, {
+		key: 'handleMarkerClick',
+		value: function handleMarkerClick(marker) {
+			if (this.props.markerClicked != null) this.props.markerClicked(marker, this.state.map);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			var markers = this.props.markers || [];
+
+			return _react2.default.createElement(
+				_reactGoogleMaps.GoogleMap,
+				{
+					ref: this.mapLoaded.bind(this),
+					onDragEnd: this.mapMoved.bind(this),
+					onZoomChanged: this.zoomChanged.bind(this),
+					defaultZoom: this.props.zoom,
+					defaultCenter: this.props.center },
+				markers.map(function (marker, index) {
+					return _react2.default.createElement(_reactGoogleMaps.Marker, _extends({
+						key: index,
+						clickable: true,
+						icon: marker.icon,
+						label: marker.label,
+						title: marker.key,
+						onClick: _this2.handleMarkerClick.bind(_this2, marker)
+					}, marker));
+				})
+			);
+		}
+	}]);
+
+	return Map;
+}(_react.Component);
+
+exports.default = (0, _reactGoogleMaps.withGoogleMap)(Map);
+
+/***/ }),
+
+/***/ 586:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _presentation = __webpack_require__(86);
+
+var _containers = __webpack_require__(266);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <div className="col-md-3">
+//     <Account />
+// </div>
+
+
+var Home = function (_Component) {
+  _inherits(Home, _Component);
+
+  function Home() {
+    _classCallCheck(this, Home);
+
+    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+    _this.state = {
+      map: null
+    };
+    return _this;
+  }
+
+  _createClass(Home, [{
+    key: 'render',
+    value: function render() {
+      // const markers = [
+      //        {id:1,key:'1', defaultAnimation:2,label:"Match 1", position:{lat:40.7224017, lng:-73.9896719}},
+      //        {id:2,key:'2', defaultAnimation:2,label:"Ping Pong 2", position:{lat:40.7024017, lng:-73.9896719}}
+      //    ] 
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-4' },
+            _react2.default.createElement(_containers.Search, null)
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-8' },
+            _react2.default.createElement(_containers.Nav, null),
+            _react2.default.createElement(_containers.Account, null),
+            _react2.default.createElement(_containers.Example, null),
+            _react2.default.createElement(_containers.Results, null)
+          )
+        )
+      );
+    }
+  }]);
+
+  return Home;
+}(_react.Component);
+
+exports.default = Home;
+
+/***/ }),
+
+/***/ 589:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(62);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+	// all: null,
+	currentUser: null // signed in user
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var updated = Object.assign({}, state);
+
+	switch (action.type) {
+
+		case _constants2.default.CURRENT_USER_RECEIVED:
+			console.log('CURRENT_USER_RECEIVED: ' + JSON.stringify(action.data));
+			updated['currentUser'] = action.data.user;
+			return updated;
+
+		// case constants.USERS_RECEIVED:
+		// 	newState['all'] = action.data
+		// 	return newState
+
+		// case constants.USER_CREATED:
+		// 	let array = (newState.all) ? Object.assign([], newState.all) : []
+		// 	array.unshift(action.data)
+		// 	newState['all'] = array
+		// 	return newState
+
+		default:
+			return state;
+	}
+};
+
+/***/ }),
+
+/***/ 590:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(62);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+	currentLocation: { lat: 40.72, lng: -73.98 }
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var updated = Object.assign({}, state);
+	switch (action.type) {
+
+		case _constants2.default.LOCATION_CHANGED:
+			console.log('LOCATION_CHANGED: ' + JSON.stringify(action.data));
+			updated['currentLocation'] = action.data;
+			return updated;
+
+		default:
+			return updated;
+	}
+};
+
+/***/ }),
+
+/***/ 591:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _constants = __webpack_require__(62);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+  // all: [
+  //     {id:'1', date:'Sat, May 26, 2018', label:'Match 1', image: 'https://hoodrhetoric.com/wp-content/uploads/2016/08/Air-Jordan-1-Retro-High-OG-Banned-Black-White-555088-001.jpg', position:{lat:40.7224017, lng:-73.9896719}, host:{username:'lebron_james',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
+  //      {id:'2', date:'Sun, May 27, 2018', label:'Ping Pong 2', image: 'https://smhttp-ssl-18667.nexcesscdn.net/media/catalog/product/cache/1/image/400x400/9df78eab33525d08d6e5fb8d27136e95/s/i/sig-7970018-sofa-chise-3.jpg', position:{lat:40.7124017, lng:-73.9996719}, host:{username:'eli_manning',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
+  //      {id:'3', date:'Sat, May 26, 2018', label:'Match 3', image: 'https://d2uk7vc0yceq94.cloudfront.net/uploads/2017/08/25/s/0/1/12707801/PV2H-5.jpeg', position:{lat:40.7174017, lng:-73.9896719}, host:{username:'tom_brady',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
+  //      {id:'4', date:'Sun, May 27, 2018', label:'Ping Pong 4', image: 'https://d2uk7vc0yceq94.cloudfront.net/uploads/2017/08/25/s/0/1/12707801/PV2H-5.jpeg', position:{lat:40.7274017, lng:-73.9896719}, host:{username:'tom_brady',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}}
+  // ]
+  all: null
+};
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  var updated = Object.assign({}, state);
+
+  switch (action.type) {
+    case _constants2.default.INVITE_ADDED:
+      var payload = action.data;
+      console.log('INVITE_ADDED: ' + JSON.stringify(action.data));
+      // let all = (updated.all) ? Object.assign([], updated.all) : []
+      var all = Object.assign([], updated.all);
+      all.push(payload.data);
+      updated['all'] = all;
+      return updated;
+
+    case _constants2.default.INVITES_RECEIVED:
+      updated['all'] = action.data.data;
+      return updated;
+
+    default:
+      return updated;
+  }
+};
+
+/***/ }),
+
+/***/ 592:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(62);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	This is a sample reducer or user management. If you remove 
+	and use your own reducers, remember to update the store 
+	file (../stores/index.js) with your reducers.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+var initialState = {
+	all: null,
+	currentUser: null // signed in user
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var newState = Object.assign({}, state);
+
+	switch (action.type) {
+
+		case _constants2.default.CURRENT_USER_RECEIVED:
+			newState['currentUser'] = action.data;
+			return newState;
+
+		case _constants2.default.USERS_RECEIVED:
+			newState['all'] = action.data;
+			return newState;
+
+		case _constants2.default.USER_CREATED:
+			var array = newState.all ? Object.assign([], newState.all) : [];
+			array.unshift(action.data);
+			newState['all'] = array;
+			return newState;
+
+		default:
+			return state;
+	}
+};
+
+/***/ }),
+
+/***/ 593:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.accountReducer = exports.mapReducer = exports.inviteReducer = exports.userReducer = undefined;
+
+var _userReducer = __webpack_require__(592);
+
+var _userReducer2 = _interopRequireDefault(_userReducer);
+
+var _inviteReducer = __webpack_require__(591);
+
+var _inviteReducer2 = _interopRequireDefault(_inviteReducer);
+
+var _mapReducer = __webpack_require__(590);
+
+var _mapReducer2 = _interopRequireDefault(_mapReducer);
+
+var _accountReducer = __webpack_require__(589);
+
+var _accountReducer2 = _interopRequireDefault(_accountReducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Export your reducers here
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+exports.userReducer = _userReducer2.default;
+exports.inviteReducer = _inviteReducer2.default;
+exports.mapReducer = _mapReducer2.default;
+exports.accountReducer = _accountReducer2.default;
+
+/***/ }),
+
+/***/ 596:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _redux = __webpack_require__(119);
+
+var _reduxThunk = __webpack_require__(594);
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _reducers = __webpack_require__(593);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	This is a store with one reducer: userReducer. When 
+	adding more reducers, make sure to include them in 
+	line 3 (above) and line 18 (below):
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+var store;
+exports.default = {
+
+	configure: function configure(initialState) {
+		// initialState can be null
+
+		var reducers = (0, _redux.combineReducers)({ // insert reducers here
+			user: _reducers.userReducer,
+			invite: _reducers.inviteReducer,
+			map: _reducers.mapReducer,
+			account: _reducers.accountReducer
+		});
+
+		if (initialState) {
+			store = (0, _redux.createStore)(reducers, initialState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+
+			return store;
+		}
+
+		store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+
+		return store;
+	},
+
+	currentStore: function currentStore() {
+		return store;
+	}
+};
+
+/***/ }),
+
+/***/ 604:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(10);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _stores = __webpack_require__(596);
+
+var _stores2 = _interopRequireDefault(_stores);
+
+var _reactRedux = __webpack_require__(46);
+
+var _Home = __webpack_require__(586);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = _react2.default.createElement(
+	_reactRedux.Provider,
+	{ store: _stores2.default.configure(null) },
+	_react2.default.createElement(_Home2.default, null)
+);
+// import Intro from './components/Intro'
+
+
+_reactDom2.default.render(app, document.getElementById('root'));
+
+/***/ }),
+
+/***/ 62:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1893,7 +2310,111 @@ exports.default = {
 
 /***/ }),
 
-/***/ 7:
+/***/ 67:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(62);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+var _utils = __webpack_require__(389);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Here are a few sample actions for User managment.
+	Feel free to remove and replace with your own actions
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+exports.default = {
+
+	addInvite: function addInvite(invite) {
+		//    return {
+		// 	type: 'INVITE_ADDED',
+		// 	data: invite
+		// }
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.post('/api/invite', invite, _constants2.default.INVITE_ADDED));
+		};
+	},
+
+	fetchInvites: function fetchInvites(params) {
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.get('/api/invite', params, _constants2.default.INVITES_RECEIVED));
+		};
+	},
+
+	locationChanged: function locationChanged(location) {
+		return {
+			type: _constants2.default.LOCATION_CHANGED,
+			data: location
+		};
+	},
+
+	signup: function signup(params) {
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.post('/auth/register', params, _constants2.default.CURRENT_USER_RECEIVED));
+		};
+	},
+
+	login: function login(params) {
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.post('/auth/login', params, _constants2.default.CURRENT_USER_RECEIVED));
+		};
+	},
+
+	currentUser: function currentUser() {
+		console.log('GET CURRENT USER');
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.get('/auth/currentuser', null, _constants2.default.CURRENT_USER_RECEIVED));
+		};
+	}
+
+	// fetchUsers: (params) => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.getRequest('user', params, constants.USERS_RECEIVED))
+	// 	}
+	// },
+
+	// addUser: (params) => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.postRequest('user', params, constants.USER_CREATED))
+	// 	}
+	// },
+
+	// Unlike addUser, register() also maintains a session for login state. After calling 
+	// TurboClient.createUser(), the new user is logged in as well:
+	// register: (params) => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.createUser(params, constants.USER_CREATED))
+	// 	}
+	// },
+
+	// loginUser: (credentials) => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.login(credentials, constants.CURRENT_USER_RECEIVED))
+	// 	}
+	// },
+
+	// currentUser: () => {
+	// 	return dispatch => {
+	// 		return dispatch(TurboClient.currentUser(constants.CURRENT_USER_RECEIVED))
+	// 	}
+	// }
+
+};
+
+/***/ }),
+
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1902,179 +2423,27 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Register = exports.Map = exports.Invite = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _Map = __webpack_require__(585);
 
-var _react = __webpack_require__(1);
+var _Map2 = _interopRequireDefault(_Map);
 
-var _react2 = _interopRequireDefault(_react);
+var _Invite = __webpack_require__(392);
 
-var _reactRedux = __webpack_require__(62);
+var _Invite2 = _interopRequireDefault(_Invite);
 
-var _actions = __webpack_require__(137);
+var _Register = __webpack_require__(391);
 
-var _actions2 = _interopRequireDefault(_actions);
-
-var _reactDropzone = __webpack_require__(194);
-
-var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
-
-var _turbo = __webpack_require__(136);
-
-var _turbo2 = _interopRequireDefault(_turbo);
+var _Register2 = _interopRequireDefault(_Register);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Input = function (_Component) {
-    _inherits(Input, _Component);
-
-    function Input() {
-        _classCallCheck(this, Input);
-
-        var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this));
-
-        _this.state = {
-            invite: {
-                // position:{lat:40.70224017, lng:-73.9796719}
-            }
-        };
-        return _this;
-    }
-
-    // componentDidMount(){
-
-    //     console.log('componentDidMount: ')
-    //     this.props.fetchInvites()
-    // }
-
-    _createClass(Input, [{
-        key: 'updateInvite',
-        value: function updateInvite(attr, event) {
-            event.preventDefault();
-            console.log(attr + ' == ' + event.target.value);
-            var updated = Object.assign({}, this.state.invite);
-            updated[attr] = event.target.value;
-            this.setState({
-                invite: updated
-            });
-        }
-    }, {
-        key: 'addInvite',
-        value: function addInvite() {
-            if (this.props.account.currentUser == null) {
-                alert('Please log in or register to send invites');
-                return;
-            }
-
-            var currentUser = this.props.account.currentUser;
-            var updated = Object.assign({}, this.state.invite);
-            updated['position'] = this.props.map.currentLocation;
-            updated['host'] = {
-                id: currentUser.id,
-                username: currentUser.username,
-                image: currentUser.image || ''
-            };
-
-            console.log('ADD INVITE: ' + JSON.stringify(updated));
-            this.props.addInvite(updated).then(function (data) {
-                console.log('INVITE ADDED: ' + JSON.stringify(data));
-            }).catch(function (err) {
-                console.log('ERR: ' + err.message);
-            });
-        }
-    }, {
-        key: 'uploadImage',
-        value: function uploadImage(files) {
-            var _this2 = this;
-
-            var image = files[0];
-            console.log('uploadImage: ' + image.name);
-            var turboClient = (0, _turbo2.default)({
-                site_id: '5ae5315e0d44f900146683d0'
-            });
-
-            turboClient.uploadFile(image).then(function (data) {
-                // console.log('FILE UPLOADED: ' + JSON.stringify(data))
-                // console.log('FILE UPLOADED: ' + data.result.url)
-                var updated = Object.assign({}, _this2.state.invite);
-                updated['image'] = data.result.url;
-                _this2.setState({
-                    invite: updated
-                });
-            }).catch(function (err) {
-                console.log('UPLOAD ERROR: ' + err.message);
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-
-            return _react2.default.createElement(
-                'div',
-                { className: 'container-fluid' },
-                _react2.default.createElement('hr', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Match Invite Detail' }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date/Time' }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                this.state.invite.image == null ? null : _react2.default.createElement('img', { src: this.state.invite.image + '=s120-c' }),
-                _react2.default.createElement('hr', null),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        _reactDropzone2.default,
-                        { onDrop: this.uploadImage.bind(this), className: 'btn btn-info btn-fill', style: { marginRight: 16 } },
-                        'Add Image'
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
-                        'Add Invite'
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Input;
-}(_react.Component);
-
-var localStyle = {
-    input: {
-        border: '1px solid #ddd',
-        marginBottom: 12
-    }
-};
-
-var stateToProps = function stateToProps(state) {
-    return {
-        invite: state.invite,
-        map: state.map,
-        account: state.account
-    };
-};
-
-var dispatchToProps = function dispatchToProps(dispatch) {
-    return {
-        addInvite: function addInvite(invite) {
-            return dispatch(_actions2.default.addInvite(invite));
-        },
-        fetchInvites: function fetchInvites(params) {
-            return dispatch(_actions2.default.fetchInvites(params));
-        }
-    };
-};
-
-exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Input);
+exports.Invite = _Invite2.default;
+exports.Map = _Map2.default;
+exports.Register = _Register2.default; // import Nav from './Nav'
+// import Footer from './Footer'
+// import Item from './Item'
 
 /***/ })
 

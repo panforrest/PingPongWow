@@ -4,7 +4,8 @@
 import React, { Component } from 'react'
 import { Map } from './presentation'
 import { Search, Results, Nav } from './containers'
-import { Account } from './containers'
+import { Account, Example } from './containers'
+
 
 class Home extends Component {
 
@@ -31,6 +32,7 @@ class Home extends Component {
         	        <div className="col-md-8">
                         <Nav />
                         <Account />
+                        <Example />
         	            <Results />
         	        </div> 
 
