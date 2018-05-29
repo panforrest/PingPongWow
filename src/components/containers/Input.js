@@ -93,7 +93,8 @@ class Input extends Component {
                 <div>
                     <Dropzone onDrop={this.uploadImage.bind(this)} className="btn btn-info btn-fill" style={{marginRight:16}}>Add Image</Dropzone>
                     <button onClick={this.addInvite.bind(this)} className="btn btn-success">Add Invite</button>	
-                </div>	                
+                </div>
+                	                
             </div>
 
 

@@ -40,7 +40,8 @@ const localStyle = {
         float:'right'
     },
     inviteImage: {
-        width:100+'%',
+        // width:100+'%',
+        width:125,
         padding:3,
         // border:'1px solid #ddd',
         background:'#ffffa' 

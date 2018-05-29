@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import actions from '../../actions'
 // import Dropzone from 'react-dropzone'
 // import turbo from 'turbo360'
-// import { Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 
 class Results extends Component {
     constructor(){
@@ -114,7 +114,12 @@ class Results extends Component {
 
                     }
 			                    
-                </div>	
+                </div>
+                <Modal bsSize="sm" show={this.state.showModal} onHide={ () => {this.setState({showModal:false})}}>
+                    <Modal.Body style={localStyle.modal}>
+                        <h2>This is a modal</h2>
+                    </Modal.Body>
+                </Modal>	
                 		                
             </div>
     	)

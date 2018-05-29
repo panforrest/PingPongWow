@@ -375,6 +375,8 @@ var _actions = __webpack_require__(137);
 
 var _actions2 = _interopRequireDefault(_actions);
 
+var _reactBootstrap = __webpack_require__(195);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -382,10 +384,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 // import Dropzone from 'react-dropzone'
 // import turbo from 'turbo360'
-// import { Modal } from 'react-bootstrap'
+
 
 var Results = function (_Component) {
     _inherits(Results, _Component);
@@ -506,6 +507,21 @@ var Results = function (_Component) {
                     invites.map(function (invite, i) {
                         return _react2.default.createElement(_presentation.Invite, { key: invite.id, onPurchase: _this2.onPurchase.bind(_this2, invite), invite: invite });
                     })
+                ),
+                _react2.default.createElement(
+                    _reactBootstrap.Modal,
+                    { bsSize: 'sm', show: this.state.showModal, onHide: function onHide() {
+                            _this2.setState({ showModal: false });
+                        } },
+                    _react2.default.createElement(
+                        _reactBootstrap.Modal.Body,
+                        { style: localStyle.modal },
+                        _react2.default.createElement(
+                            'h2',
+                            null,
+                            'This is a modal'
+                        )
+                    )
                 )
             );
         }
@@ -1072,7 +1088,8 @@ var localStyle = {
         float: 'right'
     },
     inviteImage: {
-        width: 100 + '%',
+        // width:100+'%',
+        width: 125,
         padding: 3,
         // border:'1px solid #ddd',
         background: '#ffffa'
