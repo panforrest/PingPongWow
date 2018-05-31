@@ -16,7 +16,7 @@ export default (props) => {
                 </div>
                 <h2>{invite.label}</h2> 
                 
-                <span class="reservation-date">{invite.date} </span>
+                <span class="reservation-date">{invite.startDate} </span>
                 <img style={localStyle.icon} src={invite.host.image} />
                 <p>by: {invite.host.username} </p>
                 <div>

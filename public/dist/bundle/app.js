@@ -130,318 +130,263 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push([604,0]);
+/******/ 	deferredModules.push([602,0]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 266:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.Example = exports.Input = exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
-
-var _Search = __webpack_require__(390);
-
-var _Search2 = _interopRequireDefault(_Search);
-
-var _Results = __webpack_require__(369);
-
-var _Results2 = _interopRequireDefault(_Results);
-
-var _Nav = __webpack_require__(334);
-
-var _Nav2 = _interopRequireDefault(_Nav);
-
-var _Account = __webpack_require__(333);
-
-var _Account2 = _interopRequireDefault(_Account);
-
-var _Input = __webpack_require__(332);
-
-var _Input2 = _interopRequireDefault(_Input);
-
-var _Example = __webpack_require__(331);
-
-var _Example2 = _interopRequireDefault(_Example);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Export your container components here. The Users
-	container is just an example and you will likely
-	remove it in favor of your own containers. 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
-
-// import Users from './Users'
-exports.Search = _Search2.default;
-exports.Results = _Results2.default;
-exports.Nav = _Nav2.default;
-exports.Account = _Account2.default;
-exports.Input = _Input2.default;
-exports.Example = _Example2.default;
-// import MyApp from './MyApp'
-
-/***/ }),
-
-/***/ 330:
+/***/ 328:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 254,
-	"./af.js": 254,
-	"./ar": 253,
-	"./ar-dz": 252,
-	"./ar-dz.js": 252,
-	"./ar-kw": 251,
-	"./ar-kw.js": 251,
-	"./ar-ly": 250,
-	"./ar-ly.js": 250,
-	"./ar-ma": 249,
-	"./ar-ma.js": 249,
-	"./ar-sa": 248,
-	"./ar-sa.js": 248,
-	"./ar-tn": 247,
-	"./ar-tn.js": 247,
-	"./ar.js": 253,
-	"./az": 246,
-	"./az.js": 246,
-	"./be": 245,
-	"./be.js": 245,
-	"./bg": 244,
-	"./bg.js": 244,
-	"./bm": 243,
-	"./bm.js": 243,
-	"./bn": 242,
-	"./bn.js": 242,
-	"./bo": 241,
-	"./bo.js": 241,
-	"./br": 240,
-	"./br.js": 240,
-	"./bs": 239,
-	"./bs.js": 239,
-	"./ca": 238,
-	"./ca.js": 238,
-	"./cs": 237,
-	"./cs.js": 237,
-	"./cv": 236,
-	"./cv.js": 236,
-	"./cy": 235,
-	"./cy.js": 235,
-	"./da": 234,
-	"./da.js": 234,
-	"./de": 233,
-	"./de-at": 232,
-	"./de-at.js": 232,
-	"./de-ch": 231,
-	"./de-ch.js": 231,
-	"./de.js": 233,
-	"./dv": 230,
-	"./dv.js": 230,
-	"./el": 229,
-	"./el.js": 229,
-	"./en-au": 228,
-	"./en-au.js": 228,
-	"./en-ca": 227,
-	"./en-ca.js": 227,
-	"./en-gb": 226,
-	"./en-gb.js": 226,
-	"./en-ie": 225,
-	"./en-ie.js": 225,
-	"./en-il": 224,
-	"./en-il.js": 224,
-	"./en-nz": 223,
-	"./en-nz.js": 223,
-	"./eo": 222,
-	"./eo.js": 222,
-	"./es": 221,
-	"./es-do": 220,
-	"./es-do.js": 220,
-	"./es-us": 219,
-	"./es-us.js": 219,
-	"./es.js": 221,
-	"./et": 218,
-	"./et.js": 218,
-	"./eu": 217,
-	"./eu.js": 217,
-	"./fa": 216,
-	"./fa.js": 216,
-	"./fi": 215,
-	"./fi.js": 215,
-	"./fo": 214,
-	"./fo.js": 214,
-	"./fr": 213,
-	"./fr-ca": 212,
-	"./fr-ca.js": 212,
-	"./fr-ch": 211,
-	"./fr-ch.js": 211,
-	"./fr.js": 213,
-	"./fy": 210,
-	"./fy.js": 210,
-	"./gd": 209,
-	"./gd.js": 209,
-	"./gl": 208,
-	"./gl.js": 208,
-	"./gom-latn": 207,
-	"./gom-latn.js": 207,
-	"./gu": 206,
-	"./gu.js": 206,
-	"./he": 205,
-	"./he.js": 205,
-	"./hi": 204,
-	"./hi.js": 204,
-	"./hr": 203,
-	"./hr.js": 203,
-	"./hu": 202,
-	"./hu.js": 202,
-	"./hy-am": 201,
-	"./hy-am.js": 201,
-	"./id": 200,
-	"./id.js": 200,
-	"./is": 199,
-	"./is.js": 199,
-	"./it": 198,
-	"./it.js": 198,
-	"./ja": 197,
-	"./ja.js": 197,
-	"./jv": 196,
-	"./jv.js": 196,
-	"./ka": 195,
-	"./ka.js": 195,
-	"./kk": 194,
-	"./kk.js": 194,
-	"./km": 193,
-	"./km.js": 193,
-	"./kn": 192,
-	"./kn.js": 192,
-	"./ko": 191,
-	"./ko.js": 191,
-	"./ky": 190,
-	"./ky.js": 190,
-	"./lb": 189,
-	"./lb.js": 189,
-	"./lo": 188,
-	"./lo.js": 188,
-	"./lt": 187,
-	"./lt.js": 187,
-	"./lv": 186,
-	"./lv.js": 186,
-	"./me": 185,
-	"./me.js": 185,
-	"./mi": 184,
-	"./mi.js": 184,
-	"./mk": 183,
-	"./mk.js": 183,
-	"./ml": 182,
-	"./ml.js": 182,
-	"./mn": 181,
-	"./mn.js": 181,
-	"./mr": 180,
-	"./mr.js": 180,
-	"./ms": 179,
-	"./ms-my": 178,
-	"./ms-my.js": 178,
-	"./ms.js": 179,
-	"./mt": 177,
-	"./mt.js": 177,
-	"./my": 176,
-	"./my.js": 176,
-	"./nb": 175,
-	"./nb.js": 175,
-	"./ne": 174,
-	"./ne.js": 174,
-	"./nl": 173,
-	"./nl-be": 172,
-	"./nl-be.js": 172,
-	"./nl.js": 173,
-	"./nn": 171,
-	"./nn.js": 171,
-	"./pa-in": 170,
-	"./pa-in.js": 170,
-	"./pl": 169,
-	"./pl.js": 169,
-	"./pt": 168,
-	"./pt-br": 167,
-	"./pt-br.js": 167,
-	"./pt.js": 168,
-	"./ro": 166,
-	"./ro.js": 166,
-	"./ru": 165,
-	"./ru.js": 165,
-	"./sd": 164,
-	"./sd.js": 164,
-	"./se": 163,
-	"./se.js": 163,
-	"./si": 162,
-	"./si.js": 162,
-	"./sk": 161,
-	"./sk.js": 161,
-	"./sl": 160,
-	"./sl.js": 160,
-	"./sq": 159,
-	"./sq.js": 159,
-	"./sr": 158,
-	"./sr-cyrl": 157,
-	"./sr-cyrl.js": 157,
-	"./sr.js": 158,
-	"./ss": 156,
-	"./ss.js": 156,
-	"./sv": 155,
-	"./sv.js": 155,
-	"./sw": 154,
-	"./sw.js": 154,
-	"./ta": 153,
-	"./ta.js": 153,
-	"./te": 152,
-	"./te.js": 152,
-	"./tet": 151,
-	"./tet.js": 151,
-	"./tg": 150,
-	"./tg.js": 150,
-	"./th": 149,
-	"./th.js": 149,
-	"./tl-ph": 148,
-	"./tl-ph.js": 148,
-	"./tlh": 147,
-	"./tlh.js": 147,
-	"./tr": 146,
-	"./tr.js": 146,
-	"./tzl": 145,
-	"./tzl.js": 145,
-	"./tzm": 144,
-	"./tzm-latn": 143,
-	"./tzm-latn.js": 143,
-	"./tzm.js": 144,
-	"./ug-cn": 142,
-	"./ug-cn.js": 142,
-	"./uk": 141,
-	"./uk.js": 141,
-	"./ur": 140,
-	"./ur.js": 140,
-	"./uz": 139,
-	"./uz-latn": 138,
-	"./uz-latn.js": 138,
-	"./uz.js": 139,
-	"./vi": 137,
-	"./vi.js": 137,
-	"./x-pseudo": 136,
-	"./x-pseudo.js": 136,
-	"./yo": 135,
-	"./yo.js": 135,
-	"./zh-cn": 134,
-	"./zh-cn.js": 134,
-	"./zh-hk": 133,
-	"./zh-hk.js": 133,
-	"./zh-tw": 132,
-	"./zh-tw.js": 132
+	"./af": 253,
+	"./af.js": 253,
+	"./ar": 252,
+	"./ar-dz": 251,
+	"./ar-dz.js": 251,
+	"./ar-kw": 250,
+	"./ar-kw.js": 250,
+	"./ar-ly": 249,
+	"./ar-ly.js": 249,
+	"./ar-ma": 248,
+	"./ar-ma.js": 248,
+	"./ar-sa": 247,
+	"./ar-sa.js": 247,
+	"./ar-tn": 246,
+	"./ar-tn.js": 246,
+	"./ar.js": 252,
+	"./az": 245,
+	"./az.js": 245,
+	"./be": 244,
+	"./be.js": 244,
+	"./bg": 243,
+	"./bg.js": 243,
+	"./bm": 242,
+	"./bm.js": 242,
+	"./bn": 241,
+	"./bn.js": 241,
+	"./bo": 240,
+	"./bo.js": 240,
+	"./br": 239,
+	"./br.js": 239,
+	"./bs": 238,
+	"./bs.js": 238,
+	"./ca": 237,
+	"./ca.js": 237,
+	"./cs": 236,
+	"./cs.js": 236,
+	"./cv": 235,
+	"./cv.js": 235,
+	"./cy": 234,
+	"./cy.js": 234,
+	"./da": 233,
+	"./da.js": 233,
+	"./de": 232,
+	"./de-at": 231,
+	"./de-at.js": 231,
+	"./de-ch": 230,
+	"./de-ch.js": 230,
+	"./de.js": 232,
+	"./dv": 229,
+	"./dv.js": 229,
+	"./el": 228,
+	"./el.js": 228,
+	"./en-au": 227,
+	"./en-au.js": 227,
+	"./en-ca": 226,
+	"./en-ca.js": 226,
+	"./en-gb": 225,
+	"./en-gb.js": 225,
+	"./en-ie": 224,
+	"./en-ie.js": 224,
+	"./en-il": 223,
+	"./en-il.js": 223,
+	"./en-nz": 222,
+	"./en-nz.js": 222,
+	"./eo": 221,
+	"./eo.js": 221,
+	"./es": 220,
+	"./es-do": 219,
+	"./es-do.js": 219,
+	"./es-us": 218,
+	"./es-us.js": 218,
+	"./es.js": 220,
+	"./et": 217,
+	"./et.js": 217,
+	"./eu": 216,
+	"./eu.js": 216,
+	"./fa": 215,
+	"./fa.js": 215,
+	"./fi": 214,
+	"./fi.js": 214,
+	"./fo": 213,
+	"./fo.js": 213,
+	"./fr": 212,
+	"./fr-ca": 211,
+	"./fr-ca.js": 211,
+	"./fr-ch": 210,
+	"./fr-ch.js": 210,
+	"./fr.js": 212,
+	"./fy": 209,
+	"./fy.js": 209,
+	"./gd": 208,
+	"./gd.js": 208,
+	"./gl": 207,
+	"./gl.js": 207,
+	"./gom-latn": 206,
+	"./gom-latn.js": 206,
+	"./gu": 205,
+	"./gu.js": 205,
+	"./he": 204,
+	"./he.js": 204,
+	"./hi": 203,
+	"./hi.js": 203,
+	"./hr": 202,
+	"./hr.js": 202,
+	"./hu": 201,
+	"./hu.js": 201,
+	"./hy-am": 200,
+	"./hy-am.js": 200,
+	"./id": 199,
+	"./id.js": 199,
+	"./is": 198,
+	"./is.js": 198,
+	"./it": 197,
+	"./it.js": 197,
+	"./ja": 196,
+	"./ja.js": 196,
+	"./jv": 195,
+	"./jv.js": 195,
+	"./ka": 194,
+	"./ka.js": 194,
+	"./kk": 193,
+	"./kk.js": 193,
+	"./km": 192,
+	"./km.js": 192,
+	"./kn": 191,
+	"./kn.js": 191,
+	"./ko": 190,
+	"./ko.js": 190,
+	"./ky": 189,
+	"./ky.js": 189,
+	"./lb": 188,
+	"./lb.js": 188,
+	"./lo": 187,
+	"./lo.js": 187,
+	"./lt": 186,
+	"./lt.js": 186,
+	"./lv": 185,
+	"./lv.js": 185,
+	"./me": 184,
+	"./me.js": 184,
+	"./mi": 183,
+	"./mi.js": 183,
+	"./mk": 182,
+	"./mk.js": 182,
+	"./ml": 181,
+	"./ml.js": 181,
+	"./mn": 180,
+	"./mn.js": 180,
+	"./mr": 179,
+	"./mr.js": 179,
+	"./ms": 178,
+	"./ms-my": 177,
+	"./ms-my.js": 177,
+	"./ms.js": 178,
+	"./mt": 176,
+	"./mt.js": 176,
+	"./my": 175,
+	"./my.js": 175,
+	"./nb": 174,
+	"./nb.js": 174,
+	"./ne": 173,
+	"./ne.js": 173,
+	"./nl": 172,
+	"./nl-be": 171,
+	"./nl-be.js": 171,
+	"./nl.js": 172,
+	"./nn": 170,
+	"./nn.js": 170,
+	"./pa-in": 169,
+	"./pa-in.js": 169,
+	"./pl": 168,
+	"./pl.js": 168,
+	"./pt": 167,
+	"./pt-br": 166,
+	"./pt-br.js": 166,
+	"./pt.js": 167,
+	"./ro": 165,
+	"./ro.js": 165,
+	"./ru": 164,
+	"./ru.js": 164,
+	"./sd": 163,
+	"./sd.js": 163,
+	"./se": 162,
+	"./se.js": 162,
+	"./si": 161,
+	"./si.js": 161,
+	"./sk": 160,
+	"./sk.js": 160,
+	"./sl": 159,
+	"./sl.js": 159,
+	"./sq": 158,
+	"./sq.js": 158,
+	"./sr": 157,
+	"./sr-cyrl": 156,
+	"./sr-cyrl.js": 156,
+	"./sr.js": 157,
+	"./ss": 155,
+	"./ss.js": 155,
+	"./sv": 154,
+	"./sv.js": 154,
+	"./sw": 153,
+	"./sw.js": 153,
+	"./ta": 152,
+	"./ta.js": 152,
+	"./te": 151,
+	"./te.js": 151,
+	"./tet": 150,
+	"./tet.js": 150,
+	"./tg": 149,
+	"./tg.js": 149,
+	"./th": 148,
+	"./th.js": 148,
+	"./tl-ph": 147,
+	"./tl-ph.js": 147,
+	"./tlh": 146,
+	"./tlh.js": 146,
+	"./tr": 145,
+	"./tr.js": 145,
+	"./tzl": 144,
+	"./tzl.js": 144,
+	"./tzm": 143,
+	"./tzm-latn": 142,
+	"./tzm-latn.js": 142,
+	"./tzm.js": 143,
+	"./ug-cn": 141,
+	"./ug-cn.js": 141,
+	"./uk": 140,
+	"./uk.js": 140,
+	"./ur": 139,
+	"./ur.js": 139,
+	"./uz": 138,
+	"./uz-latn": 137,
+	"./uz-latn.js": 137,
+	"./uz.js": 138,
+	"./vi": 136,
+	"./vi.js": 136,
+	"./x-pseudo": 135,
+	"./x-pseudo.js": 135,
+	"./yo": 134,
+	"./yo.js": 134,
+	"./zh-cn": 133,
+	"./zh-cn.js": 133,
+	"./zh-hk": 132,
+	"./zh-hk.js": 132,
+	"./zh-tw": 131,
+	"./zh-tw.js": 131
 };
 
 
@@ -464,11 +409,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 330;
+webpackContext.id = 328;
 
 /***/ }),
 
-/***/ 331:
+/***/ 329:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -484,7 +429,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDatepicker = __webpack_require__(323);
+var _reactDatepicker = __webpack_require__(321);
 
 var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
@@ -492,9 +437,7 @@ var _moment = __webpack_require__(8);
 
 var _moment2 = _interopRequireDefault(_moment);
 
-__webpack_require__(329);
-
-__webpack_require__(326);
+__webpack_require__(327);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -503,6 +446,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import 'react-datepicker/dist/react-datepicker.css';
 
 // CSS Modules, react-datepicker-cssmodules.css
 
@@ -553,7 +498,7 @@ exports.default = Example;
 
 /***/ }),
 
-/***/ 332:
+/***/ 330:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -575,13 +520,25 @@ var _actions = __webpack_require__(67);
 
 var _actions2 = _interopRequireDefault(_actions);
 
-var _reactDropzone = __webpack_require__(322);
+var _reactDropzone = __webpack_require__(320);
 
 var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 
-var _turbo = __webpack_require__(265);
+var _turbo = __webpack_require__(264);
 
 var _turbo2 = _interopRequireDefault(_turbo);
+
+var _reactDatepicker = __webpack_require__(321);
+
+var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
+
+var _moment = __webpack_require__(8);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+__webpack_require__(605);
+
+__webpack_require__(327);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -589,12 +546,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <input onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" placeholder="Date/Time" /><br /><br />    
+// <Example onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" /> <br />
+
+// import { Example } from '../containers'
+
 
 var Input = function (_Component) {
     _inherits(Input, _Component);
 
-    function Input() {
+    function Input(props) {
         _classCallCheck(this, Input);
 
         var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this));
@@ -602,8 +563,10 @@ var Input = function (_Component) {
         _this.state = {
             invite: {
                 // position:{lat:40.70224017, lng:-73.9796719}
-            }
+            },
+            startDate: (0, _moment2.default)()
         };
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
 
@@ -625,6 +588,14 @@ var Input = function (_Component) {
             });
         }
     }, {
+        key: 'handleChange',
+        value: function handleChange(date) {
+            this.setState({
+                startDate: date
+            });
+            console.log('handleChange: ' + this.state.startDate);
+        }
+    }, {
         key: 'addInvite',
         value: function addInvite() {
             if (this.props.account.currentUser == null) {
@@ -635,6 +606,7 @@ var Input = function (_Component) {
             var currentUser = this.props.account.currentUser;
             var updated = Object.assign({}, this.state.invite);
             updated['position'] = this.props.map.currentLocation;
+            updated['startDate'] = this.state.startDate;
             updated['host'] = {
                 id: currentUser.id,
                 username: currentUser.username,
@@ -682,9 +654,15 @@ var Input = function (_Component) {
                 _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Match Invite Detail' }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'date'), className: 'formControl', type: 'text', placeholder: 'Date/Time' }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
+                _react2.default.createElement(_reactDatepicker2.default, {
+                    selected: this.state.startDate,
+                    onChange: this.handleChange,
+                    showTimeSelect: true,
+                    timeFormat: 'HH:mm',
+                    timeIntervals: 60,
+                    dateFormat: 'LLL',
+                    timeCaption: 'time'
+                }),
                 this.state.invite.image == null ? null : _react2.default.createElement('img', { src: this.state.invite.image + '=s120-c' }),
                 _react2.default.createElement('hr', null),
                 _react2.default.createElement(
@@ -738,7 +716,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Input)
 
 /***/ }),
 
-/***/ 333:
+/***/ 331:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -762,7 +740,7 @@ var _actions = __webpack_require__(67);
 
 var _actions2 = _interopRequireDefault(_actions);
 
-var _containers = __webpack_require__(266);
+var _containers = __webpack_require__(93);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -849,7 +827,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Accoun
 
 /***/ }),
 
-/***/ 334:
+/***/ 332:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -926,7 +904,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps)(Nav);
 
 /***/ }),
 
-/***/ 369:
+/***/ 367:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -950,7 +928,7 @@ var _actions = __webpack_require__(67);
 
 var _actions2 = _interopRequireDefault(_actions);
 
-var _reactBootstrap = __webpack_require__(324);
+var _reactBootstrap = __webpack_require__(322);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1133,7 +1111,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Result
 
 /***/ }),
 
-/***/ 370:
+/***/ 368:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1223,14 +1201,14 @@ exports.default = {
 
 /***/ }),
 
-/***/ 371:
+/***/ 369:
 /***/ (function(module) {
 
 module.exports = {"name":"PingPongWow","version":"0.0.0","server":false,"private":true,"scripts":{"dev":"webpack --mode development -w","build":"npm run clean && NODE_ENV=production webpack -p && gulp prod","clean":"rm -rf ./public/dist","postinstall":"npm run build"},"dependencies":{"accepts":"^1.3.5","array-flatten":"1.1.1","bluebird":"^3.5.1","body-parser":"1.18.2","content-disposition":"0.5.2","content-type":"^1.0.4","cookie":"0.3.1","cookie-signature":"1.0.6","css-loader":"^0.28.11","debug":"2.6.9","depd":"^1.1.2","dotenv":"^5.0.1","encodeurl":"^1.0.2","escape-html":"^1.0.3","etag":"^1.8.1","finalhandler":"1.1.1","fresh":"0.5.2","merge-descriptors":"1.0.1","methods":"^1.1.2","moment":"^2.22.1","nodemon":"^1.17.1","on-finished":"^2.3.0","parseurl":"^1.3.2","path-to-regexp":"0.1.7","proxy-addr":"^2.0.3","qs":"6.5.1","range-parser":"^1.2.0","react":"^16.2.0","react-bootstrap":"^0.32.1","react-date-picker":"^6.10.1","react-datepicker":"^1.5.0","react-dom":"^16.2.0","react-dropzone":"^4.2.8","react-google-maps":"^9.4.5","react-redux":"^5.0.7","react-time":"^4.3.0","redux":"^3.7.2","redux-thunk":"^2.2.0","safe-buffer":"5.1.1","send":"0.16.2","serve-static":"1.13.2","setprototypeof":"1.1.0","statuses":"^1.4.0","style-loader":"^0.21.0","superagent":"^3.8.2","turbo360":"latest","type-is":"^1.6.16","utils-merge":"1.0.1","vary":"^1.1.2","vertex360":"latest"},"devDependencies":{"babel-core":"^6.26.0","babel-loader":"^7.1.3","babel-preset-env":"^1.6.1","babel-preset-react":"^6.24.1","chai":"^4.1.2","chai-http":"^3.0.0","cross-env":"^5.1.4","extract-text-webpack-plugin":"^3.0.2","gulp":"^3.9.1","gulp-6to5":"^3.0.0","gulp-autoprefixer":"^5.0.0","gulp-clean-css":"^3.9.2","gulp-concat":"^2.6.1","gulp-less":"^4.0.0","gulp-rename":"^1.2.2","gulp-sass":"^3.1.0","gulp-uglify":"^3.0.0","json-loader":"^0.5.7","mocha":"^5.0.1","mocha-jscs":"^5.0.1","mocha-jshint":"^2.3.1","rimraf":"^2.6.2","uglifyjs-webpack-plugin":"^1.2.2","webpack":"^4.1.1","webpack-cli":"^2.0.10"},"deploy":["."],"format":"vertex","app":""};
 
 /***/ }),
 
-/***/ 388:
+/***/ 386:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1240,11 +1218,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _turbo = __webpack_require__(265);
+var _turbo = __webpack_require__(264);
 
 var _turbo2 = _interopRequireDefault(_turbo);
 
-var _package = __webpack_require__(371);
+var _package = __webpack_require__(369);
 
 var _package2 = _interopRequireDefault(_package);
 
@@ -1391,7 +1369,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 389:
+/***/ 387:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1402,11 +1380,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HTTPAsync = exports.TurboClient = undefined;
 
-var _TurboClient = __webpack_require__(388);
+var _TurboClient = __webpack_require__(386);
 
 var _TurboClient2 = _interopRequireDefault(_TurboClient);
 
-var _HTTPAsync = __webpack_require__(370);
+var _HTTPAsync = __webpack_require__(368);
 
 var _HTTPAsync2 = _interopRequireDefault(_HTTPAsync);
 
@@ -1417,7 +1395,7 @@ exports.HTTPAsync = _HTTPAsync2.default;
 
 /***/ }),
 
-/***/ 390:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1545,7 +1523,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search
 
 /***/ }),
 
-/***/ 391:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1673,7 +1651,7 @@ exports.default = Register;
 
 /***/ }),
 
-/***/ 392:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1719,7 +1697,7 @@ exports.default = function (props) {
                 _react2.default.createElement(
                     "span",
                     { "class": "reservation-date" },
-                    invite.date,
+                    invite.startDate,
                     " "
                 ),
                 _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image }),
@@ -1753,7 +1731,7 @@ var localStyle = {
 
 /***/ }),
 
-/***/ 585:
+/***/ 583:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1771,7 +1749,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactGoogleMaps = __webpack_require__(584);
+var _reactGoogleMaps = __webpack_require__(582);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1859,7 +1837,7 @@ exports.default = (0, _reactGoogleMaps.withGoogleMap)(Map);
 
 /***/ }),
 
-/***/ 586:
+/***/ 584:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1877,7 +1855,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(86);
 
-var _containers = __webpack_require__(266);
+var _containers = __webpack_require__(93);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1885,10 +1863,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <div className="col-md-3">
-//     <Account />
-// </div>
-
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Home = function (_Component) {
   _inherits(Home, _Component);
@@ -1928,7 +1903,6 @@ var Home = function (_Component) {
             { className: 'col-md-8' },
             _react2.default.createElement(_containers.Nav, null),
             _react2.default.createElement(_containers.Account, null),
-            _react2.default.createElement(_containers.Example, null),
             _react2.default.createElement(_containers.Results, null)
           )
         )
@@ -1943,7 +1917,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 589:
+/***/ 587:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1994,7 +1968,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 590:
+/***/ 588:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2033,7 +2007,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 591:
+/***/ 589:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2086,7 +2060,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 592:
+/***/ 590:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2143,7 +2117,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 593:
+/***/ 591:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2154,19 +2128,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.accountReducer = exports.mapReducer = exports.inviteReducer = exports.userReducer = undefined;
 
-var _userReducer = __webpack_require__(592);
+var _userReducer = __webpack_require__(590);
 
 var _userReducer2 = _interopRequireDefault(_userReducer);
 
-var _inviteReducer = __webpack_require__(591);
+var _inviteReducer = __webpack_require__(589);
 
 var _inviteReducer2 = _interopRequireDefault(_inviteReducer);
 
-var _mapReducer = __webpack_require__(590);
+var _mapReducer = __webpack_require__(588);
 
 var _mapReducer2 = _interopRequireDefault(_mapReducer);
 
-var _accountReducer = __webpack_require__(589);
+var _accountReducer = __webpack_require__(587);
 
 var _accountReducer2 = _interopRequireDefault(_accountReducer);
 
@@ -2184,7 +2158,7 @@ exports.accountReducer = _accountReducer2.default;
 
 /***/ }),
 
-/***/ 596:
+/***/ 594:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2194,13 +2168,13 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _redux = __webpack_require__(119);
+var _redux = __webpack_require__(120);
 
-var _reduxThunk = __webpack_require__(594);
+var _reduxThunk = __webpack_require__(592);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducers = __webpack_require__(593);
+var _reducers = __webpack_require__(591);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2242,7 +2216,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 604:
+/***/ 602:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2256,13 +2230,13 @@ var _reactDom = __webpack_require__(10);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _stores = __webpack_require__(596);
+var _stores = __webpack_require__(594);
 
 var _stores2 = _interopRequireDefault(_stores);
 
 var _reactRedux = __webpack_require__(46);
 
-var _Home = __webpack_require__(586);
+var _Home = __webpack_require__(584);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -2324,7 +2298,7 @@ var _constants = __webpack_require__(62);
 
 var _constants2 = _interopRequireDefault(_constants);
 
-var _utils = __webpack_require__(389);
+var _utils = __webpack_require__(387);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2425,15 +2399,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Register = exports.Map = exports.Invite = undefined;
 
-var _Map = __webpack_require__(585);
+var _Map = __webpack_require__(583);
 
 var _Map2 = _interopRequireDefault(_Map);
 
-var _Invite = __webpack_require__(392);
+var _Invite = __webpack_require__(390);
 
 var _Invite2 = _interopRequireDefault(_Invite);
 
-var _Register = __webpack_require__(391);
+var _Register = __webpack_require__(389);
 
 var _Register2 = _interopRequireDefault(_Register);
 
@@ -2444,6 +2418,61 @@ exports.Map = _Map2.default;
 exports.Register = _Register2.default; // import Nav from './Nav'
 // import Footer from './Footer'
 // import Item from './Item'
+
+/***/ }),
+
+/***/ 93:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.Example = exports.Input = exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
+
+var _Search = __webpack_require__(388);
+
+var _Search2 = _interopRequireDefault(_Search);
+
+var _Results = __webpack_require__(367);
+
+var _Results2 = _interopRequireDefault(_Results);
+
+var _Nav = __webpack_require__(332);
+
+var _Nav2 = _interopRequireDefault(_Nav);
+
+var _Account = __webpack_require__(331);
+
+var _Account2 = _interopRequireDefault(_Account);
+
+var _Input = __webpack_require__(330);
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _Example = __webpack_require__(329);
+
+var _Example2 = _interopRequireDefault(_Example);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Export your container components here. The Users
+	container is just an example and you will likely
+	remove it in favor of your own containers. 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+// import Users from './Users'
+exports.Search = _Search2.default;
+exports.Results = _Results2.default;
+exports.Nav = _Nav2.default;
+exports.Account = _Account2.default;
+exports.Input = _Input2.default;
+exports.Example = _Example2.default;
+// import MyApp from './MyApp'
 
 /***/ })
 

@@ -1,17 +1,28 @@
+// <input onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" placeholder="Date/Time" /><br /><br />    
+// <Example onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" /> <br />
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import actions from '../../actions'
 import Dropzone from 'react-dropzone'
 import turbo from 'turbo360'
+// import { Example } from '../containers'
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 class Input extends Component {
-    constructor(){
+    constructor(props){
     	super()
     	this.state = {
             invite: {
                 // position:{lat:40.70224017, lng:-73.9796719}
-            }
+            },
+            startDate: moment()
     	}
+        this.handleChange = this.handleChange.bind(this);
     }
 
     // componentDidMount(){
@@ -30,6 +41,13 @@ class Input extends Component {
         })
     }
 
+    handleChange(date) {
+        this.setState({
+            startDate: date
+        });
+        console.log('handleChange: ' + this.state.startDate)
+    }
+
     addInvite(){
         if (this.props.account.currentUser == null) {
             alert('Please log in or register to send invites')
@@ -39,6 +57,7 @@ class Input extends Component {
         const currentUser = this.props.account.currentUser
         let updated = Object.assign({}, this.state.invite)
         updated['position'] = this.props.map.currentLocation
+        updated['startDate'] = this.state.startDate
         updated['host'] = {
             id: currentUser.id,
             username: currentUser.username,
@@ -83,8 +102,16 @@ class Input extends Component {
             <div className="container-fluid">
                 
                 <hr />
-                <input onChange={this.updateInvite.bind(this, 'label')} className="formControl" type="text" placeholder="Match Invite Detail" /><br /><br />	
-                <input onChange={this.updateInvite.bind(this, 'date')} className="formControl" type="text" placeholder="Date/Time" /><br /><br />    
+                <input onChange={this.updateInvite.bind(this, 'label')} className="formControl" type="text" placeholder="Match Invite Detail" /><br /><br />
+                <DatePicker
+                    selected={this.state.startDate}
+                    onChange={this.handleChange}
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={60}
+                    dateFormat="LLL"
+                    timeCaption="time"                    
+                />
                 { (this.state.invite.image == null) ? null: <img src={this.state.invite.image+'=s120-c'} />
 
                 }
