@@ -9,7 +9,7 @@ class Nav extends Component {
 		return (
             <nav>
 			    <span class="navbar-brand mb-0 h1">PingPongWow</span>
-			    <a class="nav-tab" href="/auth/logout"> { (currentUser==null) ? null: <p>Log out</p> } </a>
+			    <a class="nav-tab" href="/auth/logout"> { (currentUser==null) ? null: <span>Log out</span> } </a>
 			</nav>
 		)
 	}

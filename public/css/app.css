@@ -76,9 +76,10 @@ form input {
 	margin-right: 10px;
 }
 
-#reservations .reservation h2 {
+#reservations .reservation p {
 	margin: 0;
 	margin-right: 10px;
+	margin-left: 10px;
 	padding: 0;
 }
 
