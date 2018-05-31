@@ -1,8 +1,19 @@
 import React, { Component } from 'react'
+import { DateUtils } from '../../utils'
 
 export default (props) => {
 
   const invite = props.invite
+  // var label = invite.label || []
+  // var str = label.substring(0, 2)
+
+  var label = invite.label || []
+  var label = (label.length==0) ? "Play Ping Pong with me!" : label 
+  var str = (label.length > 38) ? label.substring(0, 30) : label
+
+  // { (this.state.invite.image == null) ? null: <img src={this.state.invite.image+'=s120-c'} />
+
+                // }
 
   return (
     <div className="row">
@@ -14,11 +25,11 @@ export default (props) => {
                         <img style={localStyle.inviteImage} src={invite.image+'=s200-c'} />
                     </a>
                 </div>
-                <h2>{invite.label}</h2> 
+                <p>{str}</p> 
                 
-                <span class="reservation-date">{invite.startDate} </span>
+                <span class="reservation-date">start: {DateUtils.formattedDate(invite.startDate)} </span>
                 <img style={localStyle.icon} src={invite.host.image} />
-                <p>by: {invite.host.username} </p>
+                <p>hosted by: {invite.host.username} </p>
                 <div>
 
                     

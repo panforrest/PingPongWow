@@ -102,7 +102,7 @@ class Input extends Component {
             <div className="container-fluid">
                 
                 <hr />
-                <input onChange={this.updateInvite.bind(this, 'label')} className="formControl" type="text" placeholder="Match Invite Detail" /><br /><br />
+                <input onChange={this.updateInvite.bind(this, 'label')} className="formControl" type="text" placeholder="Ping Pong game?" /><br /><br />
                 <DatePicker
                     selected={this.state.startDate}
                     onChange={this.handleChange}
@@ -119,7 +119,7 @@ class Input extends Component {
 
                 <div>
                     <Dropzone onDrop={this.uploadImage.bind(this)} className="btn btn-info btn-fill" style={{marginRight:16}}>Add Image</Dropzone>
-                    <button onClick={this.addInvite.bind(this)} className="btn btn-success">Add Invite</button>	
+                    <button onClick={this.addInvite.bind(this)} className="btn btn-success">Send Invite</button>	
                 </div>
                 	                
             </div>

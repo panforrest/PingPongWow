@@ -413,91 +413,6 @@ webpackContext.id = 328;
 
 /***/ }),
 
-/***/ 329:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDatepicker = __webpack_require__(321);
-
-var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
-
-var _moment = __webpack_require__(8);
-
-var _moment2 = _interopRequireDefault(_moment);
-
-__webpack_require__(327);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import 'react-datepicker/dist/react-datepicker.css';
-
-// CSS Modules, react-datepicker-cssmodules.css
-
-
-var Example = function (_React$Component) {
-  _inherits(Example, _React$Component);
-
-  function Example(props) {
-    _classCallCheck(this, Example);
-
-    var _this = _possibleConstructorReturn(this, (Example.__proto__ || Object.getPrototypeOf(Example)).call(this, props));
-
-    _this.state = {
-      startDate: (0, _moment2.default)()
-    };
-    _this.handleChange = _this.handleChange.bind(_this);
-    return _this;
-  }
-
-  _createClass(Example, [{
-    key: 'handleChange',
-    value: function handleChange(date) {
-      this.setState({
-        startDate: date
-      });
-      console.log('handleChange: ' + this.state.startDate);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(_reactDatepicker2.default, {
-        selected: this.state.startDate,
-        onChange: this.handleChange,
-        showTimeSelect: true,
-        timeFormat: 'HH:mm',
-        timeIntervals: 60,
-        dateFormat: 'LLL',
-        timeCaption: 'time'
-
-      });
-    }
-  }]);
-
-  return Example;
-}(_react2.default.Component);
-
-exports.default = Example;
-
-/***/ }),
-
 /***/ 330:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -651,7 +566,7 @@ var Input = function (_Component) {
                 'div',
                 { className: 'container-fluid' },
                 _react2.default.createElement('hr', null),
-                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Match Invite Detail' }),
+                _react2.default.createElement('input', { onChange: this.updateInvite.bind(this, 'label'), className: 'formControl', type: 'text', placeholder: 'Ping Pong game?' }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(_reactDatepicker2.default, {
@@ -676,7 +591,7 @@ var Input = function (_Component) {
                     _react2.default.createElement(
                         'button',
                         { onClick: this.addInvite.bind(this), className: 'btn btn-success' },
-                        'Add Invite'
+                        'Send Invite'
                     )
                 )
             );
@@ -1378,7 +1293,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.HTTPAsync = exports.TurboClient = undefined;
+exports.DateUtils = exports.HTTPAsync = exports.TurboClient = undefined;
 
 var _TurboClient = __webpack_require__(386);
 
@@ -1388,10 +1303,15 @@ var _HTTPAsync = __webpack_require__(368);
 
 var _HTTPAsync2 = _interopRequireDefault(_HTTPAsync);
 
+var _DateUtils = __webpack_require__(607);
+
+var _DateUtils2 = _interopRequireDefault(_DateUtils);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.TurboClient = _TurboClient2.default;
 exports.HTTPAsync = _HTTPAsync2.default;
+exports.DateUtils = _DateUtils2.default;
 
 /***/ }),
 
@@ -1665,50 +1585,63 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _utils = __webpack_require__(387);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
 
     var invite = props.invite;
+    // var label = invite.label || []
+    // var str = label.substring(0, 2)
+
+    var label = invite.label || [];
+    var label = label.length == 0 ? "Play Ping Pong with me!" : label;
+    var str = label.length > 38 ? label.substring(0, 30) : label;
+
+    // { (this.state.invite.image == null) ? null: <img src={this.state.invite.image+'=s120-c'} />
+
+    // }
 
     return _react2.default.createElement(
-        "div",
-        { className: "row" },
+        'div',
+        { className: 'row' },
         _react2.default.createElement(
-            "div",
-            { id: "reservations" },
+            'div',
+            { id: 'reservations' },
             _react2.default.createElement(
-                "div",
-                { "class": "reservation" },
+                'div',
+                { 'class': 'reservation' },
                 _react2.default.createElement(
-                    "div",
+                    'div',
                     { style: localStyle.inviteImage },
                     _react2.default.createElement(
-                        "a",
-                        { onClick: props.onPurchase.bind(undefined), herf: "#" },
-                        _react2.default.createElement("img", { style: localStyle.inviteImage, src: invite.image + '=s200-c' })
+                        'a',
+                        { onClick: props.onPurchase.bind(undefined), herf: '#' },
+                        _react2.default.createElement('img', { style: localStyle.inviteImage, src: invite.image + '=s200-c' })
                     )
                 ),
                 _react2.default.createElement(
-                    "h2",
+                    'p',
                     null,
-                    invite.label
+                    str
                 ),
                 _react2.default.createElement(
-                    "span",
-                    { "class": "reservation-date" },
-                    invite.startDate,
-                    " "
+                    'span',
+                    { 'class': 'reservation-date' },
+                    'start: ',
+                    _utils.DateUtils.formattedDate(invite.startDate),
+                    ' '
                 ),
-                _react2.default.createElement("img", { style: localStyle.icon, src: invite.host.image }),
+                _react2.default.createElement('img', { style: localStyle.icon, src: invite.host.image }),
                 _react2.default.createElement(
-                    "p",
+                    'p',
                     null,
-                    "by: ",
+                    'hosted by: ',
                     invite.host.username,
-                    " "
+                    ' '
                 ),
-                _react2.default.createElement("div", null)
+                _react2.default.createElement('div', null)
             )
         )
     );
@@ -2254,6 +2187,48 @@ _reactDom2.default.render(app, document.getElementById('root'));
 
 /***/ }),
 
+/***/ 607:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactTime = __webpack_require__(606);
+
+var _reactTime2 = _interopRequireDefault(_reactTime);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+
+  formattedDate: function formattedDate(date) {
+
+    var now = new Date().getTime();
+
+    var diff = now - new Date(date).getTime(); // seconds???
+
+
+    var seconds = diff / 1000;
+    var mins = seconds / 60;
+    var hours = mins / 60;
+    console.log('DIFF: ' + hours);
+
+    if (hours < 24) return _react2.default.createElement(_reactTime2.default, { value: date, format: 'MMM DD, YYYY', relative: true });
+
+    return _react2.default.createElement(_reactTime2.default, { value: date, format: 'MMM DD, YYYY' });
+  }
+};
+
+/***/ }),
+
 /***/ 62:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2430,7 +2405,7 @@ exports.Register = _Register2.default; // import Nav from './Nav'
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.Example = exports.Input = exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
+exports.Input = exports.Account = exports.Nav = exports.Results = exports.Search = undefined;
 
 var _Search = __webpack_require__(388);
 
@@ -2452,27 +2427,23 @@ var _Input = __webpack_require__(330);
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Example = __webpack_require__(329);
-
-var _Example2 = _interopRequireDefault(_Example);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Export your container components here. The Users
-	container is just an example and you will likely
-	remove it in favor of your own containers. 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
+// import MyApp from './MyApp'
+// import Example from './Example'
 
-// import Users from './Users'
 exports.Search = _Search2.default;
 exports.Results = _Results2.default;
 exports.Nav = _Nav2.default;
 exports.Account = _Account2.default;
-exports.Input = _Input2.default;
-exports.Example = _Example2.default;
-// import MyApp from './MyApp'
+exports.Input = _Input2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                 	Export your container components here. The Users
+                                 	container is just an example and you will likely
+                                 	remove it in favor of your own containers. 
+                                 * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                 */
+
+// import Users from './Users'
 
 /***/ })
 
